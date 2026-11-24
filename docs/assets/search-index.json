@@ -1,0 +1,786 @@
+[
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "Overview",
+    "url": "en/index.html",
+    "text": "Quiz Platform is a self-hosted classroom quiz application with live projector games, self-paced assignments, an AI question writer, anti-cheat monitoring, rich results dashboards, and a spin-the-wheel picker — with a full Bahasa Indonesia and English interface."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "What Quiz Platform is",
+    "url": "en/index.html#what-it-is",
+    "text": "Quiz Platform is built for schools, university departments, training centers, and individual teachers who want an interactive classroom quiz tool that runs on their own server — keeping student names, scores, and teaching material under their own control. It ships as one lightweight Docker container powered by FastAPI, SQLite (WAL mode), and plain vanilla JavaScript with zero frontend build step. One small server (1 CPU, 1 GB RAM) easily handles a school or department with a few hundred simultaneous players. Single-container architecture: Caddy terminates TLS and proxies HTTP + WebSockets to a"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "Key features",
+    "url": "en/index.html#features",
+    "text": "▶ Live Quizzes 6-digit code and QR code per game. Teachers present on the class screen while students answer on phones. Faster correct answers earn higher speed-bonus points. ✎ Self-Paced Assignments Run the same quizzes asynchronously with optional per-question timers, deadlines, and per-student shuffling of questions and options. ✨ AI Question Writer Paste notes or upload PDF, DOCX, PPTX, or TXT (up to 50 MB), optionally with an assessment rubric. Works with any OpenAI-compatible API (DeepSeek, OpenAI, OpenRouter). 📖 Reading Passages Built for TOEFL-style reading comprehension: students read"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "Roles at a glance",
+    "url": "en/index.html#roles",
+    "text": "Every account has one of three roles. Guests without an account can still join open games with a nickname and use the spin-the-wheel tool. CapabilityGuest (no login)StudentTeacherAdmin Join open games with a 6-digit code✓✓✓✓ Use Spin the Wheel (including Excel/CSV upload)✓✓✓✓ Practice public quizzes from the Quiz Library–✓✓✓ View personal history (My results) & save wheels–✓✓✓ Create, edit, import/export, and duplicate quizzes––✓✓ Host live quizzes & assignments, view results dashboards––✓✓ Use AI Question Writer & upload question images––✓✓ Manage users, roles, site branding & delete any quiz"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "Known limits & design trade-offs",
+    "url": "en/index.html#limits",
+    "text": "Single process + SQLite: Designed for one school, faculty, or department (a few hundred concurrent players; up to 500 players per game). Live game turn state lives in memory, so always run with --workers 1. No outbound email: Password resets are handled directly by an Admin (via the Admin page or manage.py reset-password), which generates a one-time temporary password. Browser-based anti-cheat: Anti-cheat records leaving the quiz tab/app or fullscreen and blocks copy/paste, but a browser cannot physically prevent switching apps or detect a second device."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Overview",
+    "title": "Where to go next",
+    "url": "en/index.html#where-next",
+    "text": "⚡ Quickstart Install on a Linux server with Docker + automatic HTTPS, or try locally in 3 minutes. ✎ Teacher How-To Write quizzes fast using the editor, bulk paste, JSON import, reading passages, and AI. ▶ Hosting & Reports Run live games and assignments, configure anti-cheat, review answers, and spin the wheel. ☁ Deployment & Ops Configure .env, AI providers, Nginx, nightly backups, restores, and safe updates."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Quickstart",
+    "title": "Quickstart",
+    "url": "en/quickstart.html",
+    "text": "Get Quiz Platform running in minutes — either on a production Linux server with automatic HTTPS via Docker + Caddy, or on your laptop for local evaluation."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Quickstart",
+    "title": "Option A: Production server with Docker (5 minutes)",
+    "url": "en/quickstart.html#production-docker",
+    "text": "This is the recommended setup for a school, university department, or organization. Prerequisites: A Linux server with Docker and the Docker Compose plugin (1 CPU and 1 GB RAM is sufficient). A domain name whose DNS A/AAAA record already points to your server, with ports 80 and 443 open. Optional: An API key for an OpenAI-compatible AI provider (DeepSeek, OpenAI, OpenRouter) to enable the AI Question Writer. Clone the repository and generate .env Run ./install.sh once. On its first run, it copies .env.example to .env with chmod 600 permissions and exits so you can edit it. bashCopygit clone ht"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Quickstart",
+    "title": "Option B: Try it locally (3 minutes)",
+    "url": "en/quickstart.html#local",
+    "text": "Want to test Quiz Platform on your own computer without Docker or HTTPS? Use Python 3.12+ (or Python 3.10+). Clone and create a virtual environment bashCopygit clone https://github.com/firmanhadi21/quiz-platform.git cd quiz-platform python3 -m venv .venv .venv/bin/pip install -r requirements.txt pytest Create your first local admin account The command creates the SQLite database in data/quiz.db and prints a generated password. bashCopy.venv/bin/python app/manage.py create you@example.org \"Your Name\" admin Start the local server Set QUIZ_SECURE_COOKIE=0 so login cookies work over plain HTTP on "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Quickstart",
+    "title": "Your first quiz in 2 minutes",
+    "url": "en/quickstart.html#first-quiz",
+    "text": "Once signed in as a Teacher or Admin: Create a quiz Open Dashboard and click + New quiz. Give it a title (e.g. Introduction to Geography), add a couple of questions — or click Paste many questions or ✨ Write with AI — then click Save & close. Host a live game Click ▶ Host on your quiz card, keep Live quiz selected, and press Start. A 6-digit game code and QR code appear on the projector screen. Join as a student Open the site in a second browser window (or on your phone), type the 6-digit code (or scan the QR code), enter a nickname, and click Join. Run the game and view the report Click ▶ Sta"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Quickstart",
+    "title": "Next steps",
+    "url": "en/quickstart.html#next-steps",
+    "text": "Read the Teacher How-To to master all 5 question types, text paste syntax, reading passages, and AI rubric alignment. Read Live Quizzes, Assignments & Anti-Cheat to configure assignments, deadlines, anti-cheat rules, and Spin the Wheel. Read Administration & Branding to customize your school's name, colors, logo, and user accounts."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Teacher How-To",
+    "url": "en/teacher-guide.html",
+    "text": "A complete guide for teachers and lecturers on writing, importing, organizing, and generating quizzes with the editor, reading passages, and the AI Question Writer."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Teacher dashboard & quiz library",
+    "url": "en/teacher-guide.html#dashboard-overview",
+    "text": "When signed in with a Teacher or Admin account, Dashboard shows two sections: My quizzes: All quizzes you own, with quick actions to Host, Edit, Duplicate, Practice, or Delete. Deleting a quiz preserves reports of past games because every game stores its own snapshot of the questions. My games: Your 100 most recent live quizzes and assignments, with live status (Open / Ended), player count, and links to Open host screen or Report. To browse shared quizzes, open Explore in the top navigation bar. You can search by title, subject, or description, host any public quiz immediately, or click Duplic"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Creating & editing quizzes",
+    "url": "en/teacher-guide.html#creating-quizzes",
+    "text": "Click + New quiz on the Dashboard (or Edit on any quiz you own). Every quiz can hold 1 to 200 questions and up to 20 reading passages. In the top card, configure quiz metadata: Title (required, max 200 characters) Subject (optional, max 100 characters — used for search in the Quiz Library) Description (optional, max 1,000 characters) Show in the library: Toggle on to publish the quiz as public so other teachers can host/duplicate it and students can practice it. On each question card you can set: Question type (see the 5 types below) Time limit: 10, 20, 30, 45, 60, 90, 120, 180, or 300 seconds"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "The 5 question types",
+    "url": "en/teacher-guide.html#question-types",
+    "text": "TypeOptions / InputGrading RuleBest Used For Multiple choice (single) 2 to 6 options; select 1 radio button as correct Exact single choice match Concept checks, definitions, TOEFL reading questions Multiple answers (multi) 2 to 6 options; tick 1 or more checkboxes as correct All-or-nothing exact set match Selecting all valid properties or causes True / False (tf) True or False Exact boolean match Quick misconception checks Short answer (text) Up to 10 accepted answers separated by semicolons (;) Case-insensitive; extra whitespace collapsed Vocabulary, formulas, dates, acronyms (e.g. SRGI2013; "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Fast authoring: Paste many questions",
+    "url": "en/teacher-guide.html#paste-many",
+    "text": "If you already have questions in a document or notes, click Paste many questions at the bottom of the editor. Separate each question with a blank line: First line = question text (leading numbers like 1. or 1) are stripped automatically). Following lines = options (leading a., b), -, or • are stripped automatically). Prefix correct option(s) with *. 1 starred option → Multiple choice. 2+ starred options → Multiple answers. 0 starred options → Poll. Exactly two options True / False (or Benar / Salah) with one * → True / False. Lines starting with = → Short answer (multiple = lines add accepted "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Reading passages (TOEFL Reading style)",
+    "url": "en/teacher-guide.html#reading-passages",
+    "text": "Quiz Platform includes dedicated support for reading comprehension: Add a passage In the quiz editor, scroll to Reading passages and click + Passage. Enter an optional title and paste the passage text (up to 20,000 characters; separate paragraphs with blank lines). A live word counter helps gauge length. Attach questions to the passage Either pick the passage from the dropdown on each question card, or click Use for questions without a passage on the passage card to attach it to all unassigned questions at once. How students experience it When a live game or assignment reaches the first questi"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "AI Question Writer",
+    "url": "en/teacher-guide.html#ai-writer",
+    "text": "If your administrator has configured an AI API key, click ✨ Write with AI on the Dashboard or inside the quiz editor to draft questions directly from your teaching material. Provide teaching material Paste text (minimum 200 characters, up to 60,000 characters) or click 📄 Upload material to extract text from PDF, DOCX, PPTX, TXT, or MD files up to 50 MB. You can upload multiple files to append their text. Choose standard mode or Reading practice mode Tick Reading practice (TOEFL Reading style) if the uploaded/pasted text is a passage students will read during the quiz. The AI will attach it as "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Import & Export JSON",
+    "url": "en/teacher-guide.html#json-import-export",
+    "text": "You can back up, version-control, or share quizzes between servers as JSON files: Export: Open a quiz page (click the quiz card title on Dashboard) and click Export JSON to download quiz-<id>.json. Import: On the Dashboard, click Import JSON and pick a .json file. It creates a new quiz and opens it in the editor. jsonCopy{ \"title\": \"Basic Cartography\", \"subject\": \"Cartography\", \"description\": \"Scale, projections, contours, and symbols.\", \"passages\": [ { \"title\": \"Map Scale Overview\", \"text\": \"First paragraph...\\n\\nSecond paragraph...\" } ], \"questions\": [ { \"type\": \"single\", \"text\": \"On a 1:50,"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Teacher How-To",
+    "title": "Duplicating quizzes for different classes",
+    "url": "en/teacher-guide.html#duplicating-classes",
+    "text": "Teaching the same material to Class A and Class B? Click Duplicate on a quiz and name the copy (e.g. Basic Cartography (Class B)). Each copy gets its own ID, games, and reports, and edits never affect the original."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Live Quizzes, Assignments & Anti-Cheat",
+    "url": "en/hosting-games.html",
+    "text": "Run real-time classroom games on a projector, assign self-paced homework with deadlines, enable anti-cheat protection, analyze results dashboards, review answers, and spin the wheel."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Game modes & launch settings",
+    "url": "en/hosting-games.html#start-options",
+    "text": "Click ▶ Host on any quiz to open the launch dialog. Choose between two modes and configure per-game options: OptionLive QuizAssignment (Self-Paced) PacingTeacher advances every question on the class screenEach student works independently at their own pace Shuffle question orderShuffled once for the whole class (passages kept together)Shuffled uniquely per student (passages kept together) Shuffle answer optionsShuffled once for everyoneShuffled uniquely per student Show correct answer after each questionShown on reveal; also controls whether students can open Review laterShown immediately after"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Hosting a live quiz",
+    "url": "en/hosting-games.html#live-quiz",
+    "text": "Live quiz lifecycle over WebSocket. *The Reading phase appears automatically before the first question attached to a reading passage. Project the lobby After clicking Start, the host screen displays the site URL, a large 6-digit game code, and a QR code. Click ⛶ in the top-right bar for fullscreen presentation. Manage players in the lobby Names appear live as students join (up to 500 players per game). Click any player's name chip to remove (Remove) an inappropriate nickname. Run questions & reveals Click ▶ Start to launch the first question (or the Reading screen if the question has a passage"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "How scoring works",
+    "url": "en/hosting-games.html#scoring",
+    "text": "Correct answers earn points based on each question's configured points value (default 1,000): Timed questions (all Live quizzes, and timed Assignments): An instant correct answer scores 100% of the question's points, sliding linearly down to 50% at the time limit: score = round(points × (1 − 0.5 × elapsed_ms / limit_ms)) Example: For a 1,000-point, 30-second question, answering correctly in 6 seconds earns round(1000 × (1 − 0.5 × 0.2)) = 900 pts; answering right before 30 seconds earns 500 pts. Untimed Assignments: Every correct answer earns 100% of the question's points regardless of speed. I"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Running self-paced assignments",
+    "url": "en/hosting-games.html#assignments",
+    "text": "When you start an Assignment, you are taken straight to its Results dashboard, which displays the shareable 6-digit code, QR code, and Copy link button (https://your-site/join/123456). Students can open the assignment anytime before the deadline. If per-question timers are enabled, the clock starts when a student opens a question — reloading the page does not reset the timer. The Results Dashboard auto-refreshes every 10 seconds while the assignment is open. Click End at any time to close submissions manually."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Anti-cheat mode",
+    "url": "en/hosting-games.html#anti-cheat",
+    "text": "Enable 🛡 Anti-cheat mode in the launch dialog when running graded quizzes or exams. What it detects & enforces Tab / app switching & screen lock (visibilitychange / blur) and exiting fullscreen on desktop browsers. 2-second grace period: Brief accidental glitches or notifications shorter than 2.0 s are logged but not counted as violations. Copy, cut, paste, and right-click context menu are blocked on the quiz page. Server-side record: All exits are stored on the server immediately, so refreshing the page does not clear a student's record. Transparent notice: Before the first question opens, st"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Results dashboard & CSV export",
+    "url": "en/hosting-games.html#results-dashboard",
+    "text": "Open any game's Report from the Dashboard (or after a live game ends) to see: Winner banner & Top 3 podium with score, correct count, and average response time. Class summary metrics: Total players, average accuracy %, average score, top score, completion count, and average answer time. Spread of accuracy histogram: Number of students in each 20% accuracy band (0–20% through 80–100%). Automatic highlights: Hardest question, easiest question, and students scoring below 50% who may need support. Student performance table: Full ranking with score, correct/wrong/blank counts, accuracy badge, avera"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Post-game review mode",
+    "url": "en/hosting-games.html#review-mode",
+    "text": "Click ▶ Review questions from the podium or Results Dashboard to walk through the finished quiz question-by-question on the classroom projector without replaying it. Color-coded question number dots at the top show class performance at a glance (green ≥ 70%, amber 40–69%, red < 40%). The correct answer starts hidden so you can discuss each question with the class first, then reveal the answer key, class distribution, and explanation. Keyboard shortcuts: ← / → (or PageUp / PageDown) switch questions; Space or Enter toggles showing/hiding the answer."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Live Quizzes, Assignments & Anti-Cheat",
+    "title": "Spin the wheel",
+    "url": "en/hosting-games.html#spin-wheel",
+    "text": "Open Spin the wheel from the top menu (or click ◔ Spin the wheel inside any live lobby or report to pre-fill it with that game's players). Manual entries: Type one entry per line (2 to 200 entries). Use number | name (e.g. 12 | Ani Wijaya) so the wheel displays compact numbers on the slices while the winner dialog announces the full student name! Upload Excel / CSV: Click ⬆ Upload Excel / CSV to load a 2-column .xlsx or .csv class list (column 1 = number/NIM/attendance no., column 2 = name; headers like No, Nama are skipped automatically). Click Download a sample to get a ready-to-edit CSV tem"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Student How-To",
+    "url": "en/student-guide.html",
+    "text": "How students join live quizzes and self-paced assignments, practice from the public library, check personal results, and stay compliant in anti-cheat mode."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Joining a live quiz or assignment",
+    "url": "en/student-guide.html#joining",
+    "text": "You can join a game in three ways: Enter the 6-digit code Open your school's Quiz Platform homepage, type the 6-digit code given by your teacher (e.g. 123 456), and click Join. Scan the QR code Point your phone camera at the QR code on the classroom projector to jump directly to the join screen. Open a direct link Teachers can share a link like https://quiz.yourschool.edu/join/123456 (or the short link /123456). Next, enter your Nickname (1–30 characters; use a name your teacher recognizes). If the teacher turned on Require an account, you will be prompted to sign in or register first so your "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Answering questions",
+    "url": "en/student-guide.html#playing",
+    "text": "Live quizzes: Wait in the lobby until your teacher starts. Answer each question before the countdown ends — faster correct answers earn more points. After each question closes, you see whether you were right, the points earned, the explanation (if provided), and your current rank. Assignments: Work through questions at your own pace before the deadline. If a per-question timer is enabled, the clock begins as soon as a question opens and keeps ticking even if you reload the page. Multiple answers: Select all correct options, then tap Submit. Short answer: Capitalization and extra spaces do not "
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Practicing from the Quiz Library",
+    "url": "en/student-guide.html#practice-library",
+    "text": "Sign in with a student account and open Explore to browse public quizzes shared by teachers. Click Practice on any quiz to start a private, self-paced practice run with shuffled questions and options. Your practice attempts appear under My results."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Checking results & reviewing answers",
+    "url": "en/student-guide.html#results-review",
+    "text": "Whenever you join a game while signed in, your score, accuracy, and rank are saved in My results in the top navigation bar. If your teacher enabled Show the correct answer, click Review answers after finishing a game (or anytime later from My results) to step through every question, compare your answer with the answer key, and read the explanations."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Taking a quiz with Anti-Cheat Mode",
+    "url": "en/student-guide.html#student-anticheat",
+    "text": "If your teacher enables 🛡 Anti-cheat mode, you will see a notice screen listing the rules before the first question appears. To avoid accidental violations: Enable Do Not Disturb / silence pop-up notifications before starting. Do not switch browser tabs, open other apps, or lock your phone screen while the quiz is active. On a laptop/desktop, keep the browser in fullscreen mode when prompted. Copy, cut, paste, and right-click are disabled during the quiz. If you leave the quiz page for 2 seconds or longer, it is recorded and reported to your teacher. Depending on your teacher's rule, you may r"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Student How-To",
+    "title": "Managing your account & password",
+    "url": "en/student-guide.html#student-account",
+    "text": "Click your name in the top navigation bar (My account) to view your role or change your password (minimum 8 characters). Changing your password automatically signs out all other devices. Forgot your password? Quiz Platform does not send automated emails — ask your site administrator to reset it for you and hand you a one-time password."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Administration & Branding",
+    "url": "en/admin-guide.html",
+    "text": "Manage user accounts, roles, registration settings, site colors and logo from the Admin panel, or run server-side commands via app/manage.py."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Opening the Admin panel",
+    "url": "en/admin-guide.html#admin-panel",
+    "text": "Sign in with an Admin account and click Admin in the top navigation bar (/admin). The top summary bar displays live counts for total accounts, Teachers, Students, Admins, Quizzes, and Games hosted."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Customizing site identity & branding",
+    "url": "en/admin-guide.html#branding",
+    "text": "Under Site identity, you can white-label Quiz Platform for your school or organization without editing any code. Changes take effect immediately for all users: Site name: Shown in the header bar and browser tab (max 60 characters). Organisation: Optional school or institution subtitle (max 120 characters). Main colour & Accent colour: Pick any hex colors (#rrggbb). Quiz Platform automatically generates darker, deeper, and wash shades via /brand.css. Click Default colours anytime to restore teal (#0f6b5f) and amber (#f0b429). Logo: Click Upload logo to upload a PNG, JPG, or WebP image up to 1 M"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Registration & default role",
+    "url": "en/admin-guide.html#site-settings",
+    "text": "Under Site settings, control how new accounts join your server: Registration is open: When checked, anyone can sign up at /register. Turn this off if you want only Admins to create accounts. Role of newly registered accounts: Student (recommended for schools): New sign-ups can join games and practice; Admins promote teachers individually. Teacher: Anyone who registers can immediately create quizzes, host games, and use the AI Question Writer."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Managing user accounts",
+    "url": "en/admin-guide.html#user-management",
+    "text": "In the Accounts section you can search by name or email, filter by role or status (All, Student, Teacher, Admin, Disabled), and perform these actions: + Add user: Create an account with name, email, and role. A one-time temporary password is displayed once for you to hand to the user. Change role: Switch any user between Student, Teacher, and Admin using the inline dropdown. Reset password: Generates a new one-time password and immediately signs the user out of all active sessions. Disable / Enable: Disabling an account blocks login and revokes all active sessions without deleting their quizze"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Administration & Branding",
+    "title": "Server CLI reference (app/manage.py)",
+    "url": "en/admin-guide.html#manage-cli",
+    "text": "Every account administration chore — plus consistent live SQLite backups — can also be run from the server terminal inside deploy/: bashCopy# List all users, roles, quiz counts, and disabled status docker compose exec quiz python manage.py users # Create a new account (role: student | teacher | admin) — prints one-time password docker compose exec quiz python manage.py create teacher@school.edu \"Ani Wijaya\" teacher # Change an existing user's role (e.g. promote to admin) docker compose exec quiz python manage.py role teacher@school.edu admin # Reset a lost password (also revokes active session"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Deployment & Operations",
+    "url": "en/deployment.html",
+    "text": "Complete reference for environment variables, AI providers, custom starter quizzes, Nginx reverse proxy setup, nightly backups, restores, and safe updates."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Environment variables (.env)",
+    "url": "en/deployment.html#env-reference",
+    "text": "Settings live in deploy/.env. Keep this file private (chmod 600 .env) because it stores your AI API key. Variables marked Admin UI serve as starting defaults and can later be changed on the Admin page without touching the server. VariableDefault / ExampleAdmin UIDescription DOMAINquiz.example.sch.idNoPublic domain name for Caddy automatic HTTPS ADMIN_EMAIL, ADMIN_NAMEadmin@example.sch.idNoFirst admin created by ./install.sh if no admin exists yet QUIZ_SITE_NAMEQuizYesSite title in header and browser tab QUIZ_ORG(empty)YesOrganization name QUIZ_COLOR_PRIMARY#0f6b5fYesPrimary brand hex color (de"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Configuring AI providers",
+    "url": "en/deployment.html#ai-providers",
+    "text": "Any provider exposing an OpenAI-style /chat/completions endpoint works out of the box: ProviderQUIZ_AI_URLExample QUIZ_AI_MODEL DeepSeekhttps://api.deepseek.com/v1deepseek-v4-flash OpenAIhttps://api.openai.com/v1gpt-5-mini OpenRouterhttps://openrouter.ai/api/v1deepseek/deepseek-chat All requests are billed to QUIZ_AI_KEY. Built-in per-teacher throttling (5 requests / 5 min and 40 / day) prevents runaway usage."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Loading custom starter quizzes",
+    "url": "en/deployment.html#starter-quizzes",
+    "text": "Export any quiz as JSON from its quiz page, place one or more .json files in a host folder, mount that folder into the container (e.g. /seed), and set QUIZ_SEED=on and QUIZ_SEED_DIR=/seed. Each filename stem is imported once as a read-only public quiz that any teacher can host or duplicate."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Using an existing Nginx server instead of Caddy",
+    "url": "en/deployment.html#nginx",
+    "text": "If your server already runs Nginx on ports 80/443: Expose the quiz container on localhost only In deploy/docker-compose.yml, add ports: [\"127.0.0.1:8000:8000\"] to the quiz service and start only the app container: bashCopydocker compose up -d --build quiz Configure Nginx using deploy/nginx.example.conf Make sure you preserve three critical blocks from the example config: location /ws/ — WebSocket upgrade headers and proxy_read_timeout 3h so live games stay connected. location /api/ai/ — client_max_body_size 51m (for 50 MB PDF/PPTX uploads) and proxy_read_timeout 300s. Generous rate-limit burst"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Backups & disaster recovery",
+    "url": "en/deployment.html#backups-restore",
+    "text": "All persistent data lives inside the Docker volume quiz_quiz-data (mounted at /data inside the container): quiz.db, uploads/, brand/, and backups/. Run a live backup manage.py backup uses SQLite's online backup API (safe while the site is running), bundles quiz.db, uploads/, and brand/ into a timestamped .tar.gz archive in /data/backups, and automatically keeps the latest 14 archives. bashCopy# Run a manual backup docker compose exec quiz python manage.py backup # Copy backup archives off the server docker compose cp quiz:/data/backups ./backups Schedule nightly backups with cron cronCopy0 2 *"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Updating & viewing logs",
+    "url": "en/deployment.html#updates",
+    "text": "bashCopy# Follow live application logs docker compose logs -f quiz # Update to the latest release (preserves all data in quiz_quiz-data) cd /path/to/quiz-platform git pull cd deploy && ./install.sh Update outside class hours Updating keeps all database records, uploads, and branding intact, but restarting the container interrupts any live game currently in progress (answers already submitted are kept)."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Deployment & Operations",
+    "title": "Pre-handover checklist (schools & clients)",
+    "url": "en/deployment.html#handover-checklist",
+    "text": "License: Quiz Platform is MIT-licensed; retain the copyright notice in the codebase. Data privacy: Student names, emails, and scores remain on the institution's server. Agree in writing on retention policy and who holds Admin access. Admin recovery: Confirm at least one administrator has changed the initial password and knows how to reset forgotten user passwords. Backups verified: Confirm nightly cron backups are running and periodically copied off-server."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Customization & Development",
+    "url": "en/customization.html",
+    "text": "Codebase map, local development workflow, safe customization points, automated test suites, and security architecture."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Local development setup",
+    "url": "en/customization.html#local-dev",
+    "text": "Quiz Platform has no frontend bundler or Node build step — edit files in app/ and reload the browser. bashCopycd quiz-platform python3 -m venv .venv .venv/bin/pip install -r requirements.txt pytest # Create a local admin (data stored in ./data/) .venv/bin/python app/manage.py create dev@example.org \"Dev Admin\" admin # Run with auto-reload (single worker!) cd app && QUIZ_SECURE_COOKIE=0 ../.venv/bin/uvicorn main:app --reload --port 8765 Open http://127.0.0.1:8765. Static files are served with Cache-Control: no-cache so JavaScript and CSS edits appear immediately on refresh."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Codebase map",
+    "url": "en/customization.html#code-map",
+    "text": "PathResponsibility app/main.pyFastAPI app, SQLite schema, auth/sessions, quizzes, games, assignments, reports, CSV export, wheels, SPA fallback app/live.pyIn-memory WebSocket state machine for live quizzes (lobby → reading → question → reveal → ended) app/ai.pyFile extraction (PDF/DOCX/PPTX/TXT), standard & TOEFL reading prompts, OpenAI-compatible & Hermes calls app/guard.pyAnti-cheat exits table, 2-second grace period, penalty enforcement (record/zero/lock), unlock endpoint app/admin.pyAdmin user CRUD, role changes, password resets, site settings, user self-service password change app/brand.p"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Where to customize behavior",
+    "url": "en/customization.html#customizing-code",
+    "text": "Prefer .env and Admin UI for per-client branding Keep one shared codebase for every school or client and store differences (name, logo, colors, registration, AI key) in .env and the Admin page so upgrades stay effortless. What you want to changeWhere to edit Any UI text in Bahasa Indonesia & Englishapp/static/js/strings.js (key → [Indonesian, English]) API error messages (both languages)MSG dictionary in app/main.py, ai.py, guard.py, admin.py, brand.py Layout, typography, or default paletteapp/static/style.css (--teal-* and --amber-* CSS variables) AI prompt rules & TOEFL reading instructionsb"
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Running tests",
+    "url": "en/customization.html#testing",
+    "text": "Run the full test suites before cutting a release or deploying customizations: bashCopy# 1. API & logic test suite (accounts, quizzes, games, AI, anti-cheat, wheels, branding) .venv/bin/pytest -q # 2. Full browser E2E test with Playwright (teacher + students through a complete session) PLAYWRIGHT=/path/to/node_modules/playwright/index.mjs tests/run_e2e.sh [screenshot-dir] GitHub Actions (.github/workflows/tests.yml) automatically runs pytest -q and builds/boots the Docker image on every push and pull request."
+  },
+  {
+    "lang": "en",
+    "pageTitle": "Customization & Development",
+    "title": "Security & architecture notes",
+    "url": "en/customization.html#security-architecture",
+    "text": "Password hashing: scrypt (N=16384, r=8, p=1) with random 16-byte salts and constant-time comparison. Sessions: 32-byte random tokens stored SHA-256 hashed in SQLite, issued in HttpOnly, SameSite=Lax, Secure cookies (30-day lifetime). CSRF protection: Every mutating /api/* request requires the custom header X-Quiz: 1, which browsers block cross-origin without CORS preflight. WebSocket origin check: Live WebSockets validate Origin against Host. Strict headers: Content Security Policy (script-src 'self', frame-ancestors 'none'), X-Content-Type-Options: nosniff, Referrer-Policy: same-origin, plus "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Ringkasan",
+    "url": "id/index.html",
+    "text": "Quiz Platform adalah platform kuis kelas yang dapat di-host mandiri: kuis langsung di layar kelas, tugas mandiri, bacaan gaya TOEFL, pembuat soal AI, mode anti-curang, dasbor hasil, dan roda putar — dengan antarmuka Bahasa Indonesia dan English."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Apa itu Quiz Platform?",
+    "url": "id/index.html#what-it-is",
+    "text": "Quiz Platform dirancang untuk sekolah, program studi/jurusan kampus, lembaga pelatihan, maupun pengajar individu yang menginginkan aplikasi kuis interaktif di server sendiri — sehingga data nama siswa, nilai, dan materi ajar tetap berada di bawah kendali lembaga. Aplikasi berjalan dalam satu kontainer Docker kecil berbasis FastAPI, SQLite (mode WAL), dan JavaScript murni tanpa proses build yang rumit. Satu server ringan (1 CPU, 1 GB RAM) cukup untuk menangani satu sekolah atau jurusan dengan beberapa ratus pemain sekaligus. Arsitektur satu kontainer: Caddy menangani HTTPS otomatis dan menerusk"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Fitur utama",
+    "url": "id/index.html#features",
+    "text": "▶ Kuis Langsung Setiap permainan mendapat kode 6 angka dan kode QR. Guru memandu di layar proyektor sementara siswa menjawab dari ponsel. Jawaban benar lebih cepat mendapat poin lebih tinggi. ✎ Tugas Mandiri Kuis yang sama dapat diberikan sebagai tugas asinkron dengan pilihan batas waktu per soal, tenggat waktu, serta pengacakan soal dan pilihan per siswa. ✨ Pembuat Soal AI Tempel materi atau unggah PDF, DOCX, PPTX, atau TXT (maks. 50 MB), opsional dengan rubrik penilaian (CPMK). Mendukung API kompatibel OpenAI (DeepSeek, OpenAI, OpenRouter). 📖 Teks Bacaan Cocok untuk latihan membaca (seperti "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Ringkasan peran akun",
+    "url": "id/index.html#roles",
+    "text": "Setiap akun memiliki salah satu dari tiga peran. Tamu tanpa akun tetap dapat bergabung ke permainan terbuka dengan nama panggilan serta memakai Roda Putar. KemampuanTamu (tanpa masuk)SiswaGuruAdmin Gabung permainan terbuka dengan kode 6 angka✓✓✓✓ Memakai Roda Putar (termasuk unggah Excel/CSV)✓✓✓✓ Berlatih kuis publik dari Pustaka Kuis–✓✓✓ Melihat riwayat nilai sendiri (Nilai saya) & menyimpan roda–✓✓✓ Membuat, mengubah, impor/ekspor, dan menyalin kuis––✓✓ Memandu kuis langsung & tugas, melihat dasbor hasil––✓✓ Menggunakan Pembuat Soal AI & mengunggah gambar soal––✓✓ Mengelola pengguna, peran, "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Batasan & catatan rancangan",
+    "url": "id/index.html#limits",
+    "text": "Satu proses + SQLite: Cocok untuk satu sekolah, fakultas, atau jurusan (beberapa ratus pemain bersamaan; maksimal 500 pemain per permainan). Status giliran kuis langsung disimpan di memori, jadi jalankan selalu dengan --workers 1. Tanpa pengiriman email otomatis: Pengaturan ulang kata sandi dilakukan langsung oleh Admin (lewat halaman Admin atau manage.py reset-password) yang menghasilkan kata sandi sementara sekali pakai. Mode anti-curang berbasis peramban: Anti-curang mencatat saat siswa meninggalkan tab/aplikasi atau keluar layar penuh serta memblokir salin-tempel, namun peramban tidak dapa"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Ringkasan",
+    "title": "Langkah selanjutnya",
+    "url": "id/index.html#where-next",
+    "text": "⚡ Panduan Cepat Pasang di server Linux dengan Docker + HTTPS otomatis, atau coba lokal dalam 3 menit. ✎ Panduan Guru & Dosen Susun kuis cepat dengan editor, tempel teks massal, impor JSON, bacaan, dan AI. ▶ Kuis Langsung & Laporan Pandu kuis langsung, atur tugas dan anti-curang, bahas soal, dan gunakan roda putar. ☁ Deploy & Operasional Konfigurasi .env, penyedia AI, Nginx, cadangan harian, pemulihan, dan pembaruan."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Cepat",
+    "title": "Panduan Cepat",
+    "url": "id/quickstart.html",
+    "text": "Jalankan Quiz Platform dalam hitungan menit — baik di server Linux produksi dengan HTTPS otomatis melalui Docker + Caddy, maupun secara lokal di komputer Anda."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Cepat",
+    "title": "Opsi A: Server produksi dengan Docker (5 menit)",
+    "url": "id/quickstart.html#production-docker",
+    "text": "Ini adalah cara yang disarankan untuk sekolah, jurusan kampus, atau lembaga. Prasyarat: Server Linux yang sudah terpasang Docker dan Docker Compose plugin (1 CPU dan 1 GB RAM sudah memadai). Nama domain dengan DNS A/AAAA yang sudah mengarah ke server tersebut, serta port 80 dan 443 terbuka. Opsional: Kunci API (API key) dari layanan AI kompatibel OpenAI (DeepSeek, OpenAI, OpenRouter) untuk mengaktifkan Pembuat Soal AI. Kloning repositori dan buat berkas .env Jalankan ./install.sh pertama kali. Skrip akan menyalin .env.example menjadi .env dengan izin chmod 600 lalu berhenti agar Anda dapat men"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Cepat",
+    "title": "Opsi B: Coba secara lokal (3 menit)",
+    "url": "id/quickstart.html#local",
+    "text": "Ingin mencoba Quiz Platform di laptop tanpa Docker atau HTTPS? Cukup gunakan Python 3.12+ (atau Python 3.10+). Kloning repositori dan siapkan virtual environment bashSalingit clone https://github.com/firmanhadi21/quiz-platform.git cd quiz-platform python3 -m venv .venv .venv/bin/pip install -r requirements.txt pytest Buat akun admin lokal pertama Perintah ini membuat basis data SQLite di data/quiz.db dan mencetak kata sandi acak. bashSalin.venv/bin/python app/manage.py create anda@contoh.org \"Nama Anda\" admin Jalankan server lokal Gunakan QUIZ_SECURE_COOKIE=0 agar sesi masuk dapat bekerja di H"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Cepat",
+    "title": "Membuat & memainkan kuis pertama dalam 2 menit",
+    "url": "id/quickstart.html#first-quiz",
+    "text": "Setelah masuk sebagai Guru atau Admin: Buat kuis baru Buka Dasbor lalu klik + Kuis baru. Isi judul (mis. Kartografi Dasar), tulis beberapa soal — atau pakai Tempel banyak soal maupun ✨ Buat dengan AI — lalu klik Simpan & tutup. Mulai kuis langsung Klik ▶ Mainkan pada kartu kuis, pastikan mode Kuis langsung terpilih, lalu tekan Mulai. Kode permainan 6 angka dan kode QR langsung tampil di layar guru. Gabung sebagai siswa Buka alamat situs di jendela peramban lain (atau di ponsel), masukkan kode 6 angka (atau pindai kode QR), ketik nama panggilan, lalu klik Gabung. Jalankan kuis dan lihat laporan"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Cepat",
+    "title": "Langkah selanjutnya",
+    "url": "id/quickstart.html#next-steps",
+    "text": "Baca Panduan Guru & Dosen untuk menguasai 5 tipe soal, format tempel teks, teks bacaan, dan Pembuat Soal AI dengan rubrik. Baca Kuis Langsung, Tugas & Anti-Curang untuk mengatur tugas mandiri, tenggat waktu, mode anti-curang, dan Roda Putar. Baca Administrasi & Identitas Situs untuk mengganti nama situs, warna, logo sekolah, dan mengelola pengguna."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Panduan Guru & Dosen",
+    "url": "id/teacher-guide.html",
+    "text": "Panduan lengkap bagi guru dan dosen untuk menyusun, mengimpor, mengelola, dan menghasilkan soal kuis memakai editor, teks bacaan, serta Pembuat Soal AI."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Dasbor guru & pustaka kuis",
+    "url": "id/teacher-guide.html#dashboard-overview",
+    "text": "Saat masuk dengan akun Guru atau Admin, halaman Dasbor menampilkan dua bagian utama: Kuis saya: Semua kuis milik Anda dengan tombol cepat Mainkan, Ubah, Salin, Latihan, dan Hapus. Menghapus kuis tidak menghapus laporan permainan lama karena setiap permainan menyimpan salinan soalnya sendiri. Permainan saya: Hingga 100 permainan terakhir (kuis langsung dan tugas mandiri) lengkap dengan status (Berjalan / Selesai), jumlah pemain, serta tombol Buka layar guru dan Laporan. Untuk mencari kuis publik dari pengajar lain, buka Jelajah di bilah atas. Anda bisa mencari berdasarkan judul, mata kuliah/pel"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Membuat & mengubah kuis",
+    "url": "id/teacher-guide.html#creating-quizzes",
+    "text": "Klik + Kuis baru di Dasbor (atau Ubah pada kuis milik Anda). Satu kuis dapat memuat 1 hingga 200 soal dan hingga 20 teks bacaan. Pada kartu informasi kuis di bagian atas, atur: Judul (wajib, maks. 200 karakter) Mata kuliah / pelajaran (opsional, maks. 100 karakter — membantu pencarian di Pustaka Kuis) Deskripsi (opsional, maks. 1.000 karakter) Tampilkan di pustaka: Centang agar kuis bersifat publik sehingga guru lain dapat memainkan/menyalin dan siswa dapat berlatih mandiri. Pada setiap kartu soal, Anda dapat mengatur: Tipe soal (lihat 5 tipe soal di bawah) Waktu: 10, 20, 30, 45, 60, 90, 120, "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Lima tipe soal",
+    "url": "id/teacher-guide.html#question-types",
+    "text": "Tipe SoalPilihan / JawabanAturan PenilaianCocok Untuk Pilihan ganda (single) 2 sampai 6 pilihan; pilih 1 bulatan jawaban benar Harus cocok tepat 1 pilihan Konsep, definisi, pemahaman bacaan TOEFL Banyak jawaban (multi) 2 sampai 6 pilihan; centang semua jawaban benar Harus tepat seluruh himpunan jawaban benar Memilih semua sifat, syarat, atau penyebab yang tepat Benar / Salah (tf) Benar atau Salah Cocok persis Benar/Salah Cek cepat miskonsepsi di kelas Isian singkat (text) Hingga 10 variasi jawaban dipisah titik koma (;) Tidak peka huruf besar/kecil; spasi ganda diabaikan Istilah, singkatan, ru"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Menyusun cepat: Tempel banyak soal",
+    "url": "id/teacher-guide.html#paste-many",
+    "text": "Jika soal sudah tersedia di dokumen atau catatan, klik Tempel banyak soal di bagian bawah editor. Pisahkan setiap soal dengan satu baris kosong: Baris pertama = teks soal (nomor awal seperti 1. atau 1) otomatis dibersihkan). Baris berikutnya = pilihan jawaban (awalan a., b), -, atau • otomatis dibersihkan). Awali jawaban yang benar dengan tanda bintang *. 1 pilihan bertanda * → Pilihan ganda. 2+ pilihan bertanda * → Banyak jawaban. Tanpa * → Jajak pendapat. Tepat dua pilihan Benar / Salah (atau True / False) dengan satu * → Benar / Salah. Baris berawalan = → Isian singkat (beberapa baris = men"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Teks bacaan (gaya TOEFL Reading)",
+    "url": "id/teacher-guide.html#reading-passages",
+    "text": "Quiz Platform menyediakan dukungan khusus untuk soal pemahaman bacaan: Tambahkan bacaan Di editor kuis, buka bagian Bacaan lalu klik + Bacaan. Isi judul bacaan (opsional) dan tempel teksnya (maks. 20.000 karakter; pisahkan paragraf dengan baris kosong). Penghitung kata otomatis membantu memantau panjang teks. Hubungkan soal ke bacaan Pilih bacaan lewat menu tarik-turun pada masing-masing kartu soal, atau klik Pakai untuk soal tanpa bacaan pada kartu bacaan untuk langsung memasangkannya ke semua soal yang belum memiliki bacaan. Tampilan di sisi siswa Saat kuis langsung atau tugas mencapai soal "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Pembuat Soal AI",
+    "url": "id/teacher-guide.html#ai-writer",
+    "text": "Jika admin server telah memasang kunci API AI, klik ✨ Buat dengan AI di Dasbor atau di editor kuis untuk menyusun draf soal dari materi ajar Anda. Masukkan materi ajar Tempel teks (minimal 200 karakter, maksimal 60.000 karakter) atau klik 📄 Unggah materi untuk membaca teks dari berkas PDF, DOCX, PPTX, TXT, atau MD hingga 50 MB. Anda bisa mengunggah beberapa berkas sekaligus untuk menggabungkan isinya. Pilih mode standar atau Latihan membaca Centang Latihan membaca (gaya TOEFL Reading) jika materi tersebut merupakan teks bacaan yang harus dibaca siswa saat kuis. AI akan memasangnya sebagai Baca"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Impor & Ekspor JSON",
+    "url": "id/teacher-guide.html#json-import-export",
+    "text": "Kuis dapat dicadangkan, disimpan di Git, atau dibagikan antarserver dalam format JSON: Ekspor: Buka halaman detail kuis (klik judul kartu kuis di Dasbor) lalu klik Ekspor JSON untuk mengunduh quiz-<id>.json. Impor: Di Dasbor, klik Impor JSON lalu pilih berkas .json. Kuis baru akan dibuat dan langsung terbuka di editor. jsonSalin{ \"title\": \"Kartografi Dasar\", \"subject\": \"Kartografi\", \"description\": \"Skala, proyeksi, kontur, dan simbol peta.\", \"passages\": [ { \"title\": \"Pengantar Skala Peta\", \"text\": \"Paragraf pertama...\\n\\nParagraf kedua...\" } ], \"questions\": [ { \"type\": \"single\", \"text\": \"Pada "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Guru & Dosen",
+    "title": "Menyalin kuis untuk kelas lain",
+    "url": "id/teacher-guide.html#duplicating-classes",
+    "text": "Mengajar materi yang sama untuk Kelas A dan Kelas B? Klik Salin pada kuis lalu beri nama baru (mis. Kartografi Dasar (Kelas B)). Salinan berdiri sendiri dengan ID, permainan, dan laporan terpisah tanpa memengaruhi kuis aslinya."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Kuis Langsung, Tugas & Anti-Curang",
+    "url": "id/hosting-games.html",
+    "text": "Memandu kuis langsung di layar kelas, memberikan tugas mandiri dengan tenggat waktu, mengaktifkan mode anti-curang, membaca dasbor hasil, membahas soal, dan memakai roda putar."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Mode permainan & pengaturan mulai",
+    "url": "id/hosting-games.html#start-options",
+    "text": "Klik ▶ Mainkan pada kuis mana pun untuk membuka dialog pengaturan. Pilih salah satu dari dua mode berikut: PengaturanKuis LangsungTugas Mandiri Alur pengerjaanGuru memindahkan setiap soal di layar kelasSiswa mengerjakan sendiri-sendiri kapan saja Acak urutan soalDiacak satu kali untuk seluruh kelas (bacaan tetap utuh)Diacak berbeda untuk tiap siswa (bacaan tetap utuh) Acak urutan pilihan jawabanDiacak satu kali untuk semuaDiacak berbeda untuk tiap siswa Tampilkan jawaban benarMuncul saat soal ditutup; juga mengatur izin siswa membuka PembahasanMuncul langsung setelah tiap soal & mengatur akses"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Memandu kuis langsung",
+    "url": "id/hosting-games.html#live-quiz",
+    "text": "Siklus kuis langsung melalui WebSocket. *Fase Bacaan muncul otomatis sebelum soal pertama yang terhubung ke suatu teks bacaan. Tampilkan lobi di proyektor Setelah klik Mulai, layar guru menampilkan alamat situs, kode permainan 6 angka berukuran besar, dan kode QR. Klik tombol ⛶ di pojok kanan atas untuk layar penuh. Kelola pemain di lobi Nama pemain muncul seketika saat siswa bergabung (maks. 500 pemain per permainan). Klik nama pemain mana saja untuk mengeluarkannya (Keluarkan) jika memakai nama yang tidak pantas. Jalankan soal dan tampilkan jawaban Klik ▶ Mulai untuk membuka soal pertama (at"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Cara perhitungan skor",
+    "url": "id/hosting-games.html#scoring",
+    "text": "Jawaban yang benar menghasilkan poin berdasarkan nilai points tiap soal (bawaan 1.000 poin): Soal berwaktu (semua Kuis Langsung dan Tugas Mandiri berwaktu): Jawaban benar seketika mendapat 100% poin, menurun linier hingga 50% saat batas waktu habis: skor = round(poin × (1 − 0,5 × waktu_jawab_ms / batas_waktu_ms)) Contoh: Pada soal 1.000 poin berbatas 30 detik, menjawab benar dalam 6 detik menghasilkan round(1000 × (1 − 0,5 × 0,2)) = 900 poin; menjawab tepat menjelang detik ke-30 menghasilkan 500 poin. Tugas Mandiri tanpa batas waktu: Setiap jawaban benar mendapat 100% poin penuh tanpa bergantu"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Memberikan tugas mandiri",
+    "url": "id/hosting-games.html#assignments",
+    "text": "Saat Anda memulai Tugas mandiri, halaman langsung membuka Dasbor hasil yang menampilkan kode 6 angka, kode QR, dan tombol Salin tautan (https://situs-anda/join/123456) untuk dibagikan ke grup kelas atau LMS. Siswa dapat mengerjakan kapan saja sebelum tenggat waktu. Jika batas waktu per soal diaktifkan, hitungan mundur mulai saat soal dibuka — memuat ulang (refresh) halaman tidak mengulang waktu. Dasbor Hasil memperbarui data otomatis setiap 10 detik selama tugas masih terbuka. Tekan Akhiri kapan saja untuk menutup tugas secara manual."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Mode anti-curang",
+    "url": "id/hosting-games.html#anti-cheat",
+    "text": "Centang 🛡 Mode anti-curang saat memulai kuis atau ujian yang membutuhkan pengawasan tambahan. Apa yang dipantau & diblokir Pindah tab/aplikasi & mengunci layar (visibilitychange / blur) serta keluar dari layar penuh pada komputer/laptop. Masa toleransi 2 detik: Gangguan singkat atau notifikasi kurang dari 2,0 detik tetap tercatat di log namun tidak dihitung sebagai pelanggaran. Salin, potong, tempel, dan klik kanan diblokir di halaman kuis. Tercatat di server: Seluruh riwayat keluar halaman langsung disimpan di server sehingga memuat ulang halaman tidak menghapus catatan siswa. Pemberitahuan t"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Dasbor hasil & ekspor CSV",
+    "url": "id/hosting-games.html#results-dashboard",
+    "text": "Buka Laporan dari Dasbor (atau setelah kuis langsung berakhir) untuk melihat analisis menyeluruh: Pita pemenang & podium 3 besar lengkap dengan skor, jumlah benar, dan rata-rata waktu jawab. Ringkasan kelas: Jumlah pemain, rata-rata benar %, rata-rata skor, skor tertinggi, jumlah selesai, dan rata-rata waktu. Histogram sebaran ketepatan: Jumlah siswa pada rentang 0–20%, 20–40%, 40–60%, 60–80%, dan 80–100%. Catatan otomatis: Soal tersulit, soal termudah, dan daftar siswa dengan ketepatan di bawah 50% yang perlu pendampingan. Tabel kinerja siswa: Peringkat lengkap dengan skor, benar/salah/kosong"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Mode bahas soal",
+    "url": "id/hosting-games.html#review-mode",
+    "text": "Klik ▶ Bahas soal dari podium akhir atau Dasbor Hasil untuk membahas kuis yang sudah selesai satu per satu di layar proyektor tanpa harus mengulang permainan. Deretan nomor soal berwarna di bagian atas langsung menunjukkan performa kelas (hijau ≥ 70%, kuning 40–69%, merah < 40%). Kunci jawaban disembunyikan dulu agar guru dapat berdiskusi dengan kelas, lalu ditampilkan beserta distribusi jawaban kelas dan penjelasannya. Pintasan papan ketik: ← / → (atau PageUp / PageDown) untuk berpindah soal; Spasi atau Enter untuk menampilkan/menyembunyikan jawaban."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kuis Langsung, Tugas & Anti-Curang",
+    "title": "Roda putar",
+    "url": "id/hosting-games.html#spin-wheel",
+    "text": "Buka Roda putar dari menu atas (atau klik ◔ Roda putar di lobi kuis / halaman laporan untuk langsung mengisi nama pemain permainan tersebut). Ketik manual: Tulis satu isian per baris (2 sampai 200 isian). Gunakan format nomor | nama (mis. 12 | Ani Wijaya) agar roda menampilkan nomor yang rapi di tiap irisan, lalu nama lengkap siswa muncul besar saat roda berhenti! Unggah Excel / CSV: Klik ⬆ Unggah Excel / CSV untuk memuat berkas .xlsx atau .csv dua kolom (kolom 1 = nomor/NIM/absen, kolom 2 = nama; baris judul seperti No, Nama dilewati otomatis). Klik Unduh contoh untuk mendapatkan templat CSV."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Panduan Siswa & Mahasiswa",
+    "url": "id/student-guide.html",
+    "text": "Cara bergabung ke kuis langsung dan tugas mandiri, berlatih dari pustaka kuis publik, melihat nilai dan pembahasan, serta mengikuti aturan mode anti-curang."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Bergabung ke kuis langsung atau tugas",
+    "url": "id/student-guide.html#joining",
+    "text": "Anda dapat masuk ke permainan melalui tiga cara: Masukkan kode 6 angka Buka beranda Quiz Platform sekolah/kampus Anda, ketik kode 6 angka dari guru atau dosen (mis. 123 456), lalu klik Gabung. Pindai kode QR Arahkan kamera ponsel ke kode QR di layar kelas untuk langsung membuka halaman gabung permainan. Buka tautan langsung Guru dapat membagikan tautan seperti https://kuis.sekolahanda.sch.id/join/123456 (atau tautan singkat /123456). Selanjutnya, masukkan Nama panggilan (1–30 karakter; gunakan nama yang dikenali guru Anda). Jika guru mengaktifkan Wajib masuk akun, Anda akan diminta masuk atau "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Menjawab soal",
+    "url": "id/student-guide.html#playing",
+    "text": "Kuis langsung: Tunggu di lobi sampai guru memulai. Jawab setiap soal sebelum waktu habis — jawaban benar yang lebih cepat mendapat poin lebih besar. Saat soal ditutup, Anda melihat apakah jawaban benar, poin yang diperoleh, penjelasan (bila ada), serta peringkat sementara. Tugas mandiri: Kerjakan soal sesuai kecepatan Anda sebelum batas waktu (tenggat) berakhir. Bila batas waktu per soal aktif, hitungan mundur mulai begitu soal terbuka dan terus berjalan meskipun halaman dimuat ulang. Banyak jawaban: Pilih semua jawaban yang benar, lalu tekan Kirim. Isian singkat: Huruf besar/kecil dan spasi g"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Berlatih dari Pustaka Kuis",
+    "url": "id/student-guide.html#practice-library",
+    "text": "Masuk dengan akun siswa lalu buka Jelajah untuk melihat kuis publik yang dibagikan guru. Klik Latihan pada kuis mana saja untuk berlatih mandiri secara privat dengan soal dan pilihan yang diacak. Hasil latihan Anda tersimpan di Nilai saya."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Melihat nilai & pembahasan soal",
+    "url": "id/student-guide.html#results-review",
+    "text": "Setiap kali Anda mengikuti permainan dalam keadaan sudah masuk akun, skor, ketepatan, dan peringkat otomatis tercatat di halaman Nilai saya pada bilah navigasi atas. Jika guru mengaktifkan Tampilkan jawaban benar, klik Lihat pembahasan setelah selesai mengerjakan (atau kapan saja dari Nilai saya) untuk meninjau setiap soal, membandingkan jawaban Anda dengan kunci jawaban, serta membaca penjelasannya."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Mengikuti kuis dengan Mode Anti-Curang",
+    "url": "id/student-guide.html#student-anticheat",
+    "text": "Bila guru mengaktifkan 🛡 Mode anti-curang, layar pemberitahuan aturan akan tampil sebelum soal pertama dibuka. Agar terhindar dari catatan keluar halaman: Aktifkan mode Jangan Ganggu / senyapkan notifikasi sebelum mulai. Jangan berpindah tab peramban, membuka aplikasi lain, atau mengunci layar ponsel selama kuis berlangsung. Di laptop/komputer, tetap gunakan mode layar penuh saat diminta. Salin, potong, tempel, dan klik kanan dinonaktifkan selama kuis berjalan. Meninggalkan halaman kuis selama 2 detik atau lebih akan dicatat dan dilaporkan ke guru. Sesuai sanksi yang dipilih guru, Anda dapat m"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Panduan Siswa & Mahasiswa",
+    "title": "Mengelola akun & kata sandi",
+    "url": "id/student-guide.html#student-account",
+    "text": "Klik nama Anda di bilah atas (Akun saya) untuk melihat peran akun atau mengganti kata sandi (minimal 8 karakter). Mengganti kata sandi otomatis mengeluarkan semua sesi di perangkat lain. Lupa kata sandi? Quiz Platform tidak mengirim email otomatis — minta admin situs untuk mengatur ulang kata sandi Anda dan memberikan kata sandi sementara."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Administrasi & Identitas Situs",
+    "url": "id/admin-guide.html",
+    "text": "Kelola akun pengguna, peran, pendaftaran, warna dan logo situs dari panel Admin, atau jalankan perintah pengelolaan server melalui app/manage.py."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Membuka panel Admin",
+    "url": "id/admin-guide.html#admin-panel",
+    "text": "Masuk dengan akun Admin lalu klik Admin di bilah navigasi atas (/admin). Bagian ringkasan atas menampilkan jumlah total akun, Guru, Siswa, Admin, Kuis, dan Permainan yang pernah dijalankan."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Mengubah identitas situs (nama, warna & logo)",
+    "url": "id/admin-guide.html#branding",
+    "text": "Pada kartu Identitas situs, Anda dapat menyesuaikan tampilan Quiz Platform agar sesuai identitas sekolah atau kampus tanpa mengubah kode. Perubahan langsung berlaku untuk semua pengguna: Nama situs: Tampil di bilah atas dan judul tab peramban (maks. 60 karakter). Lembaga: Nama sekolah, jurusan, atau institusi (opsional, maks. 120 karakter). Warna utama & Warna aksen: Pilih warna kode heksadesimal (#rrggbb). Turunan warna terang dan gelap dihasilkan otomatis lewat /brand.css. Klik Warna bawaan kapan saja untuk kembali ke warna hijau teal (#0f6b5f) dan kuning amber (#f0b429). Logo: Klik Unggah l"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Pengaturan pendaftaran & peran bawaan",
+    "url": "id/admin-guide.html#site-settings",
+    "text": "Pada kartu Pengaturan situs, atur cara pengguna baru bergabung: Pendaftaran terbuka: Jika dicentang, siapa saja dapat membuat akun di /register. Matikan opsi ini jika akun baru hanya boleh dibuat oleh Admin. Peran akun yang baru mendaftar: Siswa (disarankan untuk sekolah/kampus): Pendaftar baru langsung menjadi siswa; Admin menaikkan akun guru secara manual. Guru: Siapa pun yang mendaftar langsung bisa membuat kuis, memandu permainan, dan memakai Pembuat Soal AI."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Mengelola akun pengguna",
+    "url": "id/admin-guide.html#user-management",
+    "text": "Pada bagian Akun, Anda dapat mencari pengguna berdasarkan nama atau email, menyaring menurut peran atau status (Semua, Siswa, Guru, Admin, Nonaktif), serta melakukan tindakan berikut: + Tambah pengguna: Buat akun dengan nama, email, dan peran. Kata sandi sementara hanya ditampilkan satu kali untuk Anda berikan ke pengguna. Ubah peran: Ganti peran pengguna antara Siswa, Guru, dan Admin langsung dari menu tarik-turun. Atur ulang sandi: Membuat kata sandi sementara baru dan langsung menghentikan seluruh sesi aktif pengguna tersebut. Nonaktifkan / Aktifkan: Menonaktifkan akun akan memblokir login "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Administrasi & Identitas Situs",
+    "title": "Referensi perintah CLI server (app/manage.py)",
+    "url": "id/admin-guide.html#manage-cli",
+    "text": "Semua tugas administrasi akun — beserta pencadangan SQLite yang aman saat situs berjalan — juga tersedia lewat terminal server di folder deploy/: bashSalin# Daftar seluruh pengguna, peran, jumlah kuis, dan status nonaktif docker compose exec quiz python manage.py users # Buat akun baru (peran: student | teacher | admin) — mencetak sandi sementara docker compose exec quiz python manage.py create guru@sekolah.sch.id \"Ani Wijaya\" teacher # Ubah peran pengguna (mis. jadikan admin) docker compose exec quiz python manage.py role guru@sekolah.sch.id admin # Atur ulang kata sandi yang lupa (otomatis m"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Deploy & Operasional Server",
+    "url": "id/deployment.html",
+    "text": "Referensi lengkap variabel lingkungan .env, penyedia AI, kuis contoh bawaan, reverse proxy Nginx, pencadangan harian otomatis, pemulihan, dan pembaruan aman."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Variabel lingkungan (.env)",
+    "url": "id/deployment.html#env-reference",
+    "text": "Pengaturan server disimpan di deploy/.env. Jaga kerahasiaan berkas ini (chmod 600 .env) karena berisi kunci API AI. Pengaturan yang bertanda Halaman Admin berlaku sebagai nilai awal dan dapat diubah nanti langsung dari menu Admin. VariabelBawaan / ContohHalaman AdminKeterangan DOMAINquiz.example.sch.idTidakAlamat domain publik untuk sertifikat HTTPS otomatis Caddy ADMIN_EMAIL, ADMIN_NAMEadmin@example.sch.idTidakAdmin pertama yang dibuat otomatis oleh ./install.sh jika belum ada admin QUIZ_SITE_NAMEQuizYaNama situs di bilah atas dan tab peramban QUIZ_ORG(kosong)YaNama lembaga / sekolah QUIZ_COL"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Mengatur penyedia AI",
+    "url": "id/deployment.html#ai-providers",
+    "text": "Semua layanan AI yang menyediakan endpoint /chat/completions bergaya OpenAI dapat digunakan: PenyediaQUIZ_AI_URLContoh QUIZ_AI_MODEL DeepSeekhttps://api.deepseek.com/v1deepseek-v4-flash OpenAIhttps://api.openai.com/v1gpt-5-mini OpenRouterhttps://openrouter.ai/api/v1deepseek/deepseek-chat Setiap permintaan AI ditagihkan ke QUIZ_AI_KEY. Pembatasan bawaan per akun guru (5 permintaan / 5 menit dan 40 / hari) mencegah pemakaian berlebih."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Memuat kuis contoh milik sendiri",
+    "url": "id/deployment.html#starter-quizzes",
+    "text": "Ekspor kuis dalam format JSON dari halaman kuis, letakkan berkas .json di sebuah folder, mount folder tersebut ke kontainer (mis. /seed), lalu atur QUIZ_SEED=on dan QUIZ_SEED_DIR=/seed. Setiap berkas dimuat satu kali sebagai kuis publik baca-saja yang bisa langsung dimainkan atau disalin oleh siapa saja."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Memakai Nginx yang sudah ada (pengganti Caddy)",
+    "url": "id/deployment.html#nginx",
+    "text": "Jika server Anda sudah menjalankan Nginx di port 80/443: Jalankan hanya kontainer aplikasi di localhost Tambahkan ports: [\"127.0.0.1:8000:8000\"] pada layanan quiz di deploy/docker-compose.yml, lalu jalankan: bashSalindocker compose up -d --build quiz Gunakan konfigurasi contoh deploy/nginx.example.conf Pastikan tiga bagian penting berikut tetap dipertahankan: location /ws/ — header upgrade WebSocket dan proxy_read_timeout 3h agar koneksi kuis langsung tetap stabil. location /api/ai/ — client_max_body_size 51m (untuk berkas PDF/PPTX hingga 50 MB) serta proxy_read_timeout 300s. Batas rate-limit "
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Pencadangan & pemulihan data",
+    "url": "id/deployment.html#backups-restore",
+    "text": "Seluruh data tersimpan pada volume Docker quiz_quiz-data (di-mount ke /data): quiz.db, uploads/, brand/, dan backups/. Menjalankan pencadangan saat situs aktif manage.py backup memanfaatkan API backup daring SQLite (aman dijalankan tanpa menghentikan situs), mengemas quiz.db, uploads/, dan brand/ ke dalam arsip .tar.gz di /data/backups, serta otomatis menyimpan 14 arsip terbaru. bashSalin# Jalankan cadangan manual docker compose exec quiz python manage.py backup # Salin arsip cadangan ke luar kontainer docker compose cp quiz:/data/backups ./backups Jadwalkan cadangan rutin tiap malam dengan cr"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Pembaruan & melihat log",
+    "url": "id/deployment.html#updates",
+    "text": "bashSalin# Pantau log aplikasi secara langsung docker compose logs -f quiz # Perbarui ke versi terbaru (seluruh data di quiz_quiz-data tetap aman) cd /path/to/quiz-platform git pull cd deploy && ./install.sh Lakukan pembaruan di luar jam kelas Pembaruan menjaga seluruh basis data, gambar, dan identitas situs tetap utuh, namun memulai ulang kontainer akan memutus kuis langsung yang sedang berjalan (jawaban yang sudah terkirim tetap tersimpan)."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Deploy & Operasional Server",
+    "title": "Daftar periksa sebelum serah terima (sekolah / klien)",
+    "url": "id/deployment.html#handover-checklist",
+    "text": "Lisensi: Kode berlisensi MIT; pertahankan pemberitahuan hak cipta dalam kode. Data pribadi: Nama, email, dan nilai siswa tersimpan di server lembaga. Sepakati kebijakan penyimpanan data dan siapa yang memegang akses Admin. Pemulihan admin: Pastikan minimal satu admin sudah mengganti kata sandi awal dan mengetahui cara mengatur ulang kata sandi pengguna. Cadangan terverifikasi: Pastikan cron pencadangan harian berjalan dan arsip disalin berkala ke luar server."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Kustomisasi & Pengembangan",
+    "url": "id/customization.html",
+    "text": "Peta kode sumber, alur pengembangan lokal, titik kustomisasi yang rapi, cara menjalankan pengujian otomatis, serta arsitektur keamanan."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Lingkungan pengembangan lokal",
+    "url": "id/customization.html#local-dev",
+    "text": "Quiz Platform tidak memerlukan bundler frontend atau proses build Node — cukup sunting berkas di app/ lalu muat ulang peramban. bashSalincd quiz-platform python3 -m venv .venv .venv/bin/pip install -r requirements.txt pytest # Buat admin lokal (data tersimpan di ./data/) .venv/bin/python app/manage.py create dev@contoh.org \"Dev Admin\" admin # Jalankan dengan auto-reload (selalu satu worker!) cd app && QUIZ_SECURE_COOKIE=0 ../.venv/bin/uvicorn main:app --reload --port 8765 Buka http://127.0.0.1:8765. Berkas statis dikirim dengan Cache-Control: no-cache sehingga perubahan JavaScript dan CSS lang"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Peta kode sumber",
+    "url": "id/customization.html#code-map",
+    "text": "Jalur BerkasPeran app/main.pyAplikasi FastAPI, skema SQLite, autentikasi/sesi, kuis, permainan, tugas, laporan, ekspor CSV, roda putar, rute SPA app/live.pyMesin status WebSocket di memori untuk kuis langsung (lobby → reading → question → reveal → ended) app/ai.pyEkstraksi berkas (PDF/DOCX/PPTX/TXT), prompt standar & TOEFL reading, panggilan API OpenAI / Hermes app/guard.pyTabel keluar halaman anti-curang, toleransi 2 detik, sanksi (record/zero/lock), endpoint buka kunci app/admin.pyCRUD akun admin, ubah peran, atur ulang sandi, pengaturan situs, ganti sandi mandiri app/brand.pyPembangkit warn"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Titik kustomisasi kode",
+    "url": "id/customization.html#customizing-code",
+    "text": "Utamakan .env dan halaman Admin untuk perbedaan antar-klien Pertahankan satu basis kode untuk seluruh sekolah atau klien, lalu simpan perbedaan (nama, logo, warna, pendaftaran, kunci AI) di .env dan halaman Admin agar pembaruan tetap mudah. Bagian yang ingin diubahBerkas tujuan Semua teks antarmuka Bahasa Indonesia & Englishapp/static/js/strings.js (kunci → [Indonesia, English]) Pesan galat API (kedua bahasa)Kamus MSG di app/main.py, ai.py, guard.py, admin.py, brand.py Tata letak, tipografi, atau palet warna bawaanapp/static/style.css (variabel CSS --teal-* dan --amber-*) Aturan prompt AI & ga"
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Menjalankan pengujian",
+    "url": "id/customization.html#testing",
+    "text": "Jalankan rangkaian uji sebelum rilis atau sebelum menerapkan perubahan ke produksi: bashSalin# 1. Uji API & logika (akun, kuis, permainan, AI, anti-curang, roda putar, identitas situs) .venv/bin/pytest -q # 2. Uji peramban E2E dengan Playwright (guru + siswa menjalani satu sesi penuh) PLAYWRIGHT=/path/to/node_modules/playwright/index.mjs tests/run_e2e.sh [folder-tangkapan-layar] GitHub Actions (.github/workflows/tests.yml) otomatis menjalankan pytest -q dan memeriksa pembangunan kontainer Docker pada setiap push dan pull request."
+  },
+  {
+    "lang": "id",
+    "pageTitle": "Kustomisasi & Pengembangan",
+    "title": "Arsitektur keamanan & keandalan",
+    "url": "id/customization.html#security-architecture",
+    "text": "Hash kata sandi: scrypt (N=16384, r=8, p=1) dengan salt acak 16-byte dan perbandingan waktu konstan. Sesi aman: Token acak 32-byte disimpan dalam bentuk hash SHA-256 di SQLite, dikirim melalui cookie HttpOnly, SameSite=Lax, dan Secure (masa berlaku 30 hari). Perlindungan CSRF: Setiap permintaan tulis ke /api/* mewajibkan header khusus X-Quiz: 1 yang diblokir lintas-situs oleh peramban tanpa CORS preflight. Validasi asal WebSocket: Koneksi WebSocket memverifikasi kesesuaian Origin dengan Host. Header keamanan ketat: Content Security Policy (script-src 'self', frame-ancestors 'none'), X-Content-"
+  }
+]

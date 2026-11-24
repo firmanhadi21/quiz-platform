@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deployment &amp; Operations — Quiz Platform Docs</title>
+  <meta name="description" content="Complete reference for environment variables, AI providers, custom starter quizzes, Nginx reverse proxy setup, nightly backups, restores, and safe updates.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/deployment.html" class="active">EN</a>
+        <a href="../id/deployment.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html" class="active"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Administration &amp; Hosting</p>
+      <h1>Deployment &amp; Operations</h1>
+      <p class="lead">Complete reference for environment variables, AI providers, custom starter quizzes, Nginx reverse proxy setup, nightly backups, restores, and safe updates.</p>
+      
+<h2 id="env-reference">Environment variables (.env)</h2>
+<p>Settings live in <code>deploy/.env</code>. Keep this file private (<code>chmod 600 .env</code>) because it stores your AI API key. Variables marked <strong>Admin UI</strong> serve as starting defaults and can later be changed on the <span class="ui">Admin</span> page without touching the server.</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Variable</th><th>Default / Example</th><th>Admin UI</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>DOMAIN</code></td><td><code>quiz.example.sch.id</code></td><td>No</td><td>Public domain name for Caddy automatic HTTPS</td></tr>
+      <tr><td><code>ADMIN_EMAIL</code>, <code>ADMIN_NAME</code></td><td><code>admin@example.sch.id</code></td><td>No</td><td>First admin created by <code>./install.sh</code> if no admin exists yet</td></tr>
+      <tr><td><code>QUIZ_SITE_NAME</code></td><td><code>Quiz</code></td><td>Yes</td><td>Site title in header and browser tab</td></tr>
+      <tr><td><code>QUIZ_ORG</code></td><td><em>(empty)</em></td><td>Yes</td><td>Organization name</td></tr>
+      <tr><td><code>QUIZ_COLOR_PRIMARY</code></td><td><code>#0f6b5f</code></td><td>Yes</td><td>Primary brand hex color (derived shades computed automatically)</td></tr>
+      <tr><td><code>QUIZ_COLOR_ACCENT</code></td><td><code>#f0b429</code></td><td>Yes</td><td>Accent hex color</td></tr>
+      <tr><td><code>QUIZ_REGISTRATION</code></td><td><code>open</code></td><td>Yes</td><td><code>open</code> or <code>closed</code></td></tr>
+      <tr><td><code>QUIZ_DEFAULT_ROLE</code></td><td><code>student</code></td><td>Yes</td><td>Role for new sign-ups: <code>student</code> or <code>teacher</code></td></tr>
+      <tr><td><code>QUIZ_SEED</code></td><td><code>off</code> (in <code>.env.example</code>)</td><td>No</td><td>Set <code>on</code> to load starter JSON quizzes from <code>QUIZ_SEED_DIR</code> into the public library once</td></tr>
+      <tr><td><code>QUIZ_SEED_DIR</code></td><td><code>/app/seed</code></td><td>No</td><td>Custom directory of <code>*.json</code> starter quizzes mounted into the container</td></tr>
+      <tr><td><code>QUIZ_AI_URL</code></td><td><code>https://api.deepseek.com/v1</code></td><td>No</td><td>OpenAI-compatible API base URL</td></tr>
+      <tr><td><code>QUIZ_AI_MODEL</code></td><td><code>deepseek-v4-flash</code></td><td>No</td><td>Model identifier sent to <code>/chat/completions</code></td></tr>
+      <tr><td><code>QUIZ_AI_KEY</code></td><td><em>(empty)</em></td><td>No</td><td>Bearer API key; leaving empty disables AI features cleanly</td></tr>
+      <tr><td><code>QUIZ_AI_SOCKET</code></td><td><em>(empty)</em></td><td>No</td><td>Optional Unix domain socket path for a host Hermes Agent API server</td></tr>
+      <tr><td><code>TZ</code></td><td><code>Asia/Jakarta</code></td><td>No</td><td>Timezone used for report and CSV timestamps</td></tr>
+      <tr><td><code>HTTP_PORT</code>, <code>HTTPS_PORT</code></td><td><code>80</code>, <code>443</code></td><td>No</td><td>Override only if another proxy occupies 80/443</td></tr>
+      <tr><td><code>QUIZ_DATA</code></td><td><code>/data</code> (Docker)</td><td>No</td><td>Storage directory for <code>quiz.db</code>, <code>uploads/</code>, <code>brand/</code>, and <code>backups/</code></td></tr>
+      <tr><td><code>QUIZ_SECURE_COOKIE</code></td><td><code>1</code></td><td>No</td><td>Set <code>0</code> only for local non-HTTPS development</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>After editing <code>deploy/.env</code>, apply changes by running <code>./install.sh</code> or <code>docker compose up -d</code>.</p>
+
+<h2 id="ai-providers">Configuring AI providers</h2>
+<p>Any provider exposing an OpenAI-style <code>/chat/completions</code> endpoint works out of the box:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Provider</th><th><code>QUIZ_AI_URL</code></th><th>Example <code>QUIZ_AI_MODEL</code></th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DeepSeek</td><td><code>https://api.deepseek.com/v1</code></td><td><code>deepseek-v4-flash</code></td></tr>
+      <tr><td>OpenAI</td><td><code>https://api.openai.com/v1</code></td><td><code>gpt-5-mini</code></td></tr>
+      <tr><td>OpenRouter</td><td><code>https://openrouter.ai/api/v1</code></td><td><code>deepseek/deepseek-chat</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>All requests are billed to <code>QUIZ_AI_KEY</code>. Built-in per-teacher throttling (5 requests / 5 min and 40 / day) prevents runaway usage.</p>
+
+<h2 id="starter-quizzes">Loading custom starter quizzes</h2>
+<p>Export any quiz as JSON from its quiz page, place one or more <code>.json</code> files in a host folder, mount that folder into the container (e.g. <code>/seed</code>), and set <code>QUIZ_SEED=on</code> and <code>QUIZ_SEED_DIR=/seed</code>. Each filename stem is imported once as a read-only public quiz that any teacher can host or duplicate.</p>
+
+<h2 id="nginx">Using an existing Nginx server instead of Caddy</h2>
+<p>If your server already runs Nginx on ports 80/443:</p>
+<ol class="steps">
+  <li>
+    <strong>Expose the quiz container on localhost only</strong>
+    <p>In <code>deploy/docker-compose.yml</code>, add <code>ports: ["127.0.0.1:8000:8000"]</code> to the <code>quiz</code> service and start only the app container:</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>docker compose up -d --build quiz</code></pre></div>
+  </li>
+  <li>
+    <strong>Configure Nginx using <code>deploy/nginx.example.conf</code></strong>
+    <p>Make sure you preserve three critical blocks from the example config:</p>
+    <ul>
+      <li><code>location /ws/</code> — WebSocket upgrade headers and <code>proxy_read_timeout 3h</code> so live games stay connected.</li>
+      <li><code>location /api/ai/</code> — <code>client_max_body_size 51m</code> (for 50 MB PDF/PPTX uploads) and <code>proxy_read_timeout 300s</code>.</li>
+      <li>Generous rate-limit burst (<code>burst=600 nodelay</code>) because an entire classroom often shares one campus NAT IP address.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="backups-restore">Backups &amp; disaster recovery</h2>
+<p>All persistent data lives inside the Docker volume <code>quiz_quiz-data</code> (mounted at <code>/data</code> inside the container): <code>quiz.db</code>, <code>uploads/</code>, <code>brand/</code>, and <code>backups/</code>.</p>
+<h3>Run a live backup</h3>
+<p><code>manage.py backup</code> uses SQLite's online backup API (safe while the site is running), bundles <code>quiz.db</code>, <code>uploads/</code>, and <code>brand/</code> into a timestamped <code>.tar.gz</code> archive in <code>/data/backups</code>, and automatically keeps the latest 14 archives.</p>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code># Run a manual backup
+docker compose exec quiz python manage.py backup
+
+# Copy backup archives off the server
+docker compose cp quiz:/data/backups ./backups</code></pre></div>
+
+<h3>Schedule nightly backups with cron</h3>
+<div class="code-block"><div class="code-head"><span>cron</span><button type="button" class="copy-btn">Copy</button></div><pre><code>0 2 * * * cd /path/to/quiz-platform/deploy &amp;&amp; docker compose exec -T quiz python manage.py backup</code></pre></div>
+
+<h3>Restore from a backup archive</h3>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>cd /path/to/quiz-platform/deploy
+docker compose stop quiz
+docker compose run --rm -v &quot;$PWD/backups:/b:ro&quot; quiz \
+  tar xzf /b/quiz-YYYYMMDD-HHMMSS.tar.gz -C /data
+docker compose start quiz</code></pre></div>
+
+<h2 id="updates">Updating &amp; viewing logs</h2>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code># Follow live application logs
+docker compose logs -f quiz
+
+# Update to the latest release (preserves all data in quiz_quiz-data)
+cd /path/to/quiz-platform
+git pull
+cd deploy &amp;&amp; ./install.sh</code></pre></div>
+<div class="callout warn">
+  <p class="callout-title">Update outside class hours</p>
+  <p>Updating keeps all database records, uploads, and branding intact, but restarting the container interrupts any live game currently in progress (answers already submitted are kept).</p>
+</div>
+
+<h2 id="handover-checklist">Pre-handover checklist (schools &amp; clients)</h2>
+<ul>
+  <li><strong>License:</strong> Quiz Platform is MIT-licensed; retain the copyright notice in the codebase.</li>
+  <li><strong>Data privacy:</strong> Student names, emails, and scores remain on the institution's server. Agree in writing on retention policy and who holds Admin access.</li>
+  <li><strong>Admin recovery:</strong> Confirm at least one administrator has changed the initial password and knows how to reset forgotten user passwords.</li>
+  <li><strong>Backups verified:</strong> Confirm nightly cron backups are running and periodically copied off-server.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="admin-guide.html"><small>← Previous</small><strong>Administration &amp; Branding</strong></a><a class="next" href="customization.html"><small>Next →</small><strong>Customization &amp; Development</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#env-reference">Environment variables (.env)</a></li><li class="lvl-2"><a href="#ai-providers">Configuring AI providers</a></li><li class="lvl-2"><a href="#starter-quizzes">Loading custom starter quizzes</a></li><li class="lvl-2"><a href="#nginx">Using an existing Nginx server instead of Caddy</a></li><li class="lvl-2"><a href="#backups-restore">Backups &amp; disaster recovery</a></li><li class="lvl-2"><a href="#updates">Updating &amp; viewing logs</a></li><li class="lvl-2"><a href="#handover-checklist">Pre-handover checklist (schools &amp; clients)</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

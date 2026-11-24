@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kustomisasi &amp; Pengembangan — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Peta kode sumber, alur pengembangan lokal, titik kustomisasi yang rapi, cara menjalankan pengujian otomatis, serta arsitektur keamanan.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/customization.html">EN</a>
+        <a href="../id/customization.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html" class="active"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Administrasi &amp; Server</p>
+      <h1>Kustomisasi &amp; Pengembangan</h1>
+      <p class="lead">Peta kode sumber, alur pengembangan lokal, titik kustomisasi yang rapi, cara menjalankan pengujian otomatis, serta arsitektur keamanan.</p>
+      
+<h2 id="local-dev">Lingkungan pengembangan lokal</h2>
+<p>Quiz Platform tidak memerlukan bundler frontend atau proses build Node — cukup sunting berkas di <code>app/</code> lalu muat ulang peramban.</p>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>cd quiz-platform
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt pytest
+
+# Buat admin lokal (data tersimpan di ./data/)
+.venv/bin/python app/manage.py create dev@contoh.org &quot;Dev Admin&quot; admin
+
+# Jalankan dengan auto-reload (selalu satu worker!)
+cd app &amp;&amp; QUIZ_SECURE_COOKIE=0 ../.venv/bin/uvicorn main:app --reload --port 8765</code></pre></div>
+<p>Buka <code>http://127.0.0.1:8765</code>. Berkas statis dikirim dengan <code>Cache-Control: no-cache</code> sehingga perubahan JavaScript dan CSS langsung terlihat saat halaman dimuat ulang.</p>
+
+<h2 id="code-map">Peta kode sumber</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Jalur Berkas</th><th>Peran</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>app/main.py</code></td><td>Aplikasi FastAPI, skema SQLite, autentikasi/sesi, kuis, permainan, tugas, laporan, ekspor CSV, roda putar, rute SPA</td></tr>
+      <tr><td><code>app/live.py</code></td><td>Mesin status WebSocket di memori untuk kuis langsung (<code>lobby → reading → question → reveal → ended</code>)</td></tr>
+      <tr><td><code>app/ai.py</code></td><td>Ekstraksi berkas (PDF/DOCX/PPTX/TXT), prompt standar &amp; TOEFL reading, panggilan API OpenAI / Hermes</td></tr>
+      <tr><td><code>app/guard.py</code></td><td>Tabel keluar halaman anti-curang, toleransi 2 detik, sanksi (<code>record</code>/<code>zero</code>/<code>lock</code>), endpoint buka kunci</td></tr>
+      <tr><td><code>app/admin.py</code></td><td>CRUD akun admin, ubah peran, atur ulang sandi, pengaturan situs, ganti sandi mandiri</td></tr>
+      <tr><td><code>app/brand.py</code></td><td>Pembangkit warna dinamis <code>/brand.css</code>, unggah/sajikan logo, nilai awal identitas situs</td></tr>
+      <tr><td><code>app/manage.py</code></td><td>Utilitas CLI administrasi dan cadangan daring SQLite + aset</td></tr>
+      <tr><td><code>app/static/index.html</code></td><td>Kerangka aplikasi satu halaman (SPA)</td></tr>
+      <tr><td><code>app/static/style.css</code></td><td>Sistem desain dan gaya responsif</td></tr>
+      <tr><td><code>app/static/js/</code></td><td>Modul ES murni: <code>app.js</code>, <code>core.js</code>, <code>strings.js</code>, <code>pages.js</code>, <code>editor.js</code>, <code>host.js</code>, <code>play.js</code>, <code>guard.js</code>, <code>report.js</code>, <code>review.js</code>, <code>wheel.js</code>, <code>admin.js</code></td></tr>
+      <tr><td><code>deploy/</code></td><td><code>docker-compose.yml</code>, <code>Caddyfile</code>, <code>install.sh</code>, <code>.env.example</code>, <code>nginx.example.conf</code></td></tr>
+      <tr><td><code>tests/</code></td><td><code>test_app.py</code> (uji API pytest), <code>e2e.mjs</code> &amp; <code>run_e2e.sh</code> (Playwright), <code>install_check.py</code>, <code>live_smoke.py</code></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="customizing-code">Titik kustomisasi kode</h2>
+<div class="callout tip">
+  <p class="callout-title">Utamakan .env dan halaman Admin untuk perbedaan antar-klien</p>
+  <p>Pertahankan satu basis kode untuk seluruh sekolah atau klien, lalu simpan perbedaan (nama, logo, warna, pendaftaran, kunci AI) di <code>.env</code> dan halaman Admin agar pembaruan tetap mudah.</p>
+</div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Bagian yang ingin diubah</th><th>Berkas tujuan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Semua teks antarmuka Bahasa Indonesia &amp; English</td><td><code>app/static/js/strings.js</code> (kunci → <code>[Indonesia, English]</code>)</td></tr>
+      <tr><td>Pesan galat API (kedua bahasa)</td><td>Kamus <code>MSG</code> di <code>app/main.py</code>, <code>ai.py</code>, <code>guard.py</code>, <code>admin.py</code>, <code>brand.py</code></td></tr>
+      <tr><td>Tata letak, tipografi, atau palet warna bawaan</td><td><code>app/static/style.css</code> (variabel CSS <code>--teal-*</code> dan <code>--amber-*</code>)</td></tr>
+      <tr><td>Aturan prompt AI &amp; gaya soal TOEFL Reading</td><td><code>build_prompt</code> dan <code>build_reading_prompt</code> di <code>app/ai.py</code></td></tr>
+      <tr><td>Rumus bonus kecepatan skor</td><td><code>points_for</code> di <code>app/main.py</code></td></tr>
+      <tr><td>Masa toleransi anti-curang (bawaan <code>2.0</code> dtk)</td><td><code>GRACE</code> di <code>app/guard.py</code></td></tr>
+      <tr><td>Batasan (maks. pemain, ukuran unggahan, panjang materi)</td><td>Konstanta di bagian atas <code>app/main.py</code> (<code>MAX_PLAYERS</code>, <code>MAX_UPLOAD</code>) dan <code>app/ai.py</code> (<code>MAX_FILE</code>, <code>MAX_MATERIAL</code>)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="testing">Menjalankan pengujian</h2>
+<p>Jalankan rangkaian uji sebelum rilis atau sebelum menerapkan perubahan ke produksi:</p>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code># 1. Uji API &amp; logika (akun, kuis, permainan, AI, anti-curang, roda putar, identitas situs)
+.venv/bin/pytest -q
+
+# 2. Uji peramban E2E dengan Playwright (guru + siswa menjalani satu sesi penuh)
+PLAYWRIGHT=/path/to/node_modules/playwright/index.mjs tests/run_e2e.sh [folder-tangkapan-layar]</code></pre></div>
+<p>GitHub Actions (<code>.github/workflows/tests.yml</code>) otomatis menjalankan <code>pytest -q</code> dan memeriksa pembangunan kontainer Docker pada setiap push dan pull request.</p>
+
+<h2 id="security-architecture">Arsitektur keamanan &amp; keandalan</h2>
+<ul>
+  <li><strong>Hash kata sandi:</strong> <code>scrypt</code> (N=16384, r=8, p=1) dengan salt acak 16-byte dan perbandingan waktu konstan.</li>
+  <li><strong>Sesi aman:</strong> Token acak 32-byte disimpan dalam bentuk hash SHA-256 di SQLite, dikirim melalui cookie <code>HttpOnly</code>, <code>SameSite=Lax</code>, dan <code>Secure</code> (masa berlaku 30 hari).</li>
+  <li><strong>Perlindungan CSRF:</strong> Setiap permintaan tulis ke <code>/api/*</code> mewajibkan header khusus <code>X-Quiz: 1</code> yang diblokir lintas-situs oleh peramban tanpa CORS preflight.</li>
+  <li><strong>Validasi asal WebSocket:</strong> Koneksi WebSocket memverifikasi kesesuaian <code>Origin</code> dengan <code>Host</code>.</li>
+  <li><strong>Header keamanan ketat:</strong> Content Security Policy (<code>script-src 'self'</code>, <code>frame-ancestors 'none'</code>), <code>X-Content-Type-Options: nosniff</code>, <code>Referrer-Policy: same-origin</code>, serta HSTS melalui Caddy/Nginx.</li>
+  <li><strong>Kontainer non-root:</strong> Image Docker berjalan sebagai pengguna non-root <code>1000:1000</code> dengan satu worker Uvicorn (<code>--workers 1</code>) agar status permainan langsung di memori tetap konsisten.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="deployment.html"><small>← Sebelumnya</small><strong>Deploy &amp; Operasional Server</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#local-dev">Lingkungan pengembangan lokal</a></li><li class="lvl-2"><a href="#code-map">Peta kode sumber</a></li><li class="lvl-2"><a href="#customizing-code">Titik kustomisasi kode</a></li><li class="lvl-2"><a href="#testing">Menjalankan pengujian</a></li><li class="lvl-2"><a href="#security-architecture">Arsitektur keamanan &amp; keandalan</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

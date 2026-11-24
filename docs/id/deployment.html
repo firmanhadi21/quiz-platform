@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deploy &amp; Operasional Server — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Referensi lengkap variabel lingkungan .env, penyedia AI, kuis contoh bawaan, reverse proxy Nginx, pencadangan harian otomatis, pemulihan, dan pembaruan aman.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/deployment.html">EN</a>
+        <a href="../id/deployment.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html" class="active"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Administrasi &amp; Server</p>
+      <h1>Deploy &amp; Operasional Server</h1>
+      <p class="lead">Referensi lengkap variabel lingkungan .env, penyedia AI, kuis contoh bawaan, reverse proxy Nginx, pencadangan harian otomatis, pemulihan, dan pembaruan aman.</p>
+      
+<h2 id="env-reference">Variabel lingkungan (.env)</h2>
+<p>Pengaturan server disimpan di <code>deploy/.env</code>. Jaga kerahasiaan berkas ini (<code>chmod 600 .env</code>) karena berisi kunci API AI. Pengaturan yang bertanda <strong>Halaman Admin</strong> berlaku sebagai nilai awal dan dapat diubah nanti langsung dari menu <span class="ui">Admin</span>.</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Variabel</th><th>Bawaan / Contoh</th><th>Halaman Admin</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>DOMAIN</code></td><td><code>quiz.example.sch.id</code></td><td>Tidak</td><td>Alamat domain publik untuk sertifikat HTTPS otomatis Caddy</td></tr>
+      <tr><td><code>ADMIN_EMAIL</code>, <code>ADMIN_NAME</code></td><td><code>admin@example.sch.id</code></td><td>Tidak</td><td>Admin pertama yang dibuat otomatis oleh <code>./install.sh</code> jika belum ada admin</td></tr>
+      <tr><td><code>QUIZ_SITE_NAME</code></td><td><code>Quiz</code></td><td>Ya</td><td>Nama situs di bilah atas dan tab peramban</td></tr>
+      <tr><td><code>QUIZ_ORG</code></td><td><em>(kosong)</em></td><td>Ya</td><td>Nama lembaga / sekolah</td></tr>
+      <tr><td><code>QUIZ_COLOR_PRIMARY</code></td><td><code>#0f6b5f</code></td><td>Ya</td><td>Warna utama heksadesimal (turunan terang/gelap dihitung otomatis)</td></tr>
+      <tr><td><code>QUIZ_COLOR_ACCENT</code></td><td><code>#f0b429</code></td><td>Ya</td><td>Warna aksen heksadesimal</td></tr>
+      <tr><td><code>QUIZ_REGISTRATION</code></td><td><code>open</code></td><td>Ya</td><td><code>open</code> (terbuka) atau <code>closed</code> (hanya admin)</td></tr>
+      <tr><td><code>QUIZ_DEFAULT_ROLE</code></td><td><code>student</code></td><td>Ya</td><td>Peran pendaftar baru: <code>student</code> atau <code>teacher</code></td></tr>
+      <tr><td><code>QUIZ_SEED</code></td><td><code>off</code> (di <code>.env.example</code>)</td><td>Tidak</td><td>Isi <code>on</code> untuk memuat kuis contoh JSON dari <code>QUIZ_SEED_DIR</code> ke pustaka publik sekali saja</td></tr>
+      <tr><td><code>QUIZ_SEED_DIR</code></td><td><code>/app/seed</code></td><td>Tidak</td><td>Folder khusus berisi berkas kuis <code>*.json</code> yang di-mount ke kontainer</td></tr>
+      <tr><td><code>QUIZ_AI_URL</code></td><td><code>https://api.deepseek.com/v1</code></td><td>Tidak</td><td>Alamat dasar API kompatibel OpenAI</td></tr>
+      <tr><td><code>QUIZ_AI_MODEL</code></td><td><code>deepseek-v4-flash</code></td><td>Tidak</td><td>Nama model yang dikirim ke <code>/chat/completions</code></td></tr>
+      <tr><td><code>QUIZ_AI_KEY</code></td><td><em>(kosong)</em></td><td>Tidak</td><td>Kunci API Bearer; bila dikosongkan fitur AI otomatis nonaktif</td></tr>
+      <tr><td><code>QUIZ_AI_SOCKET</code></td><td><em>(kosong)</em></td><td>Tidak</td><td>Opsional: jalur Unix socket untuk server API Hermes Agent di host</td></tr>
+      <tr><td><code>TZ</code></td><td><code>Asia/Jakarta</code></td><td>Tidak</td><td>Zona waktu tanggal pada laporan dan ekspor CSV</td></tr>
+      <tr><td><code>HTTP_PORT</code>, <code>HTTPS_PORT</code></td><td><code>80</code>, <code>443</code></td><td>Tidak</td><td>Ubah hanya jika port 80/443 sudah dipakai layanan lain</td></tr>
+      <tr><td><code>QUIZ_DATA</code></td><td><code>/data</code> (Docker)</td><td>Tidak</td><td>Direktori penyimpanan <code>quiz.db</code>, <code>uploads/</code>, <code>brand/</code>, dan <code>backups/</code></td></tr>
+      <tr><td><code>QUIZ_SECURE_COOKIE</code></td><td><code>1</code></td><td>Tidak</td><td>Atur ke <code>0</code> hanya untuk pengembangan lokal tanpa HTTPS</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Setelah menyunting <code>deploy/.env</code>, terapkan perubahan dengan menjalankan <code>./install.sh</code> atau <code>docker compose up -d</code>.</p>
+
+<h2 id="ai-providers">Mengatur penyedia AI</h2>
+<p>Semua layanan AI yang menyediakan endpoint <code>/chat/completions</code> bergaya OpenAI dapat digunakan:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Penyedia</th><th><code>QUIZ_AI_URL</code></th><th>Contoh <code>QUIZ_AI_MODEL</code></th></tr>
+    </thead>
+    <tbody>
+      <tr><td>DeepSeek</td><td><code>https://api.deepseek.com/v1</code></td><td><code>deepseek-v4-flash</code></td></tr>
+      <tr><td>OpenAI</td><td><code>https://api.openai.com/v1</code></td><td><code>gpt-5-mini</code></td></tr>
+      <tr><td>OpenRouter</td><td><code>https://openrouter.ai/api/v1</code></td><td><code>deepseek/deepseek-chat</code></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Setiap permintaan AI ditagihkan ke <code>QUIZ_AI_KEY</code>. Pembatasan bawaan per akun guru (5 permintaan / 5 menit dan 40 / hari) mencegah pemakaian berlebih.</p>
+
+<h2 id="starter-quizzes">Memuat kuis contoh milik sendiri</h2>
+<p>Ekspor kuis dalam format JSON dari halaman kuis, letakkan berkas <code>.json</code> di sebuah folder, mount folder tersebut ke kontainer (mis. <code>/seed</code>), lalu atur <code>QUIZ_SEED=on</code> dan <code>QUIZ_SEED_DIR=/seed</code>. Setiap berkas dimuat satu kali sebagai kuis publik baca-saja yang bisa langsung dimainkan atau disalin oleh siapa saja.</p>
+
+<h2 id="nginx">Memakai Nginx yang sudah ada (pengganti Caddy)</h2>
+<p>Jika server Anda sudah menjalankan Nginx di port 80/443:</p>
+<ol class="steps">
+  <li>
+    <strong>Jalankan hanya kontainer aplikasi di localhost</strong>
+    <p>Tambahkan <code>ports: ["127.0.0.1:8000:8000"]</code> pada layanan <code>quiz</code> di <code>deploy/docker-compose.yml</code>, lalu jalankan:</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>docker compose up -d --build quiz</code></pre></div>
+  </li>
+  <li>
+    <strong>Gunakan konfigurasi contoh <code>deploy/nginx.example.conf</code></strong>
+    <p>Pastikan tiga bagian penting berikut tetap dipertahankan:</p>
+    <ul>
+      <li><code>location /ws/</code> — header upgrade WebSocket dan <code>proxy_read_timeout 3h</code> agar koneksi kuis langsung tetap stabil.</li>
+      <li><code>location /api/ai/</code> — <code>client_max_body_size 51m</code> (untuk berkas PDF/PPTX hingga 50 MB) serta <code>proxy_read_timeout 300s</code>.</li>
+      <li>Batas rate-limit longgar (<code>burst=600 nodelay</code>) karena satu kelas sering berbagi satu alamat IP NAT kampus/sekolah.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="backups-restore">Pencadangan &amp; pemulihan data</h2>
+<p>Seluruh data tersimpan pada volume Docker <code>quiz_quiz-data</code> (di-mount ke <code>/data</code>): <code>quiz.db</code>, <code>uploads/</code>, <code>brand/</code>, dan <code>backups/</code>.</p>
+<h3>Menjalankan pencadangan saat situs aktif</h3>
+<p><code>manage.py backup</code> memanfaatkan API backup daring SQLite (aman dijalankan tanpa menghentikan situs), mengemas <code>quiz.db</code>, <code>uploads/</code>, dan <code>brand/</code> ke dalam arsip <code>.tar.gz</code> di <code>/data/backups</code>, serta otomatis menyimpan 14 arsip terbaru.</p>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code># Jalankan cadangan manual
+docker compose exec quiz python manage.py backup
+
+# Salin arsip cadangan ke luar kontainer
+docker compose cp quiz:/data/backups ./backups</code></pre></div>
+
+<h3>Jadwalkan cadangan rutin tiap malam dengan cron</h3>
+<div class="code-block"><div class="code-head"><span>cron</span><button type="button" class="copy-btn">Salin</button></div><pre><code>0 2 * * * cd /path/to/quiz-platform/deploy &amp;&amp; docker compose exec -T quiz python manage.py backup</code></pre></div>
+
+<h3>Memulihkan dari arsip cadangan</h3>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>cd /path/to/quiz-platform/deploy
+docker compose stop quiz
+docker compose run --rm -v &quot;$PWD/backups:/b:ro&quot; quiz \
+  tar xzf /b/quiz-YYYYMMDD-HHMMSS.tar.gz -C /data
+docker compose start quiz</code></pre></div>
+
+<h2 id="updates">Pembaruan &amp; melihat log</h2>
+<div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code># Pantau log aplikasi secara langsung
+docker compose logs -f quiz
+
+# Perbarui ke versi terbaru (seluruh data di quiz_quiz-data tetap aman)
+cd /path/to/quiz-platform
+git pull
+cd deploy &amp;&amp; ./install.sh</code></pre></div>
+<div class="callout warn">
+  <p class="callout-title">Lakukan pembaruan di luar jam kelas</p>
+  <p>Pembaruan menjaga seluruh basis data, gambar, dan identitas situs tetap utuh, namun memulai ulang kontainer akan memutus kuis langsung yang sedang berjalan (jawaban yang sudah terkirim tetap tersimpan).</p>
+</div>
+
+<h2 id="handover-checklist">Daftar periksa sebelum serah terima (sekolah / klien)</h2>
+<ul>
+  <li><strong>Lisensi:</strong> Kode berlisensi MIT; pertahankan pemberitahuan hak cipta dalam kode.</li>
+  <li><strong>Data pribadi:</strong> Nama, email, dan nilai siswa tersimpan di server lembaga. Sepakati kebijakan penyimpanan data dan siapa yang memegang akses Admin.</li>
+  <li><strong>Pemulihan admin:</strong> Pastikan minimal satu admin sudah mengganti kata sandi awal dan mengetahui cara mengatur ulang kata sandi pengguna.</li>
+  <li><strong>Cadangan terverifikasi:</strong> Pastikan cron pencadangan harian berjalan dan arsip disalin berkala ke luar server.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="admin-guide.html"><small>← Sebelumnya</small><strong>Administrasi &amp; Identitas Situs</strong></a><a class="next" href="customization.html"><small>Berikutnya →</small><strong>Kustomisasi &amp; Pengembangan</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#env-reference">Variabel lingkungan (.env)</a></li><li class="lvl-2"><a href="#ai-providers">Mengatur penyedia AI</a></li><li class="lvl-2"><a href="#starter-quizzes">Memuat kuis contoh milik sendiri</a></li><li class="lvl-2"><a href="#nginx">Memakai Nginx yang sudah ada (pengganti Caddy)</a></li><li class="lvl-2"><a href="#backups-restore">Pencadangan &amp; pemulihan data</a></li><li class="lvl-2"><a href="#updates">Pembaruan &amp; melihat log</a></li><li class="lvl-2"><a href="#handover-checklist">Daftar periksa sebelum serah terima (sekolah / klien)</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

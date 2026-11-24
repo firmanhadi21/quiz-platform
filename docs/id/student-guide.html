@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panduan Siswa &amp; Mahasiswa — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Cara bergabung ke kuis langsung dan tugas mandiri, berlatih dari pustaka kuis publik, melihat nilai dan pembahasan, serta mengikuti aturan mode anti-curang.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/student-guide.html">EN</a>
+        <a href="../id/student-guide.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html" class="active"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Panduan Pengguna</p>
+      <h1>Panduan Siswa &amp; Mahasiswa</h1>
+      <p class="lead">Cara bergabung ke kuis langsung dan tugas mandiri, berlatih dari pustaka kuis publik, melihat nilai dan pembahasan, serta mengikuti aturan mode anti-curang.</p>
+      
+<h2 id="joining">Bergabung ke kuis langsung atau tugas</h2>
+<p>Anda dapat masuk ke permainan melalui tiga cara:</p>
+<ol class="steps">
+  <li>
+    <strong>Masukkan kode 6 angka</strong>
+    <p>Buka beranda Quiz Platform sekolah/kampus Anda, ketik kode 6 angka dari guru atau dosen (mis. <code>123 456</code>), lalu klik <span class="ui">Gabung</span>.</p>
+  </li>
+  <li>
+    <strong>Pindai kode QR</strong>
+    <p>Arahkan kamera ponsel ke kode QR di layar kelas untuk langsung membuka halaman gabung permainan.</p>
+  </li>
+  <li>
+    <strong>Buka tautan langsung</strong>
+    <p>Guru dapat membagikan tautan seperti <code>https://kuis.sekolahanda.sch.id/join/123456</code> (atau tautan singkat <code>/123456</code>).</p>
+  </li>
+</ol>
+<p>Selanjutnya, masukkan <strong>Nama panggilan</strong> (1–30 karakter; gunakan nama yang dikenali guru Anda). Jika guru mengaktifkan <strong>Wajib masuk akun</strong>, Anda akan diminta masuk atau mendaftar lebih dulu agar nilai tercatat dengan nama dan email akun resmi Anda.</p>
+<div class="callout tip">
+  <p class="callout-title">Peramban tidak sengaja tertutup?</p>
+  <p>Buka lagi tautan yang sama atau masukkan kode 6 angka yang sama di perangkat yang sama. Peramban menyimpan sesi pemain Anda dan langsung melanjutkan permainan.</p>
+</div>
+
+<h2 id="playing">Menjawab soal</h2>
+<ul>
+  <li><strong>Kuis langsung:</strong> Tunggu di lobi sampai guru memulai. Jawab setiap soal sebelum waktu habis — jawaban benar yang lebih cepat mendapat poin lebih besar. Saat soal ditutup, Anda melihat apakah jawaban benar, poin yang diperoleh, penjelasan (bila ada), serta peringkat sementara.</li>
+  <li><strong>Tugas mandiri:</strong> Kerjakan soal sesuai kecepatan Anda sebelum batas waktu (tenggat) berakhir. Bila batas waktu per soal aktif, hitungan mundur mulai begitu soal terbuka dan terus berjalan meskipun halaman dimuat ulang.</li>
+  <li><strong>Banyak jawaban:</strong> Pilih <em>semua</em> jawaban yang benar, lalu tekan <span class="ui">Kirim</span>.</li>
+  <li><strong>Isian singkat:</strong> Huruf besar/kecil dan spasi ganda diabaikan (mis. <code>srgi2013</code> dianggap sama dengan <code>SRGI2013</code>).</li>
+  <li><strong>Teks bacaan:</strong> Anda melihat bacaan lengkap terlebih dahulu tanpa waktu berjalan. Baca dengan saksama, lalu tunggu guru (kuis langsung) atau tekan <span class="ui">Mulai menjawab</span> (tugas mandiri). Teks bacaan tetap terlihat di samping setiap soal.</li>
+</ul>
+
+<h2 id="practice-library">Berlatih dari Pustaka Kuis</h2>
+<p>Masuk dengan akun siswa lalu buka <span class="ui">Jelajah</span> untuk melihat kuis publik yang dibagikan guru. Klik <span class="ui">Latihan</span> pada kuis mana saja untuk berlatih mandiri secara privat dengan soal dan pilihan yang diacak. Hasil latihan Anda tersimpan di <span class="ui">Nilai saya</span>.</p>
+
+<h2 id="results-review">Melihat nilai &amp; pembahasan soal</h2>
+<p>Setiap kali Anda mengikuti permainan dalam keadaan <strong>sudah masuk akun</strong>, skor, ketepatan, dan peringkat otomatis tercatat di halaman <span class="ui">Nilai saya</span> pada bilah navigasi atas.</p>
+<p>Jika guru mengaktifkan <strong>Tampilkan jawaban benar</strong>, klik <span class="ui">Lihat pembahasan</span> setelah selesai mengerjakan (atau kapan saja dari <span class="ui">Nilai saya</span>) untuk meninjau setiap soal, membandingkan jawaban Anda dengan kunci jawaban, serta membaca penjelasannya.</p>
+
+<h2 id="student-anticheat">Mengikuti kuis dengan Mode Anti-Curang</h2>
+<p>Bila guru mengaktifkan <span class="ui">🛡 Mode anti-curang</span>, layar pemberitahuan aturan akan tampil sebelum soal pertama dibuka. Agar terhindar dari catatan keluar halaman:</p>
+<ul>
+  <li>Aktifkan mode <strong>Jangan Ganggu</strong> / senyapkan notifikasi sebelum mulai.</li>
+  <li>Jangan berpindah tab peramban, membuka aplikasi lain, atau mengunci layar ponsel selama kuis berlangsung.</li>
+  <li>Di laptop/komputer, tetap gunakan mode <strong>layar penuh</strong> saat diminta.</li>
+  <li>Salin, potong, tempel, dan klik kanan dinonaktifkan selama kuis berjalan.</li>
+</ul>
+<p>Meninggalkan halaman kuis selama <strong>2 detik atau lebih</strong> akan dicatat dan dilaporkan ke guru. Sesuai sanksi yang dipilih guru, Anda dapat menerima peringatan, mendapat nilai nol pada soal yang sedang terbuka, atau <strong>terkunci</strong>. Jika terkunci, beri tahu guru Anda — layar Anda memeriksa status otomatis setiap 4 detik dan langsung terbuka kembali begitu guru membuka kunci.</p>
+
+<h2 id="student-account">Mengelola akun &amp; kata sandi</h2>
+<p>Klik nama Anda di bilah atas (<span class="ui">Akun saya</span>) untuk melihat peran akun atau mengganti kata sandi (minimal 8 karakter). Mengganti kata sandi otomatis mengeluarkan semua sesi di perangkat lain.</p>
+<p>Lupa kata sandi? Quiz Platform tidak mengirim email otomatis — minta admin situs untuk mengatur ulang kata sandi Anda dan memberikan kata sandi sementara.</p>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="hosting-games.html"><small>← Sebelumnya</small><strong>Kuis Langsung, Tugas &amp; Anti-Curang</strong></a><a class="next" href="admin-guide.html"><small>Berikutnya →</small><strong>Administrasi &amp; Identitas Situs</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#joining">Bergabung ke kuis langsung atau tugas</a></li><li class="lvl-2"><a href="#playing">Menjawab soal</a></li><li class="lvl-2"><a href="#practice-library">Berlatih dari Pustaka Kuis</a></li><li class="lvl-2"><a href="#results-review">Melihat nilai &amp; pembahasan soal</a></li><li class="lvl-2"><a href="#student-anticheat">Mengikuti kuis dengan Mode Anti-Curang</a></li><li class="lvl-2"><a href="#student-account">Mengelola akun &amp; kata sandi</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

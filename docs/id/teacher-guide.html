@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panduan Guru &amp; Dosen — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Panduan lengkap bagi guru dan dosen untuk menyusun, mengimpor, mengelola, dan menghasilkan soal kuis memakai editor, teks bacaan, serta Pembuat Soal AI.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/teacher-guide.html">EN</a>
+        <a href="../id/teacher-guide.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html" class="active"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Panduan Pengguna</p>
+      <h1>Panduan Guru &amp; Dosen</h1>
+      <p class="lead">Panduan lengkap bagi guru dan dosen untuk menyusun, mengimpor, mengelola, dan menghasilkan soal kuis memakai editor, teks bacaan, serta Pembuat Soal AI.</p>
+      
+<h2 id="dashboard-overview">Dasbor guru &amp; pustaka kuis</h2>
+<p>Saat masuk dengan akun <strong>Guru</strong> atau <strong>Admin</strong>, halaman <span class="ui">Dasbor</span> menampilkan dua bagian utama:</p>
+<ul>
+  <li><strong>Kuis saya:</strong> Semua kuis milik Anda dengan tombol cepat <span class="ui">Mainkan</span>, <span class="ui">Ubah</span>, <span class="ui">Salin</span>, <span class="ui">Latihan</span>, dan <span class="ui">Hapus</span>. Menghapus kuis tidak menghapus laporan permainan lama karena setiap permainan menyimpan salinan soalnya sendiri.</li>
+  <li><strong>Permainan saya:</strong> Hingga 100 permainan terakhir (kuis langsung dan tugas mandiri) lengkap dengan status (<span class="badge green">Berjalan</span> / <span class="badge">Selesai</span>), jumlah pemain, serta tombol <span class="ui">Buka layar guru</span> dan <span class="ui">Laporan</span>.</li>
+</ul>
+<p>Untuk mencari kuis publik dari pengajar lain, buka <span class="ui">Jelajah</span> di bilah atas. Anda bisa mencari berdasarkan judul, mata kuliah/pelajaran, atau deskripsi, langsung memainkannya, atau klik <span class="ui">Salin</span> untuk mengubah versi Anda sendiri.</p>
+
+<h2 id="creating-quizzes">Membuat &amp; mengubah kuis</h2>
+<p>Klik <span class="ui">+ Kuis baru</span> di Dasbor (atau <span class="ui">Ubah</span> pada kuis milik Anda). Satu kuis dapat memuat <strong>1 hingga 200 soal</strong> dan hingga <strong>20 teks bacaan</strong>.</p>
+<p>Pada kartu informasi kuis di bagian atas, atur:</p>
+<ul>
+  <li><strong>Judul</strong> (wajib, maks. 200 karakter)</li>
+  <li><strong>Mata kuliah / pelajaran</strong> (opsional, maks. 100 karakter — membantu pencarian di Pustaka Kuis)</li>
+  <li><strong>Deskripsi</strong> (opsional, maks. 1.000 karakter)</li>
+  <li><strong>Tampilkan di pustaka:</strong> Centang agar kuis bersifat publik sehingga guru lain dapat memainkan/menyalin dan siswa dapat berlatih mandiri.</li>
+</ul>
+<p>Pada setiap kartu soal, Anda dapat mengatur:</p>
+<ul>
+  <li><strong>Tipe soal</strong> (lihat 5 tipe soal di bawah)</li>
+  <li><strong>Waktu:</strong> 10, 20, 30, 45, 60, 90, 120, 180, atau 300 detik (API mendukung 5–600 detik)</li>
+  <li><strong>Poin:</strong> 0, 500, 1000, atau 2000 poin (API mendukung 0–2000; Jajak pendapat selalu 0 poin)</li>
+  <li><strong>Gambar:</strong> Klik <span class="ui">🖼 Gambar</span> untuk mengunggah PNG, JPG, GIF, atau WebP maks. <strong>2 MB</strong> (kuota 500 gambar per akun guru)</li>
+  <li><strong>Penjelasan:</strong> Ditampilkan setelah menjawab (bila kunci jawaban diaktifkan) dan pada layar Bahas Soal</li>
+  <li><strong>Kriteria rubrik:</strong> Label capaian pembelajaran (CPMK) atau kriteria penilaian (maks. 120 karakter) untuk analisis ketepatan per kriteria di Dasbor Hasil</li>
+  <li><strong>Aksi kartu:</strong> Naikkan (<span class="ui">↑</span>), turunkan (<span class="ui">↓</span>), salin (<span class="ui">⧉</span>), atau hapus (<span class="ui">×</span>)</li>
+</ul>
+
+<h2 id="question-types">Lima tipe soal</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Tipe Soal</th><th>Pilihan / Jawaban</th><th>Aturan Penilaian</th><th>Cocok Untuk</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Pilihan ganda</strong> (<code>single</code>)</td>
+        <td>2 sampai 6 pilihan; pilih 1 bulatan jawaban benar</td>
+        <td>Harus cocok tepat 1 pilihan</td>
+        <td>Konsep, definisi, pemahaman bacaan TOEFL</td>
+      </tr>
+      <tr>
+        <td><strong>Banyak jawaban</strong> (<code>multi</code>)</td>
+        <td>2 sampai 6 pilihan; centang semua jawaban benar</td>
+        <td>Harus tepat seluruh himpunan jawaban benar</td>
+        <td>Memilih semua sifat, syarat, atau penyebab yang tepat</td>
+      </tr>
+      <tr>
+        <td><strong>Benar / Salah</strong> (<code>tf</code>)</td>
+        <td>Benar atau Salah</td>
+        <td>Cocok persis Benar/Salah</td>
+        <td>Cek cepat miskonsepsi di kelas</td>
+      </tr>
+      <tr>
+        <td><strong>Isian singkat</strong> (<code>text</code>)</td>
+        <td>Hingga 10 variasi jawaban dipisah titik koma (<code>;</code>)</td>
+        <td>Tidak peka huruf besar/kecil; spasi ganda diabaikan</td>
+        <td>Istilah, singkatan, rumus, angka (mis. <code>SRGI2013; SRGI 2013</code>)</td>
+      </tr>
+      <tr>
+        <td><strong>Jajak pendapat</strong> (<code>poll</code>)</td>
+        <td>2 sampai 6 pilihan; tanpa kunci jawaban</td>
+        <td>Tidak dinilai (0 poin); menampilkan distribusi kelas</td>
+        <td>Survei cepat, pendapat kelas, cek kesiapan belajar</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="paste-many">Menyusun cepat: Tempel banyak soal</h2>
+<p>Jika soal sudah tersedia di dokumen atau catatan, klik <span class="ui">Tempel banyak soal</span> di bagian bawah editor. Pisahkan setiap soal dengan <strong>satu baris kosong</strong>:</p>
+<ul>
+  <li>Baris pertama = teks soal (nomor awal seperti <code>1.</code> atau <code>1)</code> otomatis dibersihkan).</li>
+  <li>Baris berikutnya = pilihan jawaban (awalan <code>a.</code>, <code>b)</code>, <code>-</code>, atau <code>•</code> otomatis dibersihkan).</li>
+  <li>Awali jawaban yang benar dengan tanda bintang <code>*</code>.</li>
+  <li><strong>1 pilihan bertanda <code>*</code></strong> → Pilihan ganda. <strong>2+ pilihan bertanda <code>*</code></strong> → Banyak jawaban. <strong>Tanpa <code>*</code></strong> → Jajak pendapat.</li>
+  <li>Tepat dua pilihan <code>Benar</code> / <code>Salah</code> (atau <code>True</code> / <code>False</code>) dengan satu <code>*</code> → Benar / Salah.</li>
+  <li>Baris berawalan <code>=</code> → Isian singkat (beberapa baris <code>=</code> menjadi variasi jawaban yang diterima).</li>
+</ul>
+<div class="code-block"><div class="code-head"><span>text</span><button type="button" class="copy-btn">Salin</button></div><pre><code>1. Satu zona UTM memiliki lebar…
+a. 3 derajat bujur
+*b. 6 derajat bujur
+c. 10 derajat bujur
+
+2. Manakah pernyataan yang benar tentang proyeksi Mercator?
+*a. Sudut dan arah lokal terjaga (konform)
+*b. Luas daerah di lintang tinggi tampak membesar
+c. Distorsi luasnya nol di seluruh dunia
+
+3. Peta skala 1:25.000 menampilkan detail lebih rinci daripada skala 1:50.000.
+*Benar
+Salah
+
+4. Apa nama datum geodetik nasional Indonesia?
+= SRGI2013
+= SRGI 2013
+
+5. Topik mana yang ingin dibahas ulang minggu depan?
+- Proyeksi peta
+- Kanal penginderaan jauh
+- Penentuan posisi GNSS</code></pre></div>
+
+<h2 id="reading-passages">Teks bacaan (gaya TOEFL Reading)</h2>
+<p>Quiz Platform menyediakan dukungan khusus untuk soal pemahaman bacaan:</p>
+<ol class="steps">
+  <li>
+    <strong>Tambahkan bacaan</strong>
+    <p>Di editor kuis, buka bagian <strong>Bacaan</strong> lalu klik <span class="ui">+ Bacaan</span>. Isi judul bacaan (opsional) dan tempel teksnya (maks. 20.000 karakter; pisahkan paragraf dengan baris kosong). Penghitung kata otomatis membantu memantau panjang teks.</p>
+  </li>
+  <li>
+    <strong>Hubungkan soal ke bacaan</strong>
+    <p>Pilih bacaan lewat menu tarik-turun pada masing-masing kartu soal, atau klik <span class="ui">Pakai untuk soal tanpa bacaan</span> pada kartu bacaan untuk langsung memasangkannya ke semua soal yang belum memiliki bacaan.</p>
+  </li>
+  <li>
+    <strong>Tampilan di sisi siswa</strong>
+    <p>Saat kuis langsung atau tugas mencapai soal pertama dari sebuah bacaan, teks bacaan tampil <strong>lebih dulu tanpa hitung mundur berjalan</strong>. Pada kuis langsung guru menekan <span class="ui">▶ Mulai soal</span> bila kelas siap; pada tugas mandiri siswa menekan <span class="ui">Mulai menjawab</span>. Setelah itu bacaan tetap tampil berdampingan di samping setiap soalnya.</p>
+  </li>
+</ol>
+<div class="callout tip">
+  <p class="callout-title">Pengacakan tetap menjaga keutuhan kelompok bacaan</p>
+  <p>Walaupun opsi <strong>Acak urutan soal</strong> diaktifkan, soal-soal yang terhubung ke bacaan yang sama akan tetap berkelompok dan berurutan agar rujukan paragraf tidak rusak.</p>
+</div>
+
+<h2 id="ai-writer">Pembuat Soal AI</h2>
+<p>Jika admin server telah memasang kunci API AI, klik <span class="ui">✨ Buat dengan AI</span> di Dasbor atau di editor kuis untuk menyusun draf soal dari materi ajar Anda.</p>
+<ol class="steps">
+  <li>
+    <strong>Masukkan materi ajar</strong>
+    <p>Tempel teks (minimal 200 karakter, maksimal 60.000 karakter) atau klik <span class="ui">📄 Unggah materi</span> untuk membaca teks dari berkas <strong>PDF, DOCX, PPTX, TXT, atau MD</strong> hingga <strong>50 MB</strong>. Anda bisa mengunggah beberapa berkas sekaligus untuk menggabungkan isinya.</p>
+  </li>
+  <li>
+    <strong>Pilih mode standar atau Latihan membaca</strong>
+    <p>Centang <span class="ui">Latihan membaca (gaya TOEFL Reading)</span> jika materi tersebut merupakan teks bacaan yang harus dibaca siswa saat kuis. AI akan memasangnya sebagai Bacaan dan menyusun soal pilihan ganda gaya TOEFL (informasi faktual, negatif faktual, inferensi, kosakata dalam konteks, rujukan kata ganti, tujuan retoris, dan gagasan utama).</p>
+  </li>
+  <li>
+    <strong>Opsional: Sertakan rubrik penilaian / CPMK</strong>
+    <p>Pada mode standar, tempel atau unggah rubrik, kisi-kisi, atau capaian pembelajaran (maks. 20.000 karakter). AI akan membagi jumlah soal sesuai kriteria dan bobotnya, lalu melabeli kolom <strong>Kriteria rubrik</strong> tiap soal agar Dasbor Hasil menampilkan ketepatan kelas per kriteria.</p>
+  </li>
+  <li>
+    <strong>Atur jumlah, kesulitan, bahasa, tipe soal &amp; arahan</strong>
+    <p>Pilih <strong>5–25 soal</strong>, tingkat kesulitan (<em>Mudah</em>, <em>Sedang</em>, <em>Sulit</em>), bahasa soal (<em>Bahasa Indonesia</em> atau <em>English</em>), tipe soal yang diizinkan, serta arahan tambahan (mis. <em>"fokus pada proyeksi peta"</em>).</p>
+  </li>
+  <li>
+    <strong>Periksa sebelum disimpan</strong>
+    <p>Klik <span class="ui">✨ Buat soal</span> (proses sekitar 30–60 detik). Semua soal buatan AI divalidasi dengan aturan yang sama seperti soal ketikan manual dan posisi pilihan jawabannya diacak otomatis. Tidak ada yang tersimpan sebelum Anda meninjau, menyunting bila perlu, lalu menekan <span class="ui">Simpan</span>.</p>
+  </li>
+</ol>
+<div class="callout warn">
+  <p class="callout-title">Batas pemakaian AI &amp; PDF hasil pindaian</p>
+  <ul>
+    <li>Setiap akun guru dibatasi maksimal <strong>5 permintaan AI per 5 menit</strong> dan <strong>40 permintaan per hari</strong>.</li>
+    <li>PDF hasil pindaian gambar (scan) tidak memuat teks yang dapat diekstrak — lakukan OCR terlebih dahulu atau tempel teks secara langsung.</li>
+    <li>Hanya materi ajar (bukan data siswa) yang dikirim ke layanan AI yang dikonfigurasi.</li>
+  </ul>
+</div>
+
+<h2 id="json-import-export">Impor &amp; Ekspor JSON</h2>
+<p>Kuis dapat dicadangkan, disimpan di Git, atau dibagikan antarserver dalam format JSON:</p>
+<ul>
+  <li><strong>Ekspor:</strong> Buka halaman detail kuis (klik judul kartu kuis di Dasbor) lalu klik <span class="ui">Ekspor JSON</span> untuk mengunduh <code>quiz-&lt;id&gt;.json</code>.</li>
+  <li><strong>Impor:</strong> Di Dasbor, klik <span class="ui">Impor JSON</span> lalu pilih berkas <code>.json</code>. Kuis baru akan dibuat dan langsung terbuka di editor.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span>json</span><button type="button" class="copy-btn">Salin</button></div><pre><code>{
+  &quot;title&quot;: &quot;Kartografi Dasar&quot;,
+  &quot;subject&quot;: &quot;Kartografi&quot;,
+  &quot;description&quot;: &quot;Skala, proyeksi, kontur, dan simbol peta.&quot;,
+  &quot;passages&quot;: [
+    {
+      &quot;title&quot;: &quot;Pengantar Skala Peta&quot;,
+      &quot;text&quot;: &quot;Paragraf pertama...\n\nParagraf kedua...&quot;
+    }
+  ],
+  &quot;questions&quot;: [
+    {
+      &quot;type&quot;: &quot;single&quot;,
+      &quot;text&quot;: &quot;Pada peta berskala 1:50.000, jarak 1 cm mewakili…&quot;,
+      &quot;options&quot;: [&quot;50 m&quot;, &quot;500 m&quot;, &quot;5 km&quot;, &quot;50 km&quot;],
+      &quot;answer&quot;: 1,
+      &quot;time&quot;: 30,
+      &quot;points&quot;: 1000,
+      &quot;explanation&quot;: &quot;1 cm x 50.000 = 50.000 cm = 500 m.&quot;,
+      &quot;criterion&quot;: &quot;Perhitungan skala peta&quot;,
+      &quot;passage&quot;: 0
+    },
+    {
+      &quot;type&quot;: &quot;tf&quot;,
+      &quot;text&quot;: &quot;Skala 1:25.000 lebih besar daripada 1:50.000.&quot;,
+      &quot;answer&quot;: true,
+      &quot;time&quot;: 20,
+      &quot;points&quot;: 1000
+    },
+    {
+      &quot;type&quot;: &quot;multi&quot;,
+      &quot;text&quot;: &quot;Ciri proyeksi Mercator adalah…&quot;,
+      &quot;options&quot;: [&quot;Konform (sudut terjaga)&quot;, &quot;Luas kutub membesar&quot;, &quot;Distorsi luas nol&quot;],
+      &quot;answer&quot;: [0, 1],
+      &quot;time&quot;: 45,
+      &quot;points&quot;: 1000
+    },
+    {
+      &quot;type&quot;: &quot;text&quot;,
+      &quot;text&quot;: &quot;Datum geodetik nasional Indonesia?&quot;,
+      &quot;answer&quot;: [&quot;SRGI2013&quot;, &quot;SRGI 2013&quot;],
+      &quot;time&quot;: 30,
+      &quot;points&quot;: 1000
+    }
+  ]
+}</code></pre></div>
+
+<h2 id="duplicating-classes">Menyalin kuis untuk kelas lain</h2>
+<p>Mengajar materi yang sama untuk Kelas A dan Kelas B? Klik <span class="ui">Salin</span> pada kuis lalu beri nama baru (mis. <em>Kartografi Dasar (Kelas B)</em>). Salinan berdiri sendiri dengan ID, permainan, dan laporan terpisah tanpa memengaruhi kuis aslinya.</p>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="quickstart.html"><small>← Sebelumnya</small><strong>Panduan Cepat</strong></a><a class="next" href="hosting-games.html"><small>Berikutnya →</small><strong>Kuis Langsung, Tugas &amp; Anti-Curang</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#dashboard-overview">Dasbor guru &amp; pustaka kuis</a></li><li class="lvl-2"><a href="#creating-quizzes">Membuat &amp; mengubah kuis</a></li><li class="lvl-2"><a href="#question-types">Lima tipe soal</a></li><li class="lvl-2"><a href="#paste-many">Menyusun cepat: Tempel banyak soal</a></li><li class="lvl-2"><a href="#reading-passages">Teks bacaan (gaya TOEFL Reading)</a></li><li class="lvl-2"><a href="#ai-writer">Pembuat Soal AI</a></li><li class="lvl-2"><a href="#json-import-export">Impor &amp; Ekspor JSON</a></li><li class="lvl-2"><a href="#duplicating-classes">Menyalin kuis untuk kelas lain</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

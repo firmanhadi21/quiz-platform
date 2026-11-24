@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panduan Cepat — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Jalankan Quiz Platform dalam hitungan menit — baik di server Linux produksi dengan HTTPS otomatis melalui Docker + Caddy, maupun secara lokal di komputer Anda.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/quickstart.html">EN</a>
+        <a href="../id/quickstart.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html" class="active"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Mulai</p>
+      <h1>Panduan Cepat</h1>
+      <p class="lead">Jalankan Quiz Platform dalam hitungan menit — baik di server Linux produksi dengan HTTPS otomatis melalui Docker + Caddy, maupun secara lokal di komputer Anda.</p>
+      
+<h2 id="production-docker">Opsi A: Server produksi dengan Docker (5 menit)</h2>
+<p>Ini adalah cara yang disarankan untuk sekolah, jurusan kampus, atau lembaga.</p>
+<p><strong>Prasyarat:</strong></p>
+<ul>
+  <li>Server Linux yang sudah terpasang <strong>Docker</strong> dan <strong>Docker Compose plugin</strong> (1 CPU dan 1 GB RAM sudah memadai).</li>
+  <li><strong>Nama domain</strong> dengan DNS <code>A</code>/<code>AAAA</code> yang sudah mengarah ke server tersebut, serta port <strong>80</strong> dan <strong>443</strong> terbuka.</li>
+  <li><em>Opsional:</em> Kunci API (API key) dari layanan AI kompatibel OpenAI (DeepSeek, OpenAI, OpenRouter) untuk mengaktifkan Pembuat Soal AI.</li>
+</ul>
+
+<ol class="steps">
+  <li>
+    <strong>Kloning repositori dan buat berkas <code>.env</code></strong>
+    <p>Jalankan <code>./install.sh</code> pertama kali. Skrip akan menyalin <code>.env.example</code> menjadi <code>.env</code> dengan izin <code>chmod 600</code> lalu berhenti agar Anda dapat mengisinya.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>git clone https://github.com/firmanhadi21/quiz-platform.git
+cd quiz-platform/deploy
+./install.sh</code></pre></div>
+  </li>
+  <li>
+    <strong>Sunting <code>.env</code> dengan domain dan akun admin pertama</strong>
+    <p>Buka <code>.env</code> (misalnya <code>nano .env</code>) lalu isi minimal <code>DOMAIN</code> dan <code>ADMIN_EMAIL</code>. Isi juga <code>QUIZ_AI_KEY</code> bila ingin mengaktifkan Pembuat Soal AI.</p>
+    <div class="code-block"><div class="code-head"><span>dotenv</span><button type="button" class="copy-btn">Salin</button></div><pre><code>DOMAIN=kuis.sekolahanda.sch.id
+ADMIN_EMAIL=admin@sekolahanda.sch.id
+ADMIN_NAME=Admin Sekolah
+
+# Opsional: muat contoh kuis bawaan ke pustaka publik
+QUIZ_SEED=on
+
+# Opsional: aktifkan pembuat soal AI (kosongkan QUIZ_AI_KEY untuk mematikan)
+QUIZ_AI_URL=https://api.deepseek.com/v1
+QUIZ_AI_MODEL=deepseek-v4-flash
+QUIZ_AI_KEY=sk-kunci-api-anda</code></pre></div>
+  </li>
+  <li>
+    <strong>Bangun kontainer, jalankan, dan buat admin pertama</strong>
+    <p>Jalankan <code>./install.sh</code> sekali lagi. Docker akan membangun aplikasi, Caddy otomatis mengurus sertifikat HTTPS, lalu skrip membuat akun admin pertama dan menampilkan <strong>kata sandi sementara</strong>.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>./install.sh</code></pre></div>
+  </li>
+  <li>
+    <strong>Masuk dan segera ganti kata sandi</strong>
+    <p>Buka <code>https://&lt;domain-anda&gt;/login</code>, masuk memakai kata sandi tersebut, lalu klik nama Anda di bilah atas (<span class="ui">Akun saya</span>) untuk menggantinya dengan kata sandi permanen.</p>
+  </li>
+</ol>
+
+<div class="callout tip">
+  <p class="callout-title">Uji instalasi baru secara menyeluruh</p>
+  <p>Dari direktori <code>deploy/</code>, jalankan skrip pemeriksaan bawaan untuk menguji masuk akun, pembuatan kuis, dan permainan langsung melalui proxy HTTPS:</p>
+  <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>docker run --rm --network host -v &quot;$PWD/../tests/install_check.py:/t.py:ro&quot; quiz-quiz \
+  python /t.py https://&lt;DOMAIN&gt; &lt;ADMIN_EMAIL&gt; &lt;PASSWORD&gt;</code></pre></div>
+</div>
+
+<h2 id="local">Opsi B: Coba secara lokal (3 menit)</h2>
+<p>Ingin mencoba Quiz Platform di laptop tanpa Docker atau HTTPS? Cukup gunakan Python 3.12+ (atau Python 3.10+).</p>
+<ol class="steps">
+  <li>
+    <strong>Kloning repositori dan siapkan virtual environment</strong>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>git clone https://github.com/firmanhadi21/quiz-platform.git
+cd quiz-platform
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt pytest</code></pre></div>
+  </li>
+  <li>
+    <strong>Buat akun admin lokal pertama</strong>
+    <p>Perintah ini membuat basis data SQLite di <code>data/quiz.db</code> dan mencetak kata sandi acak.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>.venv/bin/python app/manage.py create anda@contoh.org &quot;Nama Anda&quot; admin</code></pre></div>
+  </li>
+  <li>
+    <strong>Jalankan server lokal</strong>
+    <p>Gunakan <code>QUIZ_SECURE_COOKIE=0</code> agar sesi masuk dapat bekerja di HTTP lokal tanpa HTTPS.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Salin</button></div><pre><code>cd app &amp;&amp; QUIZ_SECURE_COOKIE=0 ../.venv/bin/uvicorn main:app --port 8765</code></pre></div>
+  </li>
+  <li>
+    <strong>Buka di peramban</strong>
+    <p>Akses <code>http://127.0.0.1:8765</code> lalu masuk di <code>/login</code>. Anda dapat berganti bahasa kapan saja dengan tombol <span class="ui">ID</span> / <span class="ui">EN</span> di pojok kanan atas.</p>
+  </li>
+</ol>
+
+<div class="callout warn">
+  <p class="callout-title">Jangan gunakan QUIZ_SECURE_COOKIE=0 di server produksi</p>
+  <p><code>QUIZ_SECURE_COOKIE=0</code> hanya untuk pengujian HTTP lokal. Di produksi dengan HTTPS, biarkan nilai bawaannya (<code>1</code>).</p>
+</div>
+
+<h2 id="first-quiz">Membuat &amp; memainkan kuis pertama dalam 2 menit</h2>
+<p>Setelah masuk sebagai Guru atau Admin:</p>
+<ol class="steps">
+  <li>
+    <strong>Buat kuis baru</strong>
+    <p>Buka <span class="ui">Dasbor</span> lalu klik <span class="ui">+ Kuis baru</span>. Isi judul (mis. <em>Kartografi Dasar</em>), tulis beberapa soal — atau pakai <span class="ui">Tempel banyak soal</span> maupun <span class="ui">✨ Buat dengan AI</span> — lalu klik <span class="ui">Simpan &amp; tutup</span>.</p>
+  </li>
+  <li>
+    <strong>Mulai kuis langsung</strong>
+    <p>Klik <span class="ui">▶ Mainkan</span> pada kartu kuis, pastikan mode <span class="ui">Kuis langsung</span> terpilih, lalu tekan <span class="ui">Mulai</span>. Kode permainan 6 angka dan kode QR langsung tampil di layar guru.</p>
+  </li>
+  <li>
+    <strong>Gabung sebagai siswa</strong>
+    <p>Buka alamat situs di jendela peramban lain (atau di ponsel), masukkan kode 6 angka (atau pindai kode QR), ketik nama panggilan, lalu klik <span class="ui">Gabung</span>.</p>
+  </li>
+  <li>
+    <strong>Jalankan kuis dan lihat laporan</strong>
+    <p>Klik <span class="ui">▶ Mulai</span> pada layar guru untuk menjalankan tiap soal dan menampilkan jawaban. Setelah podium akhir muncul, buka <span class="ui">▤ Dasbor hasil</span> atau <span class="ui">▶ Bahas soal</span>.</p>
+  </li>
+</ol>
+
+<h2 id="next-steps">Langkah selanjutnya</h2>
+<ul>
+  <li>Baca <a href="teacher-guide.html">Panduan Guru &amp; Dosen</a> untuk menguasai 5 tipe soal, format tempel teks, teks bacaan, dan Pembuat Soal AI dengan rubrik.</li>
+  <li>Baca <a href="hosting-games.html">Kuis Langsung, Tugas &amp; Anti-Curang</a> untuk mengatur tugas mandiri, tenggat waktu, mode anti-curang, dan Roda Putar.</li>
+  <li>Baca <a href="admin-guide.html">Administrasi &amp; Identitas Situs</a> untuk mengganti nama situs, warna, logo sekolah, dan mengelola pengguna.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="index.html"><small>← Sebelumnya</small><strong>Ringkasan</strong></a><a class="next" href="teacher-guide.html"><small>Berikutnya →</small><strong>Panduan Guru &amp; Dosen</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#production-docker">Opsi A: Server produksi dengan Docker (5 menit)</a></li><li class="lvl-2"><a href="#local">Opsi B: Coba secara lokal (3 menit)</a></li><li class="lvl-2"><a href="#first-quiz">Membuat &amp; memainkan kuis pertama dalam 2 menit</a></li><li class="lvl-2"><a href="#next-steps">Langkah selanjutnya</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student How-To — Quiz Platform Docs</title>
+  <meta name="description" content="How students join live quizzes and self-paced assignments, practice from the public library, check personal results, and stay compliant in anti-cheat mode.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/student-guide.html" class="active">EN</a>
+        <a href="../id/student-guide.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html" class="active"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">User Guides</p>
+      <h1>Student How-To</h1>
+      <p class="lead">How students join live quizzes and self-paced assignments, practice from the public library, check personal results, and stay compliant in anti-cheat mode.</p>
+      
+<h2 id="joining">Joining a live quiz or assignment</h2>
+<p>You can join a game in three ways:</p>
+<ol class="steps">
+  <li>
+    <strong>Enter the 6-digit code</strong>
+    <p>Open your school's Quiz Platform homepage, type the 6-digit code given by your teacher (e.g. <code>123 456</code>), and click <span class="ui">Join</span>.</p>
+  </li>
+  <li>
+    <strong>Scan the QR code</strong>
+    <p>Point your phone camera at the QR code on the classroom projector to jump directly to the join screen.</p>
+  </li>
+  <li>
+    <strong>Open a direct link</strong>
+    <p>Teachers can share a link like <code>https://quiz.yourschool.edu/join/123456</code> (or the short link <code>/123456</code>).</p>
+  </li>
+</ol>
+<p>Next, enter your <strong>Nickname</strong> (1–30 characters; use a name your teacher recognizes). If the teacher turned on <strong>Require an account</strong>, you will be prompted to sign in or register first so your score is saved under your official account name and email.</p>
+<div class="callout tip">
+  <p class="callout-title">Accidentally closed the browser?</p>
+  <p>Reopen the same join link or enter the same 6-digit code on the same device. Your browser remembers your player session and resumes your game automatically.</p>
+</div>
+
+<h2 id="playing">Answering questions</h2>
+<ul>
+  <li><strong>Live quizzes:</strong> Wait in the lobby until your teacher starts. Answer each question before the countdown ends — faster correct answers earn more points. After each question closes, you see whether you were right, the points earned, the explanation (if provided), and your current rank.</li>
+  <li><strong>Assignments:</strong> Work through questions at your own pace before the deadline. If a per-question timer is enabled, the clock begins as soon as a question opens and keeps ticking even if you reload the page.</li>
+  <li><strong>Multiple answers:</strong> Select <em>all</em> correct options, then tap <span class="ui">Submit</span>.</li>
+  <li><strong>Short answer:</strong> Capitalization and extra spaces do not matter (e.g. <code>srgi2013</code> matches <code>SRGI2013</code>).</li>
+  <li><strong>Reading passages:</strong> You are shown the full passage first with no timer running. Read carefully, then wait for your teacher (live quiz) or tap <span class="ui">Start the questions</span> (assignment). The passage stays visible alongside every question.</li>
+</ul>
+
+<h2 id="practice-library">Practicing from the Quiz Library</h2>
+<p>Sign in with a student account and open <span class="ui">Explore</span> to browse public quizzes shared by teachers. Click <span class="ui">Practice</span> on any quiz to start a private, self-paced practice run with shuffled questions and options. Your practice attempts appear under <span class="ui">My results</span>.</p>
+
+<h2 id="results-review">Checking results &amp; reviewing answers</h2>
+<p>Whenever you join a game while <strong>signed in</strong>, your score, accuracy, and rank are saved in <span class="ui">My results</span> in the top navigation bar.</p>
+<p>If your teacher enabled <strong>Show the correct answer</strong>, click <span class="ui">Review answers</span> after finishing a game (or anytime later from <span class="ui">My results</span>) to step through every question, compare your answer with the answer key, and read the explanations.</p>
+
+<h2 id="student-anticheat">Taking a quiz with Anti-Cheat Mode</h2>
+<p>If your teacher enables <span class="ui">🛡 Anti-cheat mode</span>, you will see a notice screen listing the rules before the first question appears. To avoid accidental violations:</p>
+<ul>
+  <li>Enable <strong>Do Not Disturb</strong> / silence pop-up notifications before starting.</li>
+  <li>Do not switch browser tabs, open other apps, or lock your phone screen while the quiz is active.</li>
+  <li>On a laptop/desktop, keep the browser in <strong>fullscreen</strong> mode when prompted.</li>
+  <li>Copy, cut, paste, and right-click are disabled during the quiz.</li>
+</ul>
+<p>If you leave the quiz page for <strong>2 seconds or longer</strong>, it is recorded and reported to your teacher. Depending on your teacher's rule, you may receive a warning, score zero on the open question, or be <strong>locked out</strong>. If locked out, tell your teacher — your screen checks automatically every 4 seconds and resumes the moment your teacher unlocks you.</p>
+
+<h2 id="student-account">Managing your account &amp; password</h2>
+<p>Click your name in the top navigation bar (<span class="ui">My account</span>) to view your role or change your password (minimum 8 characters). Changing your password automatically signs out all other devices.</p>
+<p>Forgot your password? Quiz Platform does not send automated emails — ask your site administrator to reset it for you and hand you a one-time password.</p>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="hosting-games.html"><small>← Previous</small><strong>Live Quizzes, Assignments &amp; Anti-Cheat</strong></a><a class="next" href="admin-guide.html"><small>Next →</small><strong>Administration &amp; Branding</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#joining">Joining a live quiz or assignment</a></li><li class="lvl-2"><a href="#playing">Answering questions</a></li><li class="lvl-2"><a href="#practice-library">Practicing from the Quiz Library</a></li><li class="lvl-2"><a href="#results-review">Checking results &amp; reviewing answers</a></li><li class="lvl-2"><a href="#student-anticheat">Taking a quiz with Anti-Cheat Mode</a></li><li class="lvl-2"><a href="#student-account">Managing your account &amp; password</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

@@ -7,6 +7,9 @@ Bahasa Indonesia and English.
 It is one small container (FastAPI + SQLite, plain JavaScript, no build step), so a school,
 a department or a single teacher can run it on their own server and keep their students' data there.
 
+**Documentation (English & Bahasa Indonesia):** <https://firmanhadi21.github.io/quiz-platform/>
+— [English Quickstart](https://firmanhadi21.github.io/quiz-platform/en/quickstart.html) · [Panduan Cepat (ID)](https://firmanhadi21.github.io/quiz-platform/id/quickstart.html)
+
 ## Features
 
 | | |

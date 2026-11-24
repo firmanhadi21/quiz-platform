@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quickstart — Quiz Platform Docs</title>
+  <meta name="description" content="Get Quiz Platform running in minutes — either on a production Linux server with automatic HTTPS via Docker + Caddy, or on your laptop for local evaluation.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/quickstart.html" class="active">EN</a>
+        <a href="../id/quickstart.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html" class="active"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Getting Started</p>
+      <h1>Quickstart</h1>
+      <p class="lead">Get Quiz Platform running in minutes — either on a production Linux server with automatic HTTPS via Docker + Caddy, or on your laptop for local evaluation.</p>
+      
+<h2 id="production-docker">Option A: Production server with Docker (5 minutes)</h2>
+<p>This is the recommended setup for a school, university department, or organization.</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+  <li>A Linux server with <strong>Docker</strong> and the <strong>Docker Compose plugin</strong> (1 CPU and 1 GB RAM is sufficient).</li>
+  <li>A <strong>domain name</strong> whose DNS <code>A</code>/<code>AAAA</code> record already points to your server, with ports <strong>80</strong> and <strong>443</strong> open.</li>
+  <li><em>Optional:</em> An API key for an OpenAI-compatible AI provider (DeepSeek, OpenAI, OpenRouter) to enable the AI Question Writer.</li>
+</ul>
+
+<ol class="steps">
+  <li>
+    <strong>Clone the repository and generate <code>.env</code></strong>
+    <p>Run <code>./install.sh</code> once. On its first run, it copies <code>.env.example</code> to <code>.env</code> with <code>chmod 600</code> permissions and exits so you can edit it.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>git clone https://github.com/firmanhadi21/quiz-platform.git
+cd quiz-platform/deploy
+./install.sh</code></pre></div>
+  </li>
+  <li>
+    <strong>Edit <code>.env</code> with your domain and first admin</strong>
+    <p>Open <code>.env</code> in your editor (e.g. <code>nano .env</code>) and set at least <code>DOMAIN</code> and <code>ADMIN_EMAIL</code>. Add <code>QUIZ_AI_KEY</code> if you want the AI Question Writer enabled.</p>
+    <div class="code-block"><div class="code-head"><span>dotenv</span><button type="button" class="copy-btn">Copy</button></div><pre><code>DOMAIN=quiz.yourschool.edu
+ADMIN_EMAIL=admin@yourschool.edu
+ADMIN_NAME=School Admin
+
+# Optional: load the built-in starter quizzes into the public library
+QUIZ_SEED=on
+
+# Optional: enable AI question writer (leave QUIZ_AI_KEY empty to disable)
+QUIZ_AI_URL=https://api.deepseek.com/v1
+QUIZ_AI_MODEL=deepseek-v4-flash
+QUIZ_AI_KEY=sk-your-key-here</code></pre></div>
+  </li>
+  <li>
+    <strong>Build, start, and create the first admin</strong>
+    <p>Run <code>./install.sh</code> a second time. Docker builds the container, Caddy obtains and renews the HTTPS certificate automatically, and the script creates your first admin account and prints its <strong>one-time password</strong>.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>./install.sh</code></pre></div>
+  </li>
+  <li>
+    <strong>Sign in and change your password</strong>
+    <p>Open <code>https://&lt;your-domain&gt;/login</code>, sign in with the printed password, then click your name in the top navigation bar (<span class="ui">My account</span>) to set your own permanent password.</p>
+  </li>
+</ol>
+
+<div class="callout tip">
+  <p class="callout-title">Verify a fresh install end-to-end</p>
+  <p>Run the built-in smoke check from <code>deploy/</code> to verify sign-in, quiz creation, and a live WebSocket game through your HTTPS proxy:</p>
+  <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>docker run --rm --network host -v &quot;$PWD/../tests/install_check.py:/t.py:ro&quot; quiz-quiz \
+  python /t.py https://&lt;DOMAIN&gt; &lt;ADMIN_EMAIL&gt; &lt;PASSWORD&gt;</code></pre></div>
+</div>
+
+<h2 id="local">Option B: Try it locally (3 minutes)</h2>
+<p>Want to test Quiz Platform on your own computer without Docker or HTTPS? Use Python 3.12+ (or Python 3.10+).</p>
+<ol class="steps">
+  <li>
+    <strong>Clone and create a virtual environment</strong>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>git clone https://github.com/firmanhadi21/quiz-platform.git
+cd quiz-platform
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt pytest</code></pre></div>
+  </li>
+  <li>
+    <strong>Create your first local admin account</strong>
+    <p>The command creates the SQLite database in <code>data/quiz.db</code> and prints a generated password.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>.venv/bin/python app/manage.py create you@example.org &quot;Your Name&quot; admin</code></pre></div>
+  </li>
+  <li>
+    <strong>Start the local server</strong>
+    <p>Set <code>QUIZ_SECURE_COOKIE=0</code> so login cookies work over plain HTTP on localhost.</p>
+    <div class="code-block"><div class="code-head"><span>bash</span><button type="button" class="copy-btn">Copy</button></div><pre><code>cd app &amp;&amp; QUIZ_SECURE_COOKIE=0 ../.venv/bin/uvicorn main:app --port 8765</code></pre></div>
+  </li>
+  <li>
+    <strong>Open in your browser</strong>
+    <p>Visit <code>http://127.0.0.1:8765</code> and sign in at <code>/login</code>. Toggle between English and Bahasa Indonesia anytime with the <span class="ui">EN</span> / <span class="ui">ID</span> button in the top-right corner.</p>
+  </li>
+</ol>
+
+<div class="callout warn">
+  <p class="callout-title">Never set QUIZ_SECURE_COOKIE=0 in production</p>
+  <p><code>QUIZ_SECURE_COOKIE=0</code> is strictly for local HTTP testing. In production over HTTPS, leave it unset (defaults to <code>1</code>).</p>
+</div>
+
+<h2 id="first-quiz">Your first quiz in 2 minutes</h2>
+<p>Once signed in as a Teacher or Admin:</p>
+<ol class="steps">
+  <li>
+    <strong>Create a quiz</strong>
+    <p>Open <span class="ui">Dashboard</span> and click <span class="ui">+ New quiz</span>. Give it a title (e.g. <em>Introduction to Geography</em>), add a couple of questions — or click <span class="ui">Paste many questions</span> or <span class="ui">✨ Write with AI</span> — then click <span class="ui">Save &amp; close</span>.</p>
+  </li>
+  <li>
+    <strong>Host a live game</strong>
+    <p>Click <span class="ui">▶ Host</span> on your quiz card, keep <span class="ui">Live quiz</span> selected, and press <span class="ui">Start</span>. A 6-digit game code and QR code appear on the projector screen.</p>
+  </li>
+  <li>
+    <strong>Join as a student</strong>
+    <p>Open the site in a second browser window (or on your phone), type the 6-digit code (or scan the QR code), enter a nickname, and click <span class="ui">Join</span>.</p>
+  </li>
+  <li>
+    <strong>Run the game and view the report</strong>
+    <p>Click <span class="ui">▶ Start</span> on the host screen to advance through questions and answer reveals. When the final podium appears, click <span class="ui">▤ Results dashboard</span> or <span class="ui">▶ Review questions</span>.</p>
+  </li>
+</ol>
+
+<h2 id="next-steps">Next steps</h2>
+<ul>
+  <li>Read the <a href="teacher-guide.html">Teacher How-To</a> to master all 5 question types, text paste syntax, reading passages, and AI rubric alignment.</li>
+  <li>Read <a href="hosting-games.html">Live Quizzes, Assignments &amp; Anti-Cheat</a> to configure assignments, deadlines, anti-cheat rules, and Spin the Wheel.</li>
+  <li>Read <a href="admin-guide.html">Administration &amp; Branding</a> to customize your school's name, colors, logo, and user accounts.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="index.html"><small>← Previous</small><strong>Overview</strong></a><a class="next" href="teacher-guide.html"><small>Next →</small><strong>Teacher How-To</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#production-docker">Option A: Production server with Docker (5 minutes)</a></li><li class="lvl-2"><a href="#local">Option B: Try it locally (3 minutes)</a></li><li class="lvl-2"><a href="#first-quiz">Your first quiz in 2 minutes</a></li><li class="lvl-2"><a href="#next-steps">Next steps</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

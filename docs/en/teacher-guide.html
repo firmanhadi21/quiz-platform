@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teacher How-To — Quiz Platform Docs</title>
+  <meta name="description" content="A complete guide for teachers and lecturers on writing, importing, organizing, and generating quizzes with the editor, reading passages, and the AI Question Writer.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/teacher-guide.html" class="active">EN</a>
+        <a href="../id/teacher-guide.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html" class="active"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">User Guides</p>
+      <h1>Teacher How-To</h1>
+      <p class="lead">A complete guide for teachers and lecturers on writing, importing, organizing, and generating quizzes with the editor, reading passages, and the AI Question Writer.</p>
+      
+<h2 id="dashboard-overview">Teacher dashboard &amp; quiz library</h2>
+<p>When signed in with a <strong>Teacher</strong> or <strong>Admin</strong> account, <span class="ui">Dashboard</span> shows two sections:</p>
+<ul>
+  <li><strong>My quizzes:</strong> All quizzes you own, with quick actions to <span class="ui">Host</span>, <span class="ui">Edit</span>, <span class="ui">Duplicate</span>, <span class="ui">Practice</span>, or <span class="ui">Delete</span>. Deleting a quiz preserves reports of past games because every game stores its own snapshot of the questions.</li>
+  <li><strong>My games:</strong> Your 100 most recent live quizzes and assignments, with live status (<span class="badge green">Open</span> / <span class="badge">Ended</span>), player count, and links to <span class="ui">Open host screen</span> or <span class="ui">Report</span>.</li>
+</ul>
+<p>To browse shared quizzes, open <span class="ui">Explore</span> in the top navigation bar. You can search by title, subject, or description, host any public quiz immediately, or click <span class="ui">Duplicate</span> to make your own editable copy.</p>
+
+<h2 id="creating-quizzes">Creating &amp; editing quizzes</h2>
+<p>Click <span class="ui">+ New quiz</span> on the Dashboard (or <span class="ui">Edit</span> on any quiz you own). Every quiz can hold <strong>1 to 200 questions</strong> and up to <strong>20 reading passages</strong>.</p>
+<p>In the top card, configure quiz metadata:</p>
+<ul>
+  <li><strong>Title</strong> (required, max 200 characters)</li>
+  <li><strong>Subject</strong> (optional, max 100 characters — used for search in the Quiz Library)</li>
+  <li><strong>Description</strong> (optional, max 1,000 characters)</li>
+  <li><strong>Show in the library:</strong> Toggle on to publish the quiz as public so other teachers can host/duplicate it and students can practice it.</li>
+</ul>
+<p>On each question card you can set:</p>
+<ul>
+  <li><strong>Question type</strong> (see the 5 types below)</li>
+  <li><strong>Time limit:</strong> 10, 20, 30, 45, 60, 90, 120, 180, or 300 seconds (API accepts 5–600 seconds)</li>
+  <li><strong>Points:</strong> 0, 500, 1000, or 2000 points (API accepts 0–2000; Polls are always 0 points)</li>
+  <li><strong>Image:</strong> Click <span class="ui">🖼 Image</span> to upload PNG, JPG, GIF, or WebP up to <strong>2 MB</strong> (quota: 500 images per teacher account)</li>
+  <li><strong>Explanation:</strong> Shown to students after answering (when answer display is enabled) and during post-game review</li>
+  <li><strong>Rubric criterion:</strong> Optional learning outcome or criterion tag (max 120 characters), used to group accuracy in the Results Dashboard</li>
+  <li><strong>Card actions:</strong> Move up (<span class="ui">↑</span>), move down (<span class="ui">↓</span>), duplicate (<span class="ui">⧉</span>), or delete (<span class="ui">×</span>)</li>
+</ul>
+
+<h2 id="question-types">The 5 question types</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Type</th><th>Options / Input</th><th>Grading Rule</th><th>Best Used For</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Multiple choice</strong> (<code>single</code>)</td>
+        <td>2 to 6 options; select 1 radio button as correct</td>
+        <td>Exact single choice match</td>
+        <td>Concept checks, definitions, TOEFL reading questions</td>
+      </tr>
+      <tr>
+        <td><strong>Multiple answers</strong> (<code>multi</code>)</td>
+        <td>2 to 6 options; tick 1 or more checkboxes as correct</td>
+        <td>All-or-nothing exact set match</td>
+        <td>Selecting all valid properties or causes</td>
+      </tr>
+      <tr>
+        <td><strong>True / False</strong> (<code>tf</code>)</td>
+        <td>True or False</td>
+        <td>Exact boolean match</td>
+        <td>Quick misconception checks</td>
+      </tr>
+      <tr>
+        <td><strong>Short answer</strong> (<code>text</code>)</td>
+        <td>Up to 10 accepted answers separated by semicolons (<code>;</code>)</td>
+        <td>Case-insensitive; extra whitespace collapsed</td>
+        <td>Vocabulary, formulas, dates, acronyms (e.g. <code>SRGI2013; SRGI 2013</code>)</td>
+      </tr>
+      <tr>
+        <td><strong>Poll</strong> (<code>poll</code>)</td>
+        <td>2 to 6 options; no correct answer</td>
+        <td>Ungraded (0 points); shows live class distribution</td>
+        <td>Icebreakers, opinions, confidence checks</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="paste-many">Fast authoring: Paste many questions</h2>
+<p>If you already have questions in a document or notes, click <span class="ui">Paste many questions</span> at the bottom of the editor. Separate each question with a <strong>blank line</strong>:</p>
+<ul>
+  <li>First line = question text (leading numbers like <code>1.</code> or <code>1)</code> are stripped automatically).</li>
+  <li>Following lines = options (leading <code>a.</code>, <code>b)</code>, <code>-</code>, or <code>•</code> are stripped automatically).</li>
+  <li>Prefix correct option(s) with <code>*</code>.</li>
+  <li><strong>1 starred option</strong> → Multiple choice. <strong>2+ starred options</strong> → Multiple answers. <strong>0 starred options</strong> → Poll.</li>
+  <li>Exactly two options <code>True</code> / <code>False</code> (or <code>Benar</code> / <code>Salah</code>) with one <code>*</code> → True / False.</li>
+  <li>Lines starting with <code>=</code> → Short answer (multiple <code>=</code> lines add accepted variants).</li>
+</ul>
+<div class="code-block"><div class="code-head"><span>text</span><button type="button" class="copy-btn">Copy</button></div><pre><code>1. One UTM zone has a width of...
+a. 3 degrees of longitude
+*b. 6 degrees of longitude
+c. 10 degrees of longitude
+
+2. Which statements are true about the Mercator projection?
+*a. Preserves local angles (conformal)
+*b. Exaggerates area near the poles
+c. Has zero area distortion worldwide
+
+3. A 1:25,000 map shows more detail than a 1:50,000 map.
+*True
+False
+
+4. What is Indonesia&#x27;s national geodetic datum?
+= SRGI2013
+= SRGI 2013
+
+5. Which topic should we review next week?
+- Map projections
+- Remote sensing bands
+- GNSS positioning</code></pre></div>
+
+<h2 id="reading-passages">Reading passages (TOEFL Reading style)</h2>
+<p>Quiz Platform includes dedicated support for reading comprehension:</p>
+<ol class="steps">
+  <li>
+    <strong>Add a passage</strong>
+    <p>In the quiz editor, scroll to <strong>Reading passages</strong> and click <span class="ui">+ Passage</span>. Enter an optional title and paste the passage text (up to 20,000 characters; separate paragraphs with blank lines). A live word counter helps gauge length.</p>
+  </li>
+  <li>
+    <strong>Attach questions to the passage</strong>
+    <p>Either pick the passage from the dropdown on each question card, or click <span class="ui">Use for questions without a passage</span> on the passage card to attach it to all unassigned questions at once.</p>
+  </li>
+  <li>
+    <strong>How students experience it</strong>
+    <p>When a live game or assignment reaches the first question of a passage, the passage is shown <strong>first with no countdown running</strong>. In a live game, the teacher clicks <span class="ui">▶ Start the questions</span> when the class is ready; in an assignment, the student clicks <span class="ui">Start the questions</span>. The passage then stays pinned beside every attached question.</p>
+  </li>
+</ol>
+<div class="callout tip">
+  <p class="callout-title">Shuffling respects passage blocks</p>
+  <p>Even when <strong>Shuffle question order</strong> is enabled, questions belonging to the same reading passage stay grouped together in their original sequence so paragraph references stay coherent.</p>
+</div>
+
+<h2 id="ai-writer">AI Question Writer</h2>
+<p>If your administrator has configured an AI API key, click <span class="ui">✨ Write with AI</span> on the Dashboard or inside the quiz editor to draft questions directly from your teaching material.</p>
+<ol class="steps">
+  <li>
+    <strong>Provide teaching material</strong>
+    <p>Paste text (minimum 200 characters, up to 60,000 characters) or click <span class="ui">📄 Upload material</span> to extract text from <strong>PDF, DOCX, PPTX, TXT, or MD</strong> files up to <strong>50 MB</strong>. You can upload multiple files to append their text.</p>
+  </li>
+  <li>
+    <strong>Choose standard mode or Reading practice mode</strong>
+    <p>Tick <span class="ui">Reading practice (TOEFL Reading style)</span> if the uploaded/pasted text is a passage students will read during the quiz. The AI will attach it as a Reading Passage and generate TOEFL-style multiple-choice questions (factual, negative factual, inference, vocabulary in context, reference, rhetorical purpose, and main idea).</p>
+  </li>
+  <li>
+    <strong>Optional: Add an assessment rubric</strong>
+    <p>In standard mode, paste or upload a rubric / test blueprint / learning outcomes (up to 20,000 characters). The AI aligns questions to each criterion according to its weights and tags every question's <strong>Rubric criterion</strong> field so your Results Dashboard shows per-criterion class accuracy.</p>
+  </li>
+  <li>
+    <strong>Set count, difficulty, language, types &amp; extra guidance</strong>
+    <p>Choose <strong>5 to 25 questions</strong>, difficulty (<em>Easy</em>, <em>Medium</em>, <em>Hard</em>), question language (<em>Bahasa Indonesia</em> or <em>English</em>), allowed types, and optional focus notes (e.g. <em>"focus on map projections"</em>).</p>
+  </li>
+  <li>
+    <strong>Review before saving</strong>
+    <p>Click <span class="ui">✨ Write questions</span> (usually takes ~30–60 seconds). Every AI-drafted question goes through the same validation as manual questions and has its option positions randomized. Nothing is saved until you review, edit if needed, and click <span class="ui">Save</span>.</p>
+  </li>
+</ol>
+<div class="callout warn">
+  <p class="callout-title">AI rate limits &amp; scanned PDFs</p>
+  <ul>
+    <li>Each teacher account is limited to <strong>5 AI requests per 5 minutes</strong> and <strong>40 per day</strong>.</li>
+    <li>Scanned image-only PDFs contain no selectable text and cannot be extracted — run OCR first or paste text directly.</li>
+    <li>Only teaching material (never student data) is sent to the configured AI provider.</li>
+  </ul>
+</div>
+
+<h2 id="json-import-export">Import &amp; Export JSON</h2>
+<p>You can back up, version-control, or share quizzes between servers as JSON files:</p>
+<ul>
+  <li><strong>Export:</strong> Open a quiz page (click the quiz card title on Dashboard) and click <span class="ui">Export JSON</span> to download <code>quiz-&lt;id&gt;.json</code>.</li>
+  <li><strong>Import:</strong> On the Dashboard, click <span class="ui">Import JSON</span> and pick a <code>.json</code> file. It creates a new quiz and opens it in the editor.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span>json</span><button type="button" class="copy-btn">Copy</button></div><pre><code>{
+  &quot;title&quot;: &quot;Basic Cartography&quot;,
+  &quot;subject&quot;: &quot;Cartography&quot;,
+  &quot;description&quot;: &quot;Scale, projections, contours, and symbols.&quot;,
+  &quot;passages&quot;: [
+    {
+      &quot;title&quot;: &quot;Map Scale Overview&quot;,
+      &quot;text&quot;: &quot;First paragraph...\n\nSecond paragraph...&quot;
+    }
+  ],
+  &quot;questions&quot;: [
+    {
+      &quot;type&quot;: &quot;single&quot;,
+      &quot;text&quot;: &quot;On a 1:50,000 map, 1 cm represents...&quot;,
+      &quot;options&quot;: [&quot;50 m&quot;, &quot;500 m&quot;, &quot;5 km&quot;, &quot;50 km&quot;],
+      &quot;answer&quot;: 1,
+      &quot;time&quot;: 30,
+      &quot;points&quot;: 1000,
+      &quot;explanation&quot;: &quot;1 cm x 50,000 = 50,000 cm = 500 m.&quot;,
+      &quot;criterion&quot;: &quot;Scale calculations&quot;,
+      &quot;passage&quot;: 0
+    },
+    {
+      &quot;type&quot;: &quot;tf&quot;,
+      &quot;text&quot;: &quot;1:25,000 is a larger scale than 1:50,000.&quot;,
+      &quot;answer&quot;: true,
+      &quot;time&quot;: 20,
+      &quot;points&quot;: 1000
+    },
+    {
+      &quot;type&quot;: &quot;multi&quot;,
+      &quot;text&quot;: &quot;Which properties apply to the Mercator projection?&quot;,
+      &quot;options&quot;: [&quot;Conformal&quot;, &quot;Polar area distortion&quot;, &quot;Zero area distortion&quot;],
+      &quot;answer&quot;: [0, 1],
+      &quot;time&quot;: 45,
+      &quot;points&quot;: 1000
+    },
+    {
+      &quot;type&quot;: &quot;text&quot;,
+      &quot;text&quot;: &quot;Indonesia&#x27;s national datum?&quot;,
+      &quot;answer&quot;: [&quot;SRGI2013&quot;, &quot;SRGI 2013&quot;],
+      &quot;time&quot;: 30,
+      &quot;points&quot;: 1000
+    }
+  ]
+}</code></pre></div>
+
+<h2 id="duplicating-classes">Duplicating quizzes for different classes</h2>
+<p>Teaching the same material to Class A and Class B? Click <span class="ui">Duplicate</span> on a quiz and name the copy (e.g. <em>Basic Cartography (Class B)</em>). Each copy gets its own ID, games, and reports, and edits never affect the original.</p>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="quickstart.html"><small>← Previous</small><strong>Quickstart</strong></a><a class="next" href="hosting-games.html"><small>Next →</small><strong>Live Quizzes, Assignments &amp; Anti-Cheat</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#dashboard-overview">Teacher dashboard &amp; quiz library</a></li><li class="lvl-2"><a href="#creating-quizzes">Creating &amp; editing quizzes</a></li><li class="lvl-2"><a href="#question-types">The 5 question types</a></li><li class="lvl-2"><a href="#paste-many">Fast authoring: Paste many questions</a></li><li class="lvl-2"><a href="#reading-passages">Reading passages (TOEFL Reading style)</a></li><li class="lvl-2"><a href="#ai-writer">AI Question Writer</a></li><li class="lvl-2"><a href="#json-import-export">Import &amp; Export JSON</a></li><li class="lvl-2"><a href="#duplicating-classes">Duplicating quizzes for different classes</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

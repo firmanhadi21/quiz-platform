@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview — Quiz Platform Docs</title>
+  <meta name="description" content="Quiz Platform is a self-hosted classroom quiz application with live projector games, self-paced assignments, an AI question writer, anti-cheat monitoring, rich results dashboards, and a spin-the-wheel picker — with a full Bahasa Indonesia and English interface.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/index.html" class="active">EN</a>
+        <a href="../id/index.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html" class="active"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Getting Started</p>
+      <h1>Overview</h1>
+      <p class="lead">Quiz Platform is a self-hosted classroom quiz application with live projector games, self-paced assignments, an AI question writer, anti-cheat monitoring, rich results dashboards, and a spin-the-wheel picker — with a full Bahasa Indonesia and English interface.</p>
+      
+<h2 id="what-it-is">What Quiz Platform is</h2>
+<p>Quiz Platform is built for schools, university departments, training centers, and individual teachers who want an interactive classroom quiz tool that runs on their own server — keeping student names, scores, and teaching material under their own control.</p>
+<p>It ships as <strong>one lightweight Docker container</strong> powered by FastAPI, SQLite (WAL mode), and plain vanilla JavaScript with zero frontend build step. One small server (1 CPU, 1 GB RAM) easily handles a school or department with a few hundred simultaneous players.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 760 220" width="760" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quiz Platform Architecture">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f6b5f"/>
+      </marker>
+    </defs>
+    <rect x="10" y="25" width="150" height="72" rx="12" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="85" y="54" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">Teacher Screen</text>
+    <text x="85" y="74" text-anchor="middle" font-size="11" fill="#2f4a47">Editor · Host · Report</text>
+
+    <rect x="10" y="122" width="150" height="72" rx="12" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5"/>
+    <text x="85" y="151" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">Student Phones</text>
+    <text x="85" y="171" text-anchor="middle" font-size="11" fill="#2f4a47">Join Code · QR · Play</text>
+
+    <line x1="160" y1="61" x2="225" y2="96" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr)"/>
+    <line x1="160" y1="158" x2="225" y2="124" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr)"/>
+
+    <rect x="230" y="65" width="132" height="90" rx="12" fill="#0a4c43"/>
+    <text x="296" y="102" text-anchor="middle" font-weight="700" font-size="13" fill="#f0b429">Caddy / Nginx</text>
+    <text x="296" y="122" text-anchor="middle" font-size="11" fill="#e7f3f0">Auto HTTPS + WS</text>
+    <text x="296" y="138" text-anchor="middle" font-size="10" fill="#b7d9d2">Ports 80 &amp; 443</text>
+
+    <line x1="362" y1="110" x2="414" y2="110" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr)"/>
+
+    <rect x="420" y="45" width="160" height="130" rx="12" fill="#ffffff" stroke="#0f6b5f" stroke-width="2"/>
+    <text x="500" y="74" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">FastAPI (1 Worker)</text>
+    <text x="500" y="96" text-anchor="middle" font-size="11" fill="#2f4a47">REST API + Vanilla JS</text>
+    <text x="500" y="114" text-anchor="middle" font-size="11" fill="#2f4a47">Live WebSocket State</text>
+    <text x="500" y="132" text-anchor="middle" font-size="11" fill="#2f4a47">Anti-Cheat &amp; Branding</text>
+    <text x="500" y="156" text-anchor="middle" font-size="10" fill="#5f7471">Port 8000 (internal)</text>
+
+    <line x1="580" y1="80" x2="624" y2="62" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr)"/>
+    <line x1="580" y1="140" x2="624" y2="158" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr)"/>
+
+    <rect x="630" y="25" width="120" height="72" rx="12" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="690" y="54" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">/data Volume</text>
+    <text x="690" y="72" text-anchor="middle" font-size="10" fill="#2f4a47">quiz.db (SQLite WAL)</text>
+    <text x="690" y="86" text-anchor="middle" font-size="10" fill="#2f4a47">uploads/ · brand/</text>
+
+    <rect x="630" y="122" width="120" height="72" rx="12" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5"/>
+    <text x="690" y="150" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">AI Provider</text>
+    <text x="690" y="168" text-anchor="middle" font-size="10" fill="#2f4a47">Optional OpenAI API</text>
+    <text x="690" y="182" text-anchor="middle" font-size="10" fill="#2f4a47">DeepSeek / OpenAI…</text>
+  </svg>
+  <figcaption>Single-container architecture: Caddy terminates TLS and proxies HTTP + WebSockets to a single FastAPI worker backed by SQLite WAL.</figcaption>
+</figure>
+
+
+<h2 id="features">Key features</h2>
+<div class="card-grid">
+  <div class="card">
+    <div class="card-icon">▶</div>
+    <h3>Live Quizzes</h3>
+    <p>6-digit code and QR code per game. Teachers present on the class screen while students answer on phones. Faster correct answers earn higher speed-bonus points.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">✎</div>
+    <h3>Self-Paced Assignments</h3>
+    <p>Run the same quizzes asynchronously with optional per-question timers, deadlines, and per-student shuffling of questions and options.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">✨</div>
+    <h3>AI Question Writer</h3>
+    <p>Paste notes or upload PDF, DOCX, PPTX, or TXT (up to 50 MB), optionally with an assessment rubric. Works with any OpenAI-compatible API (DeepSeek, OpenAI, OpenRouter).</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">📖</div>
+    <h3>Reading Passages</h3>
+    <p>Built for TOEFL-style reading comprehension: students read the passage first with no timer running, then keep it open side-by-side next to every question.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">🛡</div>
+    <h3>Anti-Cheat Mode</h3>
+    <p>Optional per game. Detects leaving the tab/app or exiting fullscreen (after a 2-second grace period), blocks copy/paste, and supports Record, Zero-point, or Lock-out penalties.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">▤</div>
+    <h3>Results &amp; Review</h3>
+    <p>Winner podium, accuracy spread histogram, hardest/easiest questions, per-student matrix, rubric-criterion accuracy, CSV export, print/PDF, and step-by-step review.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">◔</div>
+    <h3>Spin the Wheel</h3>
+    <p>Pick students or topics randomly. Type entries, load players directly from a game, or upload an Excel (<code>.xlsx</code>) / CSV class roster (number &amp; name).</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">⚙</div>
+    <h3>Roles &amp; Branding</h3>
+    <p>Student, Teacher, and Admin roles. Admins manage accounts, registration policy, site name, organization, primary/accent colors, and custom logo directly from the web UI.</p>
+  </div>
+</div>
+
+<h2 id="roles">Roles at a glance</h2>
+<p>Every account has one of three roles. Guests without an account can still join open games with a nickname and use the spin-the-wheel tool.</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Capability</th><th>Guest (no login)</th><th>Student</th><th>Teacher</th><th>Admin</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Join open games with a 6-digit code</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Use Spin the Wheel (including Excel/CSV upload)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Practice public quizzes from the Quiz Library</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>View personal history (My results) &amp; save wheels</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Create, edit, import/export, and duplicate quizzes</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Host live quizzes &amp; assignments, view results dashboards</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Use AI Question Writer &amp; upload question images</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Manage users, roles, site branding &amp; delete any quiz</td><td>–</td><td>–</td><td>–</td><td>✓</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="limits">Known limits &amp; design trade-offs</h2>
+<ul>
+  <li><strong>Single process + SQLite:</strong> Designed for one school, faculty, or department (a few hundred concurrent players; up to 500 players per game). Live game turn state lives in memory, so always run with <code>--workers 1</code>.</li>
+  <li><strong>No outbound email:</strong> Password resets are handled directly by an Admin (via the Admin page or <code>manage.py reset-password</code>), which generates a one-time temporary password.</li>
+  <li><strong>Browser-based anti-cheat:</strong> Anti-cheat records leaving the quiz tab/app or fullscreen and blocks copy/paste, but a browser cannot physically prevent switching apps or detect a second device.</li>
+</ul>
+
+<h2 id="where-next">Where to go next</h2>
+<div class="card-grid">
+  <a class="card" href="quickstart.html">
+    <h3>⚡ Quickstart</h3>
+    <p>Install on a Linux server with Docker + automatic HTTPS, or try locally in 3 minutes.</p>
+  </a>
+  <a class="card" href="teacher-guide.html">
+    <h3>✎ Teacher How-To</h3>
+    <p>Write quizzes fast using the editor, bulk paste, JSON import, reading passages, and AI.</p>
+  </a>
+  <a class="card" href="hosting-games.html">
+    <h3>▶ Hosting &amp; Reports</h3>
+    <p>Run live games and assignments, configure anti-cheat, review answers, and spin the wheel.</p>
+  </a>
+  <a class="card" href="deployment.html">
+    <h3>☁ Deployment &amp; Ops</h3>
+    <p>Configure <code>.env</code>, AI providers, Nginx, nightly backups, restores, and safe updates.</p>
+  </a>
+</div>
+
+      <nav class="pager" aria-label="Pagination"><a class="next" href="quickstart.html"><small>Next →</small><strong>Quickstart</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#what-it-is">What Quiz Platform is</a></li><li class="lvl-2"><a href="#features">Key features</a></li><li class="lvl-2"><a href="#roles">Roles at a glance</a></li><li class="lvl-2"><a href="#limits">Known limits &amp; design trade-offs</a></li><li class="lvl-2"><a href="#where-next">Where to go next</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ringkasan — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Quiz Platform adalah platform kuis kelas yang dapat di-host mandiri: kuis langsung di layar kelas, tugas mandiri, bacaan gaya TOEFL, pembuat soal AI, mode anti-curang, dasbor hasil, dan roda putar — dengan antarmuka Bahasa Indonesia dan English.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/index.html">EN</a>
+        <a href="../id/index.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html" class="active"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Mulai</p>
+      <h1>Ringkasan</h1>
+      <p class="lead">Quiz Platform adalah platform kuis kelas yang dapat di-host mandiri: kuis langsung di layar kelas, tugas mandiri, bacaan gaya TOEFL, pembuat soal AI, mode anti-curang, dasbor hasil, dan roda putar — dengan antarmuka Bahasa Indonesia dan English.</p>
+      
+<h2 id="what-it-is">Apa itu Quiz Platform?</h2>
+<p>Quiz Platform dirancang untuk sekolah, program studi/jurusan kampus, lembaga pelatihan, maupun pengajar individu yang menginginkan aplikasi kuis interaktif di server sendiri — sehingga data nama siswa, nilai, dan materi ajar tetap berada di bawah kendali lembaga.</p>
+<p>Aplikasi berjalan dalam <strong>satu kontainer Docker kecil</strong> berbasis FastAPI, SQLite (mode WAL), dan JavaScript murni tanpa proses build yang rumit. Satu server ringan (1 CPU, 1 GB RAM) cukup untuk menangani satu sekolah atau jurusan dengan beberapa ratus pemain sekaligus.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 760 220" width="760" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arsitektur Quiz Platform">
+    <defs>
+      <marker id="arr-id" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f6b5f"/>
+      </marker>
+    </defs>
+    <rect x="10" y="25" width="150" height="72" rx="12" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="85" y="54" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">Layar Guru / Dosen</text>
+    <text x="85" y="74" text-anchor="middle" font-size="11" fill="#2f4a47">Editor · Pandu · Laporan</text>
+
+    <rect x="10" y="122" width="150" height="72" rx="12" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5"/>
+    <text x="85" y="151" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">Ponsel Siswa</text>
+    <text x="85" y="171" text-anchor="middle" font-size="11" fill="#2f4a47">Kode 6 Angka · QR · Main</text>
+
+    <line x1="160" y1="61" x2="225" y2="96" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr-id)"/>
+    <line x1="160" y1="158" x2="225" y2="124" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr-id)"/>
+
+    <rect x="230" y="65" width="132" height="90" rx="12" fill="#0a4c43"/>
+    <text x="296" y="102" text-anchor="middle" font-weight="700" font-size="13" fill="#f0b429">Caddy / Nginx</text>
+    <text x="296" y="122" text-anchor="middle" font-size="11" fill="#e7f3f0">HTTPS Otomatis + WS</text>
+    <text x="296" y="138" text-anchor="middle" font-size="10" fill="#b7d9d2">Port 80 &amp; 443</text>
+
+    <line x1="362" y1="110" x2="414" y2="110" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr-id)"/>
+
+    <rect x="420" y="45" width="160" height="130" rx="12" fill="#ffffff" stroke="#0f6b5f" stroke-width="2"/>
+    <text x="500" y="74" text-anchor="middle" font-weight="700" font-size="13" fill="#06332e">FastAPI (1 Worker)</text>
+    <text x="500" y="96" text-anchor="middle" font-size="11" fill="#2f4a47">REST API + Vanilla JS</text>
+    <text x="500" y="114" text-anchor="middle" font-size="11" fill="#2f4a47">Status Kuis WebSocket</text>
+    <text x="500" y="132" text-anchor="middle" font-size="11" fill="#2f4a47">Anti-Curang &amp; Identitas</text>
+    <text x="500" y="156" text-anchor="middle" font-size="10" fill="#5f7471">Port 8000 (internal)</text>
+
+    <line x1="580" y1="80" x2="624" y2="62" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr-id)"/>
+    <line x1="580" y1="140" x2="624" y2="158" stroke="#0f6b5f" stroke-width="1.8" marker-end="url(#arr-id)"/>
+
+    <rect x="630" y="25" width="120" height="72" rx="12" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="690" y="54" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">Volume /data</text>
+    <text x="690" y="72" text-anchor="middle" font-size="10" fill="#2f4a47">quiz.db (SQLite WAL)</text>
+    <text x="690" y="86" text-anchor="middle" font-size="10" fill="#2f4a47">uploads/ · brand/</text>
+
+    <rect x="630" y="122" width="120" height="72" rx="12" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5"/>
+    <text x="690" y="150" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">Penyedia AI</text>
+    <text x="690" y="168" text-anchor="middle" font-size="10" fill="#2f4a47">Opsional OpenAI API</text>
+    <text x="690" y="182" text-anchor="middle" font-size="10" fill="#2f4a47">DeepSeek / OpenAI…</text>
+  </svg>
+  <figcaption>Arsitektur satu kontainer: Caddy menangani HTTPS otomatis dan meneruskan HTTP + WebSocket ke satu proses FastAPI dengan SQLite WAL.</figcaption>
+</figure>
+
+
+<h2 id="features">Fitur utama</h2>
+<div class="card-grid">
+  <div class="card">
+    <div class="card-icon">▶</div>
+    <h3>Kuis Langsung</h3>
+    <p>Setiap permainan mendapat kode 6 angka dan kode QR. Guru memandu di layar proyektor sementara siswa menjawab dari ponsel. Jawaban benar lebih cepat mendapat poin lebih tinggi.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">✎</div>
+    <h3>Tugas Mandiri</h3>
+    <p>Kuis yang sama dapat diberikan sebagai tugas asinkron dengan pilihan batas waktu per soal, tenggat waktu, serta pengacakan soal dan pilihan per siswa.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">✨</div>
+    <h3>Pembuat Soal AI</h3>
+    <p>Tempel materi atau unggah PDF, DOCX, PPTX, atau TXT (maks. 50 MB), opsional dengan rubrik penilaian (CPMK). Mendukung API kompatibel OpenAI (DeepSeek, OpenAI, OpenRouter).</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">📖</div>
+    <h3>Teks Bacaan</h3>
+    <p>Cocok untuk latihan membaca (seperti TOEFL Reading): teks bacaan ditampilkan dulu tanpa waktu berjalan, lalu tetap mendampingi di samping setiap soal.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">🛡</div>
+    <h3>Mode Anti-Curang</h3>
+    <p>Opsional per permainan. Mencatat perpindahan tab/aplikasi atau keluar layar penuh (dengan toleransi 2 detik), memblokir salin-tempel, serta menyediakan sanksi Catat, Nilai Nol, atau Kunci.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">▤</div>
+    <h3>Dasbor Hasil &amp; Bahas Soal</h3>
+    <p>Podium pemenang, histogram sebaran ketepatan, soal tersulit/termudah, tabel siswa &amp; soal, kinerja per kriteria rubrik, unduh CSV, cetak/PDF, serta mode bahas soal.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">◔</div>
+    <h3>Roda Putar</h3>
+    <p>Pilih siswa atau topik secara acak. Ketik langsung, ambil dari daftar pemain kuis, atau unggah daftar kelas Excel (<code>.xlsx</code>) / CSV (nomor dan nama).</p>
+  </div>
+  <div class="card">
+    <div class="card-icon">⚙</div>
+    <h3>Peran &amp; Identitas Situs</h3>
+    <p>Peran Siswa, Guru, dan Admin. Admin dapat mengelola akun, membuka/menutup pendaftaran, serta mengganti nama situs, lembaga, warna, dan logo langsung dari halaman web.</p>
+  </div>
+</div>
+
+<h2 id="roles">Ringkasan peran akun</h2>
+<p>Setiap akun memiliki salah satu dari tiga peran. Tamu tanpa akun tetap dapat bergabung ke permainan terbuka dengan nama panggilan serta memakai Roda Putar.</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Kemampuan</th><th>Tamu (tanpa masuk)</th><th>Siswa</th><th>Guru</th><th>Admin</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gabung permainan terbuka dengan kode 6 angka</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Memakai Roda Putar (termasuk unggah Excel/CSV)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Berlatih kuis publik dari Pustaka Kuis</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Melihat riwayat nilai sendiri (Nilai saya) &amp; menyimpan roda</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Membuat, mengubah, impor/ekspor, dan menyalin kuis</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Memandu kuis langsung &amp; tugas, melihat dasbor hasil</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Menggunakan Pembuat Soal AI &amp; mengunggah gambar soal</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Mengelola pengguna, peran, identitas situs &amp; hapus kuis siapa pun</td><td>–</td><td>–</td><td>–</td><td>✓</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="limits">Batasan &amp; catatan rancangan</h2>
+<ul>
+  <li><strong>Satu proses + SQLite:</strong> Cocok untuk satu sekolah, fakultas, atau jurusan (beberapa ratus pemain bersamaan; maksimal 500 pemain per permainan). Status giliran kuis langsung disimpan di memori, jadi jalankan selalu dengan <code>--workers 1</code>.</li>
+  <li><strong>Tanpa pengiriman email otomatis:</strong> Pengaturan ulang kata sandi dilakukan langsung oleh Admin (lewat halaman Admin atau <code>manage.py reset-password</code>) yang menghasilkan kata sandi sementara sekali pakai.</li>
+  <li><strong>Mode anti-curang berbasis peramban:</strong> Anti-curang mencatat saat siswa meninggalkan tab/aplikasi atau keluar layar penuh serta memblokir salin-tempel, namun peramban tidak dapat mencegah berpindah aplikasi secara fisik atau mendeteksi perangkat kedua.</li>
+</ul>
+
+<h2 id="where-next">Langkah selanjutnya</h2>
+<div class="card-grid">
+  <a class="card" href="quickstart.html">
+    <h3>⚡ Panduan Cepat</h3>
+    <p>Pasang di server Linux dengan Docker + HTTPS otomatis, atau coba lokal dalam 3 menit.</p>
+  </a>
+  <a class="card" href="teacher-guide.html">
+    <h3>✎ Panduan Guru &amp; Dosen</h3>
+    <p>Susun kuis cepat dengan editor, tempel teks massal, impor JSON, bacaan, dan AI.</p>
+  </a>
+  <a class="card" href="hosting-games.html">
+    <h3>▶ Kuis Langsung &amp; Laporan</h3>
+    <p>Pandu kuis langsung, atur tugas dan anti-curang, bahas soal, dan gunakan roda putar.</p>
+  </a>
+  <a class="card" href="deployment.html">
+    <h3>☁ Deploy &amp; Operasional</h3>
+    <p>Konfigurasi <code>.env</code>, penyedia AI, Nginx, cadangan harian, pemulihan, dan pembaruan.</p>
+  </a>
+</div>
+
+      <nav class="pager" aria-label="Pagination"><a class="next" href="quickstart.html"><small>Berikutnya →</small><strong>Panduan Cepat</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#what-it-is">Apa itu Quiz Platform?</a></li><li class="lvl-2"><a href="#features">Fitur utama</a></li><li class="lvl-2"><a href="#roles">Ringkasan peran akun</a></li><li class="lvl-2"><a href="#limits">Batasan &amp; catatan rancangan</a></li><li class="lvl-2"><a href="#where-next">Langkah selanjutnya</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

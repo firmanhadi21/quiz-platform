@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Quizzes, Assignments &amp; Anti-Cheat — Quiz Platform Docs</title>
+  <meta name="description" content="Run real-time classroom games on a projector, assign self-paced homework with deadlines, enable anti-cheat protection, analyze results dashboards, review answers, and spin the wheel.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Docs</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Search docs…">
+        <span>🔍 <span class="search-label">Search docs…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/hosting-games.html" class="active">EN</a>
+        <a href="../id/hosting-games.html">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Getting Started</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Overview</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Quickstart</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">User Guides</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Teacher How-To</span></a></li><li><a href="hosting-games.html" class="active"><span class="nav-icon" aria-hidden="true">▶</span><span>Live Quizzes, Assignments &amp; Anti-Cheat</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Student How-To</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administration &amp; Hosting</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administration &amp; Branding</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deployment &amp; Operations</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Customization &amp; Development</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">User Guides</p>
+      <h1>Live Quizzes, Assignments &amp; Anti-Cheat</h1>
+      <p class="lead">Run real-time classroom games on a projector, assign self-paced homework with deadlines, enable anti-cheat protection, analyze results dashboards, review answers, and spin the wheel.</p>
+      
+<h2 id="start-options">Game modes &amp; launch settings</h2>
+<p>Click <span class="ui">▶ Host</span> on any quiz to open the launch dialog. Choose between two modes and configure per-game options:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Option</th><th>Live Quiz</th><th>Assignment (Self-Paced)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Pacing</strong></td><td>Teacher advances every question on the class screen</td><td>Each student works independently at their own pace</td></tr>
+      <tr><td><strong>Shuffle question order</strong></td><td>Shuffled once for the whole class (passages kept together)</td><td>Shuffled uniquely per student (passages kept together)</td></tr>
+      <tr><td><strong>Shuffle answer options</strong></td><td>Shuffled once for everyone</td><td>Shuffled uniquely per student</td></tr>
+      <tr><td><strong>Show correct answer after each question</strong></td><td>Shown on reveal; also controls whether students can open Review later</td><td>Shown immediately after each answer &amp; controls Review access</td></tr>
+      <tr><td><strong>Require an account</strong></td><td>Students must sign in; score linked to account name &amp; email</td><td>Same — ideal for graded coursework</td></tr>
+      <tr><td><strong>Per-question time limit</strong></td><td>Always on (uses each question's timer)</td><td>Optional toggle (when off, students earn full points regardless of speed)</td></tr>
+      <tr><td><strong>Deadline</strong></td><td>N/A (teacher clicks End)</td><td>Optional date &amp; time; game closes automatically after deadline</td></tr>
+      <tr><td><strong>Anti-cheat mode</strong></td><td>Optional (with live host warning box)</td><td>Optional (recorded &amp; enforced in report)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="live-quiz">Hosting a live quiz</h2>
+
+<figure class="diagram">
+  <svg viewBox="0 0 760 130" width="760" height="130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live Quiz Phases">
+    <defs>
+      <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f6b5f"/>
+      </marker>
+    </defs>
+    <rect x="10" y="34" width="115" height="58" rx="10" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="67" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">1. Lobby</text>
+    <text x="67" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">6-digit code &amp; QR</text>
+    <line x1="125" y1="63" x2="155" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2)"/>
+
+    <rect x="160" y="34" width="130" height="58" rx="10" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="225" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">2. Reading*</text>
+    <text x="225" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Untimed passage</text>
+    <line x1="290" y1="63" x2="320" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2)"/>
+
+    <rect x="325" y="34" width="128" height="58" rx="10" fill="#0a4c43"/>
+    <text x="389" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#f0b429">3. Question</text>
+    <text x="389" y="76" text-anchor="middle" font-size="10" fill="#e7f3f0">Live countdown</text>
+    <line x1="453" y1="63" x2="483" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2)"/>
+
+    <rect x="488" y="34" width="124" height="58" rx="10" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="550" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">4. Reveal</text>
+    <text x="550" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Key + Top 5</text>
+    <line x1="612" y1="63" x2="642" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2)"/>
+
+    <rect x="647" y="34" width="103" height="58" rx="10" fill="#e8f4ed" stroke="#1f7a4d" stroke-width="1.5"/>
+    <text x="698" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#1f7a4d">5. Ended</text>
+    <text x="698" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Podium + Report</text>
+
+    <path d="M 550 92 L 550 114 L 389 114 L 389 96" fill="none" stroke="#0f6b5f" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#arr2)"/>
+    <text x="470" y="110" text-anchor="middle" font-size="10" fill="#5f7471">Next question</text>
+  </svg>
+  <figcaption>Live quiz lifecycle over WebSocket. *The Reading phase appears automatically before the first question attached to a reading passage.</figcaption>
+</figure>
+
+<ol class="steps">
+  <li>
+    <strong>Project the lobby</strong>
+    <p>After clicking <span class="ui">Start</span>, the host screen displays the site URL, a large <strong>6-digit game code</strong>, and a <strong>QR code</strong>. Click <span class="ui">⛶</span> in the top-right bar for fullscreen presentation.</p>
+  </li>
+  <li>
+    <strong>Manage players in the lobby</strong>
+    <p>Names appear live as students join (up to 500 players per game). Click any player's name chip to remove (<span class="ui">Remove</span>) an inappropriate nickname.</p>
+  </li>
+  <li>
+    <strong>Run questions &amp; reveals</strong>
+    <p>Click <span class="ui">▶ Start</span> to launch the first question (or the Reading screen if the question has a passage). The question closes automatically when the timer expires or when <em>every connected player</em> has answered — or click <span class="ui">Close question</span> early. On reveal, the projector shows the answer distribution bar chart (or word cloud for short answers), the explanation, and the Top 5 leaderboard.</p>
+  </li>
+  <li>
+    <strong>Finish the session</strong>
+    <p>After the last question, click <span class="ui">Final results →</span> to display the podium with quick links to <span class="ui">▤ Results dashboard</span>, <span class="ui">▶ Review questions</span>, and <span class="ui">◔ Spin the wheel</span>.</p>
+  </li>
+</ol>
+<div class="callout tip">
+  <p class="callout-title">Resilient connections</p>
+  <p>Both host and student screens automatically reconnect over WebSocket if Wi-Fi blips. Every submitted answer is written immediately to SQLite.</p>
+</div>
+
+<h2 id="scoring">How scoring works</h2>
+<p>Correct answers earn points based on each question's configured <code>points</code> value (default 1,000):</p>
+<ul>
+  <li><strong>Timed questions (all Live quizzes, and timed Assignments):</strong> An instant correct answer scores <strong>100%</strong> of the question's points, sliding linearly down to <strong>50%</strong> at the time limit:
+    <br><code>score = round(points × (1 − 0.5 × elapsed_ms / limit_ms))</code>
+    <br><em>Example:</em> For a 1,000-point, 30-second question, answering correctly in 6 seconds earns <code>round(1000 × (1 − 0.5 × 0.2)) = 900 pts</code>; answering right before 30 seconds earns <code>500 pts</code>.</li>
+  <li><strong>Untimed Assignments:</strong> Every correct answer earns <strong>100%</strong> of the question's points regardless of speed.</li>
+  <li><strong>Incorrect, unanswered, or Poll questions:</strong> <code>0 pts</code>.</li>
+</ul>
+
+<h2 id="assignments">Running self-paced assignments</h2>
+<p>When you start an <span class="ui">Assignment</span>, you are taken straight to its <span class="ui">Results dashboard</span>, which displays the shareable <strong>6-digit code</strong>, <strong>QR code</strong>, and <span class="ui">Copy link</span> button (<code>https://your-site/join/123456</code>).</p>
+<ul>
+  <li>Students can open the assignment anytime before the deadline.</li>
+  <li>If per-question timers are enabled, the clock starts when a student opens a question — <strong>reloading the page does not reset the timer</strong>.</li>
+  <li>The Results Dashboard auto-refreshes every 10 seconds while the assignment is open.</li>
+  <li>Click <span class="ui">End</span> at any time to close submissions manually.</li>
+</ul>
+
+<h2 id="anti-cheat">Anti-cheat mode</h2>
+<p>Enable <span class="ui">🛡 Anti-cheat mode</span> in the launch dialog when running graded quizzes or exams.</p>
+<h3>What it detects &amp; enforces</h3>
+<ul>
+  <li><strong>Tab / app switching &amp; screen lock</strong> (<code>visibilitychange</code> / <code>blur</code>) and <strong>exiting fullscreen</strong> on desktop browsers.</li>
+  <li><strong>2-second grace period:</strong> Brief accidental glitches or notifications shorter than <code>2.0 s</code> are logged but <em>not</em> counted as violations.</li>
+  <li><strong>Copy, cut, paste, and right-click context menu</strong> are blocked on the quiz page.</li>
+  <li><strong>Server-side record:</strong> All exits are stored on the server immediately, so refreshing the page does not clear a student's record.</li>
+  <li><strong>Transparent notice:</strong> Before the first question opens, students see the exact anti-cheat rules and must click <span class="ui">I understand, start</span>.</li>
+</ul>
+
+<h3>Three penalty levels</h3>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Penalty</th><th>Behavior</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Record only</strong> (<code>record</code>)</td>
+        <td>Logs every counted exit and total seconds away, alerts the host live, and displays the count &amp; affected question numbers in the Results Dashboard and CSV export.</td>
+      </tr>
+      <tr>
+        <td><strong>Zero points for open question</strong> (<code>zero</code>)</td>
+        <td>Any question open while the student leaves the page for ≥ 2 seconds automatically scores <strong>0 points</strong>, even if answered correctly.</td>
+      </tr>
+      <tr>
+        <td><strong>Lock out after N exits</strong> (<code>lock</code>)</td>
+        <td>After <code>1–10</code> counted exits (default <code>3</code>), the student is locked out and cannot submit answers until the teacher clicks <span class="ui">Unlock</span> (either from the live corner alert box on the host screen or from the Results Dashboard table). Once unlocked, the counter toward the next lock starts fresh while total exits stay recorded.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout warn">
+  <p class="callout-title">Be transparent about limitations</p>
+  <p>A browser can detect leaving the page, but cannot lock down the operating system or detect a second phone/device. Combine anti-cheat mode with shuffled questions/options, sensible timers, and classroom supervision.</p>
+</div>
+
+<h2 id="results-dashboard">Results dashboard &amp; CSV export</h2>
+<p>Open any game's <span class="ui">Report</span> from the Dashboard (or after a live game ends) to see:</p>
+<ul>
+  <li><strong>Winner banner &amp; Top 3 podium</strong> with score, correct count, and average response time.</li>
+  <li><strong>Class summary metrics:</strong> Total players, average accuracy %, average score, top score, completion count, and average answer time.</li>
+  <li><strong>Spread of accuracy histogram:</strong> Number of students in each 20% accuracy band (0–20% through 80–100%).</li>
+  <li><strong>Automatic highlights:</strong> Hardest question, easiest question, and students scoring below 50% who may need support.</li>
+  <li><strong>Student performance table:</strong> Full ranking with score, correct/wrong/blank counts, accuracy badge, average time, anti-cheat exits (plus <span class="ui">🔒 Unlock</span> button if locked), and a per-question <code>✓</code> / <code>✗</code> / <code>·</code> matrix.</li>
+  <li><strong>Performance by rubric criterion:</strong> Shown automatically when questions have rubric criteria attached.</li>
+  <li><strong>Question performance table &amp; expandable answer breakdown:</strong> Accuracy bar, response count, average time, most common wrong answer, and per-option bar charts.</li>
+  <li><strong>Export &amp; Print:</strong> Click <span class="ui">⬇ CSV</span> (UTF-8 with BOM for clean Excel import, plus automatic formula-injection sanitization) or <span class="ui">🖨 Print / PDF</span>.</li>
+</ul>
+
+<h2 id="review-mode">Post-game review mode</h2>
+<p>Click <span class="ui">▶ Review questions</span> from the podium or Results Dashboard to walk through the finished quiz question-by-question on the classroom projector without replaying it.</p>
+<ul>
+  <li>Color-coded question number dots at the top show class performance at a glance (green ≥ 70%, amber 40–69%, red &lt; 40%).</li>
+  <li>The correct answer starts <strong>hidden</strong> so you can discuss each question with the class first, then reveal the answer key, class distribution, and explanation.</li>
+  <li><strong>Keyboard shortcuts:</strong> <kbd>←</kbd> / <kbd>→</kbd> (or <kbd>PageUp</kbd> / <kbd>PageDown</kbd>) switch questions; <kbd>Space</kbd> or <kbd>Enter</kbd> toggles showing/hiding the answer.</li>
+</ul>
+
+<h2 id="spin-wheel">Spin the wheel</h2>
+<p>Open <span class="ui">Spin the wheel</span> from the top menu (or click <span class="ui">◔ Spin the wheel</span> inside any live lobby or report to pre-fill it with that game's players).</p>
+<ul>
+  <li><strong>Manual entries:</strong> Type one entry per line (2 to 200 entries). Use <code>number | name</code> (e.g. <code>12 | Ani Wijaya</code>) so the wheel displays compact numbers on the slices while the winner dialog announces the full student name!</li>
+  <li><strong>Upload Excel / CSV:</strong> Click <span class="ui">⬆ Upload Excel / CSV</span> to load a 2-column <code>.xlsx</code> or <code>.csv</code> class list (column 1 = number/NIM/attendance no., column 2 = name; headers like <code>No, Nama</code> are skipped automatically). Click <span class="ui">Download a sample</span> to get a ready-to-edit CSV template.</li>
+  <li><strong>After a spin:</strong> Choose <span class="ui">Keep on the wheel</span> or <span class="ui">Remove from the wheel</span> so the same student isn't picked twice.</li>
+  <li><strong>Save wheels:</strong> Signed-in users can save up to 200 wheels to reuse across classes.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="teacher-guide.html"><small>← Previous</small><strong>Teacher How-To</strong></a><a class="next" href="student-guide.html"><small>Next →</small><strong>Student How-To</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Self-hosted classroom quiz platform.</span>
+        <span>MIT License · English &amp; Bahasa Indonesia</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class="lvl-2"><a href="#start-options">Game modes &amp; launch settings</a></li><li class="lvl-2"><a href="#live-quiz">Hosting a live quiz</a></li><li class="lvl-2"><a href="#scoring">How scoring works</a></li><li class="lvl-2"><a href="#assignments">Running self-paced assignments</a></li><li class="lvl-2"><a href="#anti-cheat">Anti-cheat mode</a></li><li class="lvl-2"><a href="#results-dashboard">Results dashboard &amp; CSV export</a></li><li class="lvl-2"><a href="#review-mode">Post-game review mode</a></li><li class="lvl-2"><a href="#spin-wheel">Spin the wheel</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Search docs…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Search English documentation…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>

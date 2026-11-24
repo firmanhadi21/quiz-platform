@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kuis Langsung, Tugas &amp; Anti-Curang — Quiz Platform Dokumentasi</title>
+  <meta name="description" content="Memandu kuis langsung di layar kelas, memberikan tugas mandiri dengan tenggat waktu, mengaktifkan mode anti-curang, membaca dasbor hasil, membahas soal, dan memakai roda putar.">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button type="button" id="menu-btn" class="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quiz Platform</span>
+        <span class="docs-pill">Dokumentasi</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button type="button" id="search-trigger" class="search-trigger" aria-label="Cari dokumentasi…">
+        <span>🔍 <span class="search-label">Cari dokumentasi…</span></span>
+        <span class="kbd">/</span>
+      </button>
+      <div class="lang-switch" role="navigation" aria-label="Language">
+        <a href="../en/hosting-games.html">EN</a>
+        <a href="../id/hosting-games.html" class="active">ID</a>
+      </div>
+      <a class="gh-link" href="https://github.com/firmanhadi21/quiz-platform" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <div class="shell">
+    <nav id="sidebar" class="sidebar" aria-label="Documentation">
+      <div class="nav-group"><p class="nav-group-title">Mulai</p><ul class="nav-list"><li><a href="index.html"><span class="nav-icon" aria-hidden="true">◈</span><span>Ringkasan</span></a></li><li><a href="quickstart.html"><span class="nav-icon" aria-hidden="true">⚡</span><span>Panduan Cepat</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Panduan Pengguna</p><ul class="nav-list"><li><a href="teacher-guide.html"><span class="nav-icon" aria-hidden="true">✎</span><span>Panduan Guru &amp; Dosen</span></a></li><li><a href="hosting-games.html" class="active"><span class="nav-icon" aria-hidden="true">▶</span><span>Kuis Langsung, Tugas &amp; Anti-Curang</span></a></li><li><a href="student-guide.html"><span class="nav-icon" aria-hidden="true">🎓</span><span>Panduan Siswa &amp; Mahasiswa</span></a></li></ul></div>
+<div class="nav-group"><p class="nav-group-title">Administrasi &amp; Server</p><ul class="nav-list"><li><a href="admin-guide.html"><span class="nav-icon" aria-hidden="true">⚙</span><span>Administrasi &amp; Identitas Situs</span></a></li><li><a href="deployment.html"><span class="nav-icon" aria-hidden="true">☁</span><span>Deploy &amp; Operasional Server</span></a></li><li><a href="customization.html"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kustomisasi &amp; Pengembangan</span></a></li></ul></div>
+    </nav>
+    <main id="main" class="content">
+      <p class="eyebrow">Panduan Pengguna</p>
+      <h1>Kuis Langsung, Tugas &amp; Anti-Curang</h1>
+      <p class="lead">Memandu kuis langsung di layar kelas, memberikan tugas mandiri dengan tenggat waktu, mengaktifkan mode anti-curang, membaca dasbor hasil, membahas soal, dan memakai roda putar.</p>
+      
+<h2 id="start-options">Mode permainan &amp; pengaturan mulai</h2>
+<p>Klik <span class="ui">▶ Mainkan</span> pada kuis mana pun untuk membuka dialog pengaturan. Pilih salah satu dari dua mode berikut:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Pengaturan</th><th>Kuis Langsung</th><th>Tugas Mandiri</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Alur pengerjaan</strong></td><td>Guru memindahkan setiap soal di layar kelas</td><td>Siswa mengerjakan sendiri-sendiri kapan saja</td></tr>
+      <tr><td><strong>Acak urutan soal</strong></td><td>Diacak satu kali untuk seluruh kelas (bacaan tetap utuh)</td><td>Diacak berbeda untuk tiap siswa (bacaan tetap utuh)</td></tr>
+      <tr><td><strong>Acak urutan pilihan jawaban</strong></td><td>Diacak satu kali untuk semua</td><td>Diacak berbeda untuk tiap siswa</td></tr>
+      <tr><td><strong>Tampilkan jawaban benar</strong></td><td>Muncul saat soal ditutup; juga mengatur izin siswa membuka Pembahasan</td><td>Muncul langsung setelah tiap soal &amp; mengatur akses Pembahasan</td></tr>
+      <tr><td><strong>Wajib masuk akun</strong></td><td>Siswa harus masuk; nilai tercatat dengan nama &amp; email akun</td><td>Sama — sangat disarankan untuk kuis/ujian bernilai</td></tr>
+      <tr><td><strong>Batas waktu per soal</strong></td><td>Selalu aktif (mengikuti waktu tiap soal)</td><td>Opsional (jika mati, jawaban benar selalu mendapat poin penuh)</td></tr>
+      <tr><td><strong>Batas waktu (tenggat)</strong></td><td>Tidak ada (guru menekan Akhiri)</td><td>Tanggal &amp; jam opsional; tugas tertutup otomatis setelah lewat</td></tr>
+      <tr><td><strong>Mode anti-curang</strong></td><td>Opsional (disertai kotak peringatan langsung di layar guru)</td><td>Opsional (dicatat &amp; diterapkan di dasbor hasil)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="live-quiz">Memandu kuis langsung</h2>
+
+<figure class="diagram">
+  <svg viewBox="0 0 760 130" width="760" height="130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alur Kuis Langsung">
+    <defs>
+      <marker id="arr2-id" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f6b5f"/>
+      </marker>
+    </defs>
+    <rect x="10" y="34" width="115" height="58" rx="10" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="67" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">1. Lobi</text>
+    <text x="67" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Kode 6 angka &amp; QR</text>
+    <line x1="125" y1="63" x2="155" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2-id)"/>
+
+    <rect x="160" y="34" width="130" height="58" rx="10" fill="#fdf3dd" stroke="#c8860a" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="225" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">2. Bacaan*</text>
+    <text x="225" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Tanpa hitung mundur</text>
+    <line x1="290" y1="63" x2="320" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2-id)"/>
+
+    <rect x="325" y="34" width="128" height="58" rx="10" fill="#0a4c43"/>
+    <text x="389" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#f0b429">3. Soal</text>
+    <text x="389" y="76" text-anchor="middle" font-size="10" fill="#e7f3f0">Hitung mundur aktif</text>
+    <line x1="453" y1="63" x2="483" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2-id)"/>
+
+    <rect x="488" y="34" width="124" height="58" rx="10" fill="#e7f3f0" stroke="#0f6b5f" stroke-width="1.5"/>
+    <text x="550" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#06332e">4. Pembahasan</text>
+    <text x="550" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Kunci + 5 Teratas</text>
+    <line x1="612" y1="63" x2="642" y2="63" stroke="#0f6b5f" stroke-width="1.6" marker-end="url(#arr2-id)"/>
+
+    <rect x="647" y="34" width="103" height="58" rx="10" fill="#e8f4ed" stroke="#1f7a4d" stroke-width="1.5"/>
+    <text x="698" y="59" text-anchor="middle" font-weight="700" font-size="12" fill="#1f7a4d">5. Selesai</text>
+    <text x="698" y="76" text-anchor="middle" font-size="10" fill="#2f4a47">Podium + Laporan</text>
+
+    <path d="M 550 92 L 550 114 L 389 114 L 389 96" fill="none" stroke="#0f6b5f" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#arr2-id)"/>
+    <text x="470" y="110" text-anchor="middle" font-size="10" fill="#5f7471">Soal berikutnya</text>
+  </svg>
+  <figcaption>Siklus kuis langsung melalui WebSocket. *Fase Bacaan muncul otomatis sebelum soal pertama yang terhubung ke suatu teks bacaan.</figcaption>
+</figure>
+
+<ol class="steps">
+  <li>
+    <strong>Tampilkan lobi di proyektor</strong>
+    <p>Setelah klik <span class="ui">Mulai</span>, layar guru menampilkan alamat situs, <strong>kode permainan 6 angka</strong> berukuran besar, dan <strong>kode QR</strong>. Klik tombol <span class="ui">⛶</span> di pojok kanan atas untuk layar penuh.</p>
+  </li>
+  <li>
+    <strong>Kelola pemain di lobi</strong>
+    <p>Nama pemain muncul seketika saat siswa bergabung (maks. 500 pemain per permainan). Klik nama pemain mana saja untuk mengeluarkannya (<span class="ui">Keluarkan</span>) jika memakai nama yang tidak pantas.</p>
+  </li>
+  <li>
+    <strong>Jalankan soal dan tampilkan jawaban</strong>
+    <p>Klik <span class="ui">▶ Mulai</span> untuk membuka soal pertama (atau layar Bacaan jika soal terhubung ke bacaan). Soal tertutup otomatis ketika waktu habis atau saat <em>seluruh pemain yang tersambung</em> sudah menjawab — atau tekan <span class="ui">Tutup soal</span> lebih cepat. Saat pembahasan tampil, proyektor menunjukkan grafik distribusi jawaban (atau awan kata untuk isian singkat), penjelasan, dan Papan Skor 5 besar.</p>
+  </li>
+  <li>
+    <strong>Akhiri permainan</strong>
+    <p>Setelah soal terakhir, tekan <span class="ui">Hasil akhir →</span> untuk menampilkan podium bersama tautan langsung ke <span class="ui">▤ Dasbor hasil</span>, <span class="ui">▶ Bahas soal</span>, dan <span class="ui">◔ Roda putar</span>.</p>
+  </li>
+</ol>
+<div class="callout tip">
+  <p class="callout-title">Koneksi otomatis pulih</p>
+  <p>Baik layar guru maupun ponsel siswa otomatis menyambung ulang lewat WebSocket bila Wi-Fi sempat putus. Setiap jawaban yang masuk langsung tersimpan ke SQLite.</p>
+</div>
+
+<h2 id="scoring">Cara perhitungan skor</h2>
+<p>Jawaban yang benar menghasilkan poin berdasarkan nilai <code>points</code> tiap soal (bawaan 1.000 poin):</p>
+<ul>
+  <li><strong>Soal berwaktu (semua Kuis Langsung dan Tugas Mandiri berwaktu):</strong> Jawaban benar seketika mendapat <strong>100%</strong> poin, menurun linier hingga <strong>50%</strong> saat batas waktu habis:
+    <br><code>skor = round(poin × (1 − 0,5 × waktu_jawab_ms / batas_waktu_ms))</code>
+    <br><em>Contoh:</em> Pada soal 1.000 poin berbatas 30 detik, menjawab benar dalam 6 detik menghasilkan <code>round(1000 × (1 − 0,5 × 0,2)) = 900 poin</code>; menjawab tepat menjelang detik ke-30 menghasilkan <code>500 poin</code>.</li>
+  <li><strong>Tugas Mandiri tanpa batas waktu:</strong> Setiap jawaban benar mendapat <strong>100%</strong> poin penuh tanpa bergantung kecepatan.</li>
+  <li><strong>Jawaban salah, kosong, atau Jajak pendapat:</strong> <code>0 poin</code>.</li>
+</ul>
+
+<h2 id="assignments">Memberikan tugas mandiri</h2>
+<p>Saat Anda memulai <span class="ui">Tugas mandiri</span>, halaman langsung membuka <span class="ui">Dasbor hasil</span> yang menampilkan <strong>kode 6 angka</strong>, <strong>kode QR</strong>, dan tombol <span class="ui">Salin tautan</span> (<code>https://situs-anda/join/123456</code>) untuk dibagikan ke grup kelas atau LMS.</p>
+<ul>
+  <li>Siswa dapat mengerjakan kapan saja sebelum tenggat waktu.</li>
+  <li>Jika batas waktu per soal diaktifkan, hitungan mundur mulai saat soal dibuka — <strong>memuat ulang (refresh) halaman tidak mengulang waktu</strong>.</li>
+  <li>Dasbor Hasil memperbarui data otomatis setiap 10 detik selama tugas masih terbuka.</li>
+  <li>Tekan <span class="ui">Akhiri</span> kapan saja untuk menutup tugas secara manual.</li>
+</ul>
+
+<h2 id="anti-cheat">Mode anti-curang</h2>
+<p>Centang <span class="ui">🛡 Mode anti-curang</span> saat memulai kuis atau ujian yang membutuhkan pengawasan tambahan.</p>
+<h3>Apa yang dipantau &amp; diblokir</h3>
+<ul>
+  <li><strong>Pindah tab/aplikasi &amp; mengunci layar</strong> (<code>visibilitychange</code> / <code>blur</code>) serta <strong>keluar dari layar penuh</strong> pada komputer/laptop.</li>
+  <li><strong>Masa toleransi 2 detik:</strong> Gangguan singkat atau notifikasi kurang dari <code>2,0 detik</code> tetap tercatat di log namun <em>tidak</em> dihitung sebagai pelanggaran.</li>
+  <li><strong>Salin, potong, tempel, dan klik kanan</strong> diblokir di halaman kuis.</li>
+  <li><strong>Tercatat di server:</strong> Seluruh riwayat keluar halaman langsung disimpan di server sehingga memuat ulang halaman tidak menghapus catatan siswa.</li>
+  <li><strong>Pemberitahuan transparan:</strong> Sebelum soal pertama terbuka, siswa melihat aturan lengkap dan harus menekan <span class="ui">Saya mengerti, mulai</span>.</li>
+</ul>
+
+<h3>Tiga tingkat sanksi</h3>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Sanksi</th><th>Dampak</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hanya dicatat</strong> (<code>record</code>)</td>
+        <td>Mencatat jumlah keluar halaman dan total detik di luar, memunculkan peringatan langsung di layar guru, serta menampilkannya pada Dasbor Hasil dan ekspor CSV.</td>
+      </tr>
+      <tr>
+        <td><strong>Nilai nol untuk soal terbuka</strong> (<code>zero</code>)</td>
+        <td>Soal yang sedang terbuka saat siswa meninggalkan halaman ≥ 2 detik otomatis bernilai <strong>0 poin</strong>, meski dijawab benar.</td>
+      </tr>
+      <tr>
+        <td><strong>Kunci setelah N kali keluar</strong> (<code>lock</code>)</td>
+        <td>Setelah <code>1–10</code> kali keluar terhitung (bawaan <code>3</code>), siswa terkunci dan tidak bisa mengirim jawaban sampai guru menekan <span class="ui">Buka kunci</span> (dari kotak peringatan di layar guru atau dari tabel siswa di Dasbor Hasil). Setelah dibuka, hitungan menuju penguncian berikutnya mulai dari awal sementara total keluar tetap tercatat.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout warn">
+  <p class="callout-title">Pahami batasannya</p>
+  <p>Peramban web dapat mendeteksi saat siswa meninggalkan halaman, tetapi tidak dapat mengunci sistem operasi atau melihat perangkat kedua. Padukan mode anti-curang dengan pengacakan soal/pilihan, batas waktu wajar, dan pengawasan kelas.</p>
+</div>
+
+<h2 id="results-dashboard">Dasbor hasil &amp; ekspor CSV</h2>
+<p>Buka <span class="ui">Laporan</span> dari Dasbor (atau setelah kuis langsung berakhir) untuk melihat analisis menyeluruh:</p>
+<ul>
+  <li><strong>Pita pemenang &amp; podium 3 besar</strong> lengkap dengan skor, jumlah benar, dan rata-rata waktu jawab.</li>
+  <li><strong>Ringkasan kelas:</strong> Jumlah pemain, rata-rata benar %, rata-rata skor, skor tertinggi, jumlah selesai, dan rata-rata waktu.</li>
+  <li><strong>Histogram sebaran ketepatan:</strong> Jumlah siswa pada rentang 0–20%, 20–40%, 40–60%, 60–80%, dan 80–100%.</li>
+  <li><strong>Catatan otomatis:</strong> Soal tersulit, soal termudah, dan daftar siswa dengan ketepatan di bawah 50% yang perlu pendampingan.</li>
+  <li><strong>Tabel kinerja siswa:</strong> Peringkat lengkap dengan skor, benar/salah/kosong, lencana ketepatan, rata-rata waktu, catatan keluar halaman (plus tombol <span class="ui">🔒 Buka kunci</span> bila terkunci), serta matriks jawaban <code>✓</code> / <code>✗</code> / <code>·</code> per soal.</li>
+  <li><strong>Kinerja per kriteria rubrik:</strong> Muncul otomatis bila soal memiliki label kriteria rubrik / CPMK.</li>
+  <li><strong>Tabel kinerja soal &amp; rincian jawaban:</strong> Persentase benar, jumlah penjawab, rata-rata waktu, jawaban salah terbanyak, serta grafik batang tiap pilihan.</li>
+  <li><strong>Unduh &amp; Cetak:</strong> Klik <span class="ui">⬇ CSV</span> (UTF-8 BOM siap buka di Excel, aman dari injeksi rumus) atau <span class="ui">🖨 Cetak / PDF</span>.</li>
+</ul>
+
+<h2 id="review-mode">Mode bahas soal</h2>
+<p>Klik <span class="ui">▶ Bahas soal</span> dari podium akhir atau Dasbor Hasil untuk membahas kuis yang sudah selesai satu per satu di layar proyektor tanpa harus mengulang permainan.</p>
+<ul>
+  <li>Deretan nomor soal berwarna di bagian atas langsung menunjukkan performa kelas (hijau ≥ 70%, kuning 40–69%, merah &lt; 40%).</li>
+  <li>Kunci jawaban <strong>disembunyikan dulu</strong> agar guru dapat berdiskusi dengan kelas, lalu ditampilkan beserta distribusi jawaban kelas dan penjelasannya.</li>
+  <li><strong>Pintasan papan ketik:</strong> <kbd>←</kbd> / <kbd>→</kbd> (atau <kbd>PageUp</kbd> / <kbd>PageDown</kbd>) untuk berpindah soal; <kbd>Spasi</kbd> atau <kbd>Enter</kbd> untuk menampilkan/menyembunyikan jawaban.</li>
+</ul>
+
+<h2 id="spin-wheel">Roda putar</h2>
+<p>Buka <span class="ui">Roda putar</span> dari menu atas (atau klik <span class="ui">◔ Roda putar</span> di lobi kuis / halaman laporan untuk langsung mengisi nama pemain permainan tersebut).</p>
+<ul>
+  <li><strong>Ketik manual:</strong> Tulis satu isian per baris (2 sampai 200 isian). Gunakan format <code>nomor | nama</code> (mis. <code>12 | Ani Wijaya</code>) agar roda menampilkan nomor yang rapi di tiap irisan, lalu nama lengkap siswa muncul besar saat roda berhenti!</li>
+  <li><strong>Unggah Excel / CSV:</strong> Klik <span class="ui">⬆ Unggah Excel / CSV</span> untuk memuat berkas <code>.xlsx</code> atau <code>.csv</code> dua kolom (kolom 1 = nomor/NIM/absen, kolom 2 = nama; baris judul seperti <code>No, Nama</code> dilewati otomatis). Klik <span class="ui">Unduh contoh</span> untuk mendapatkan templat CSV.</li>
+  <li><strong>Setelah berhenti:</strong> Pilih <span class="ui">Biarkan di roda</span> atau <span class="ui">Keluarkan dari roda</span> agar siswa yang sama tidak terpilih dua kali.</li>
+  <li><strong>Simpan roda:</strong> Pengguna yang masuk akun dapat menyimpan hingga 200 daftar roda untuk dipakai ulang di berbagai kelas.</li>
+</ul>
+
+      <nav class="pager" aria-label="Pagination"><a class="prev" href="teacher-guide.html"><small>← Sebelumnya</small><strong>Panduan Guru &amp; Dosen</strong></a><a class="next" href="student-guide.html"><small>Berikutnya →</small><strong>Panduan Siswa &amp; Mahasiswa</strong></a></nav>
+      <footer class="doc-footer">
+        <span>Quiz Platform — Platform kuis kelas yang di-host mandiri.</span>
+        <span>Lisensi MIT · Bahasa Indonesia &amp; English</span>
+      </footer>
+    </main>
+    <aside class="toc" aria-label="Di halaman ini"><p class="toc-title">Di halaman ini</p><ul><li class="lvl-2"><a href="#start-options">Mode permainan &amp; pengaturan mulai</a></li><li class="lvl-2"><a href="#live-quiz">Memandu kuis langsung</a></li><li class="lvl-2"><a href="#scoring">Cara perhitungan skor</a></li><li class="lvl-2"><a href="#assignments">Memberikan tugas mandiri</a></li><li class="lvl-2"><a href="#anti-cheat">Mode anti-curang</a></li><li class="lvl-2"><a href="#results-dashboard">Dasbor hasil &amp; ekspor CSV</a></li><li class="lvl-2"><a href="#review-mode">Mode bahas soal</a></li><li class="lvl-2"><a href="#spin-wheel">Roda putar</a></li></ul></aside>
+  </div>
+
+  <div id="search-backdrop" class="search-backdrop" hidden role="dialog" aria-modal="true" aria-label="Cari dokumentasi…">
+    <div class="search-dialog">
+      <div class="search-head">
+        <span aria-hidden="true">🔍</span>
+        <input id="search-input" type="search" placeholder="Cari dokumentasi Bahasa Indonesia…" autocomplete="off">
+        <button type="button" id="search-close" class="search-close">ESC</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </div>
+  <script src="../assets/docs.js"></script>
+</body>
+</html>
