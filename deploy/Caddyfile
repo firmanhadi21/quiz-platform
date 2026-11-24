@@ -1,0 +1,14 @@
+{$DOMAIN} {
+	encode gzip
+	# AI material files can be up to 50 MB.
+	request_body {
+		max_size 51MB
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+	}
+	# Caddy passes WebSockets (live games) through on its own and keeps them open.
+	reverse_proxy quiz:8000 {
+		header_up X-Real-IP {remote_host}
+	}
+}

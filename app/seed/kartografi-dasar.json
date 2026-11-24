@@ -1,0 +1,93 @@
+{
+  "id": "kartografi-dasar",
+  "title": "Kartografi Dasar",
+  "course": "Kartografi",
+  "description": "Skala, proyeksi, kontur, dan simbol peta. Sembilan soal untuk menguji intuisi membaca peta sebelum masuk ke praktik.",
+  "duration_minutes": 10,
+  "pass_score": 70,
+  "shuffle_questions": true,
+  "shuffle_options": true,
+  "questions": [
+    {
+      "id": "kt01",
+      "type": "single",
+      "question": "Pada peta berskala 1:50.000, jarak 1 cm di peta mewakili jarak…",
+      "options": ["50 m", "500 m", "5 km", "50 km"],
+      "answer": 1,
+      "explanation": "Skala 1:50.000 berarti 1 satuan di peta = 50.000 satuan yang sama di lapangan. Jadi 1 cm = 50.000 cm = 500 m."
+    },
+    {
+      "id": "kt02",
+      "type": "single",
+      "question": "Satu zona UTM memiliki lebar…",
+      "options": ["3 derajat bujur", "6 derajat bujur", "6 derajat lintang", "10 derajat bujur"],
+      "answer": 1,
+      "explanation": "Bumi dibagi menjadi 60 zona UTM, masing-masing selebar 6 derajat bujur, mulai dari 180° BB. Indonesia melintasi beberapa zona, misalnya Jawa Tengah di zona 49S."
+    },
+    {
+      "id": "kt03",
+      "type": "single",
+      "question": "Garis kontur yang berdekatan rapat menunjukkan…",
+      "options": ["Lereng landai", "Lereng curam", "Daerah datar", "Puncak bukit"],
+      "answer": 1,
+      "explanation": "Jarak antarkontur pada peta mewakili beda tinggi yang sama. Semakin rapat, semakin besar perubahan tinggi per satuan jarak horizontal, artinya lereng semakin curam."
+    },
+    {
+      "id": "kt04",
+      "type": "single",
+      "question": "Peta yang menyajikan satu tema tertentu, seperti kepadatan penduduk atau jenis tanah, disebut…",
+      "options": ["Peta topografi", "Peta tematik", "Peta rupabumi", "Peta kadastral"],
+      "answer": 1,
+      "explanation": "Peta tematik berfokus pada satu fenomena. Peta topografi dan rupabumi menyajikan unsur umum permukaan bumi, sedangkan kadastral menekankan batas dan kepemilikan lahan."
+    },
+    {
+      "id": "kt05",
+      "type": "single",
+      "question": "Danau, hutan, dan area permukiman paling tepat digambarkan dengan simbol…",
+      "options": ["Titik", "Garis", "Area", "Teks"],
+      "answer": 2,
+      "explanation": "Ketiganya memiliki dimensi luas di permukaan, sehingga direpresentasikan sebagai poligon atau simbol area."
+    },
+    {
+      "id": "kt06",
+      "type": "single",
+      "question": "Generalisasi peta dilakukan terutama karena…",
+      "options": [
+        "Data sumber selalu tidak akurat",
+        "Detail yang dapat ditampilkan berkurang saat skala peta mengecil",
+        "Peta tematik tidak boleh memuat banyak unsur",
+        "Simbol area tidak dapat dicetak pada skala besar"
+      ],
+      "answer": 1,
+      "explanation": "Pada skala kecil, ruang gambar per satuan luas mengecil. Fitur digabung, disederhanakan, atau dihilangkan agar peta tetap terbaca tanpa kehilangan pola utama."
+    },
+    {
+      "id": "kt07",
+      "type": "single",
+      "question": "Azimut diukur dari arah utara, searah jarum jam, dengan rentang…",
+      "options": ["0° sampai 90°", "0° sampai 180°", "0° sampai 360°", "−180° sampai 180°"],
+      "answer": 2,
+      "explanation": "Azimut dimulai dari 0° di utara dan bertambah searah jarum jam hingga 360°. Bearing kuadran berbeda karena dihitung dari utara atau selatan menuju timur atau barat."
+    },
+    {
+      "id": "kt08",
+      "type": "tf",
+      "question": "Peta skala 1:25.000 menampilkan detail lebih rinci daripada peta skala 1:50.000.",
+      "answer": true,
+      "explanation": "Semakin kecil angka pembagi skala, semakin besar skala peta dan semakin rinci informasi yang dapat ditampilkan."
+    },
+    {
+      "id": "kt09",
+      "type": "multi",
+      "question": "Manakah pernyataan yang benar tentang proyeksi Mercator?",
+      "options": [
+        "Sudut dan arah lokal terjaga (konform)",
+        "Luas daerah di lintang tinggi tampak membesar",
+        "Cocok untuk peta navigasi laut",
+        "Distorsi luasnya nol di seluruh dunia"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Mercator menjaga bentuk dan sudut sehingga berguna untuk navigasi, tetapi luas terdistorsi dan membesar makin jauh dari ekuator. Karena itu Greenland terlihat sebesar Afrika pada peta Mercator."
+    }
+  ]
+}

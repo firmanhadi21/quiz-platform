@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiz</title>
+<meta name="description" content="Kuis langsung, tugas mandiri, dan roda putar untuk kelas.">
+<meta name="theme-color" content="#0a4c43">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/brand.css">
+</head>
+<body>
+<a class="skip" href="#app">Lewati ke isi</a>
+<header class="topbar">
+  <a class="brand" href="/">
+    <span class="brand-mark" id="brand-mark" aria-hidden="true">Q</span>
+    <span class="brand-text" id="brand-name">Quiz</span>
+  </a>
+  <nav id="nav" class="topnav" aria-label="Menu"></nav>
+</header>
+<main id="app" tabindex="-1"><div class="loading"><span class="spinner"></span>Memuat…</div></main>
+<noscript><p style="padding:2rem;text-align:center">Halaman ini memerlukan JavaScript.</p></noscript>
+<script src="/static/vendor/qrcode.min.js"></script>
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

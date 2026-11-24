@@ -1,0 +1,142 @@
+{
+  "id": "dasar-penginderaan-jauh",
+  "title": "Dasar Penginderaan Jauh",
+  "course": "Penginderaan Jauh",
+  "description": "Sepuluh soal tentang cara sensor merekam, apa arti resolusi, dan bagaimana indeks spektral dibaca.",
+  "duration_minutes": 12,
+  "pass_score": 70,
+  "shuffle_questions": true,
+  "shuffle_options": true,
+  "questions": [
+    {
+      "id": "pj01",
+      "type": "single",
+      "question": "Penginderaan jauh paling tepat didefinisikan sebagai…",
+      "options": [
+        "Perolehan informasi tentang objek tanpa kontak fisik langsung dengan objek tersebut",
+        "Pengukuran objek yang selalu dilakukan dengan alat yang menempel pada objek",
+        "Pemetaan yang hanya menggunakan data hasil survei lapangan",
+        "Penyimpanan citra digital di dalam basis data spasial"
+      ],
+      "answer": 0,
+      "explanation": "Kata kunci penginderaan jauh adalah non-kontak: energi direkam sensor setelah berinteraksi dengan objek, bukan melalui sentuhan atau pengukuran langsung di permukaan."
+    },
+    {
+      "id": "pj02",
+      "type": "single",
+      "question": "Resolusi spasial sebuah citra menyatakan…",
+      "options": [
+        "Jumlah band spektral yang direkam sensor",
+        "Ukuran objek terkecil yang masih dapat dibedakan pada citra",
+        "Rentang nilai digital yang dapat ditampung satu piksel",
+        "Selang waktu antara dua perekaman di lokasi yang sama"
+      ],
+      "answer": 1,
+      "explanation": "Resolusi spasial biasanya dinyatakan dalam meter per piksel. Citra 10 m berarti satu piksel mewakili 10 × 10 m di permukaan, sehingga objek lebih kecil dari itu sulit dipisahkan."
+    },
+    {
+      "id": "pj03",
+      "type": "single",
+      "question": "Sensor pasif bekerja dengan cara…",
+      "options": [
+        "Memancarkan pulsa energinya sendiri lalu mengukur pantulannya",
+        "Memanfaatkan energi matahari yang dipantulkan atau dipancarkan objek",
+        "Mengukur medan gravitasi bumi secara langsung",
+        "Menangkap gelombang akustik dari permukaan bumi"
+      ],
+      "answer": 1,
+      "explanation": "Sensor pasif bergantung pada sumber energi luar, umumnya matahari. Radar dan LiDAR termasuk aktif karena memancarkan energinya sendiri."
+    },
+    {
+      "id": "pj04",
+      "type": "single",
+      "question": "Rumus Normalized Difference Vegetation Index (NDVI) adalah…",
+      "options": [
+        "(NIR + Merah) / (NIR − Merah)",
+        "(NIR − Merah) / (NIR + Merah)",
+        "(Merah − NIR) / (Merah + NIR)",
+        "(NIR − SWIR) / (NIR + SWIR)"
+      ],
+      "answer": 1,
+      "explanation": "NDVI membandingkan pantulan inframerah dekat yang tinggi pada vegetasi sehat dengan pantulan merah yang rendah karena diserap klorofil."
+    },
+    {
+      "id": "pj05",
+      "type": "single",
+      "question": "Nilai NDVI untuk vegetasi rapat dan sehat umumnya…",
+      "options": [
+        "Mendekati −1",
+        "Berada di sekitar 0",
+        "Mendekati +1",
+        "Selalu tepat 1,0"
+      ],
+      "answer": 2,
+      "explanation": "NDVI bernilai antara −1 dan +1. Vegetasi rapat mendekati +1, tanah terbuka sekitar 0,2–0,4, dan air atau awan bernilai negatif."
+    },
+    {
+      "id": "pj06",
+      "type": "multi",
+      "question": "Band Sentinel-2 MSI mana saja yang memiliki resolusi spasial 10 m?",
+      "options": [
+        "B2 — biru",
+        "B4 — merah",
+        "B8 — inframerah dekat",
+        "B11 — inframerah gelombang pendek"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "B2, B3, B4, dan B8 direkam pada 10 m. B11 (SWIR) beresolusi 20 m, sedangkan B1 dan B9 pada 60 m."
+    },
+    {
+      "id": "pj07",
+      "type": "single",
+      "question": "Pada Landsat 8/9 OLI, band merah dan inframerah dekat berturut-turut adalah…",
+      "options": [
+        "Band 3 dan band 4",
+        "Band 4 dan band 5",
+        "Band 5 dan band 6",
+        "Band 6 dan band 7"
+      ],
+      "answer": 1,
+      "explanation": "OLI: band 2 biru, band 3 hijau, band 4 merah, band 5 NIR, band 6 SWIR-1, band 7 SWIR-2. Kombinasi 5-4-3 adalah komposisi warna standar untuk vegetasi."
+    },
+    {
+      "id": "pj08",
+      "type": "single",
+      "question": "Resolusi temporal citra satelit menunjukkan…",
+      "options": [
+        "Ketelitian posisi geometrik citra",
+        "Selang waktu antarperekaman ulang pada lokasi yang sama",
+        "Jumlah bit yang digunakan tiap piksel",
+        "Luas cakupan satu scene"
+      ],
+      "answer": 1,
+      "explanation": "Resolusi temporal penting untuk pemantauan musiman. Sentinel-2 dengan dua satelit dapat mengunjungi lokasi yang sama sekitar setiap lima hari."
+    },
+    {
+      "id": "pj09",
+      "type": "single",
+      "question": "Mengapa tubuh air tampak sangat gelap pada band inframerah dekat?",
+      "options": [
+        "Air memantulkan hampir seluruh energi NIR",
+        "Air menyerap energi NIR dengan kuat",
+        "Sensor NIR tidak dapat merekam permukaan air",
+        "Air memancarkan energi NIR yang menutupi pantulan"
+      ],
+      "answer": 1,
+      "explanation": "Air menyerap NIR hampir seluruhnya, sehingga pantulan yang diterima sensor sangat kecil. Inilah dasar banyak indeks air seperti NDWI."
+    },
+    {
+      "id": "pj10",
+      "type": "single",
+      "question": "Tujuan utama koreksi atmosferik pada citra optik adalah…",
+      "options": [
+        "Menghilangkan pengaruh hamburan dan serapan atmosfer pada nilai pantulan",
+        "Mengubah resolusi spasial citra menjadi lebih halus",
+        "Menggabungkan beberapa citra menjadi satu mosaik",
+        "Memotong citra sesuai batas administrasi"
+      ],
+      "answer": 0,
+      "explanation": "Tanpa koreksi atmosferik, nilai piksel bercampur dengan kontribusi aerosol dan uap air. Pantulan permukaan yang lebih bersih diperlukan untuk membandingkan citra antarwaktu."
+    }
+  ]
+}
